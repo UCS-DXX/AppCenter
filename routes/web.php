@@ -17,7 +17,9 @@
 
 /*
 |--------------------------------------------------------------------------
-| Home Controller
+| Home Controller Routes
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'HomeController@index');
+Route::get('register', 'HomeController@getRegister');
+Route::get('login', 'HomeController@getLogin');

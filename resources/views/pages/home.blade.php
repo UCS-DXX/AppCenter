@@ -4,12 +4,12 @@
 		<div class="container-fluid">
 			<ul>
 				<li>
-					<a href="#">
+					<a href="{{ URL::to('register') }}">
 						sign up
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{ URL::to('login') }}">
 						login
 					</a>
 				</li>
