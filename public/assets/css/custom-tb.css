@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: #f5f5f5 !important;
+}
+.hero-area{
+	height: 100vh;
+	position: relative;
+}
+.hero-area ul{
+	list-style: none;
+	float: right;
+}
+
+.hero-area ul li{
+	display: inline-block;
+	padding:10px 15px;
+}
+.hero-area ul li a{
+	font-weight: 300;
+}
+
+.hero-area  img{
+	text-align: center;
+}
+
+.hero-area .intro-div{
+	margin-top: 150px;
+}
+
+.mg-top100{
+	margin-top: 100px;
+}
+
+.intro{
+	font-size: 24px;
+	font-weight: 700;
+}
