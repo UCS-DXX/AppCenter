@@ -15,10 +15,20 @@ class HomeController extends Controller
 	{
 		return view('pages.home');
 	}
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call Register page view
+	|--------------------------------------------------------------------------
+	*/
 	public function getRegister()
 	{
 		return view('pages.register');
 	}
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call Login page view
+	|--------------------------------------------------------------------------
+	*/
 	public function getLogin()
 	{
 		return view('pages.login');
