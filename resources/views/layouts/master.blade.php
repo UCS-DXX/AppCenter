@@ -4,4 +4,5 @@
 <body>
 @yield('content')
 </body>
+@yield('custom-script')
 </html>

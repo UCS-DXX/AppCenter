@@ -24,9 +24,12 @@
 					Introducing
 				</p>
 				<a href="#">
-					<img src="{{ asset('assets/images/logo-black.png') }}">
+					<img src="{{ asset('assets/images/logo-black.png') }}" width="300px">
 				</a>
 			</div>
 		</div>
 	</div>
+@endsection
+@section('custom-script')
+	@include('layouts/partials/script')
 @endsection
