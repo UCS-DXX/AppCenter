@@ -1,5 +1,9 @@
 @extends('layouts.master')
+@section('custom-includes')
+	<link rel="stylesheet" href="{{ asset('assets/css/login-3.min.css') }}">
+@endsection
 @section('content')
+	<body>
 	<div class="login">
 		<div class="login-body">
 			<a class="login-brand" href="{{ URL::to('/') }}">
@@ -28,4 +32,5 @@
 @endsection
 @section('custom-script')
 	@include('layouts/partials/script')
+	</body>
 @endsection
