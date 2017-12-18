@@ -38,6 +38,16 @@ class HomeController extends Controller
 	
 	/*
 	|--------------------------------------------------------------------------
+	| Method to call Logout page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getLogout()
+	{
+		return view('pages.home');
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
 	| Method to call Dashboard page view
 	|--------------------------------------------------------------------------
 	*/
@@ -58,7 +68,7 @@ class HomeController extends Controller
 	
 	/*
 	|--------------------------------------------------------------------------
-	| Method to call FormControls page view
+	| Method to call ResponsiveTables page view
 	|--------------------------------------------------------------------------
 	*/
 	public function getResponsiveTables()

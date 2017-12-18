@@ -23,6 +23,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/register', 'HomeController@getRegister');
 Route::get('/login', 'HomeController@getLogin');
+Route::get('/logout', 'HomeController@getLogout');
 Route::get('/dashboard', 'HomeController@getDashboard');
 Route::get('/form-controls', 'HomeController@getFormControls');
 Route::get('/responsive-tables', 'HomeController@getResponsiveTables');
