@@ -45,4 +45,24 @@ class HomeController extends Controller
 	{
 		return view('pages.dashboard');
 	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call FormControls page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getFormControls()
+	{
+		return view('pages.form-controls');
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call FormControls page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getResponsiveTables()
+	{
+		return view('pages.responsive-tables');
+	}
 }

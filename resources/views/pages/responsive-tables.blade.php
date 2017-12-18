@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('custom-includes')
 	<link rel="stylesheet" href="{{ asset('assets/css/application.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/demo.min.css') }}">
 @endsection
 @section('content')
 	<body class="layout layout-header-fixed">
@@ -8,7 +9,7 @@
 		<div class="navbar navbar-default">
 			<div class="navbar-header">
 				<a class="navbar-brand navbar-brand-center" href="{{ URL::to('/') }}">
-					<img class="navbar-brand-logo" src="{{ asset('assets/images/logo.png') }}" alt="Elephant"/>
+					<img class="navbar-brand-logo" src="{{ asset('assets/images/logo.png') }}" alt="Elephant">
 				</a>
 				<button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse"
 				        data-target="#sidenav">
@@ -21,7 +22,7 @@
 					<span class="bars bars-x">
                         <span class="bar-line bar-line-4"></span>
                         <span class="bar-line bar-line-5"></span>
-					</span>
+                    </span>
 				</button>
 				<button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse"
 				        data-target="#navbar">
@@ -39,13 +40,13 @@
 					        type="button">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="bars">
-                            <span class="bar-line bar-line-1 out"></span>
-                            <span class="bar-line bar-line-2 out"></span>
-                            <span class="bar-line bar-line-3 out"></span>
-                            <span class="bar-line bar-line-4 in"></span>
-                            <span class="bar-line bar-line-5 in"></span>
-                            <span class="bar-line bar-line-6 in"></span>
-                        </span>
+			                <span class="bar-line bar-line-1 out"></span>
+			                <span class="bar-line bar-line-2 out"></span>
+			                <span class="bar-line bar-line-3 out"></span>
+			                <span class="bar-line bar-line-4 in"></span>
+			                <span class="bar-line bar-line-5 in"></span>
+			                <span class="bar-line bar-line-6 in"></span>
+						</span>
 					</button>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="visible-xs-block">
@@ -68,7 +69,7 @@
 							<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
 							   aria-haspopup="true">
                                 <span class="icon-with-child hidden-xs">
-	                                <span class="icon icon-envelope-o icon-lg"></span>
+                                    <span class="icon icon-envelope-o icon-lg"></span>
                                     <span class="badge badge-danger badge-above right">8</span>
                                 </span>
 								<span class="visible-xs-block">
@@ -396,8 +397,7 @@
 						<li class="dropdown hidden-xs">
 							<button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
 								<img class="rounded" width="36" height="36"
-								     src="{{ asset('assets/images/0180441436.jpg') }}" alt="Teddy Wilson">
-								Teddy Wilson
+								     src="{{ asset('assets/images/0180441436.jpg') }}" alt="Teddy Wilson"> Teddy Wilson
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right">
@@ -414,15 +414,9 @@
 								<li class="divider"></li>
 								<li class="navbar-upgrade-version">Version: 1.0.0</li>
 								<li class="divider"></li>
-								<li>
-									<a href="contacts.html">Contacts</a>
-								</li>
-								<li>
-									<a href="profile.html">Profile</a>
-								</li>
-								<li>
-									<a href="login-1.html">Sign out</a>
-								</li>
+								<li><a href="contacts.html">Contacts</a></li>
+								<li><a href="profile.html">Profile</a></li>
+								<li><a href="login-1.html">Sign out</a></li>
 							</ul>
 						</li>
 						<li class="visible-xs-block">
@@ -476,13 +470,13 @@
 									</li>
 								</ul>
 							</li>
-							<li class="sidenav-item has-subnav">
+							<li class="sidenav-item has-subnav active">
 								<a href="#" aria-haspopup="true">
 									<span class="sidenav-icon icon icon-list"></span>
 									<span class="sidenav-label">Tables</span>
 								</a>
 								<ul class="sidenav-subnav collapse">
-									<li>
+									<li class="active">
 										<a href="{{ URL::to('responsive-tables') }}">Responsive tables</a>
 									</li>
 								</ul>
@@ -496,8 +490,390 @@
 			<div class="layout-content-body">
 				<div class="title-bar">
 					<h1 class="title-bar-title">
-						<span class="d-ib">Welcome to  UNACORE Dashboard</span>
+						<span class="d-ib">Responsive tables</span>
+						<span class="d-ib">
+                            <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body"
+                               data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right"
+                               data-toggle="tooltip">
+                                <span class="sr-only">Add to shortcut list</span>
+                            </a>
+                        </span>
 					</h1>
+					<p class="title-bar-description">
+						<small>Resize your browser or load on different devices to test the responsive tables.</small>
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-actions">
+									<button type="button" class="card-action card-toggler" title="Collapse"></button>
+									<button type="button" class="card-action card-reload" title="Reload"></button>
+									<button type="button" class="card-action card-remove" title="Remove"></button>
+								</div>
+								<strong>Flip Scroll</strong>
+							</div>
+							<div class="card-body">
+								<div class="table-flip-scroll">
+									<table class="table table-striped">
+										<thead>
+										<tr>
+											<th>Rank</th>
+											<th>Country</th>
+											<th>Continent</th>
+											<th>Region</th>
+											<th class="text-right">2016</th>
+											<th class="text-right">2015</th>
+											<th class="text-right">Change</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td>—</td>
+											<td>
+												<i>World</i>
+											</td>
+											<td>—</td>
+											<td>—</td>
+											<td class="text-right">7,432,663,275</td>
+											<td class="text-right">7,349,472,099</td>
+											<td class="text-right">+1.1%</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/cn.svg') }}"
+												     alt="State Flag">
+												China
+											</td>
+											<td>Asia</td>
+											<td>Eastern Asia</td>
+											<td class="text-right">1,382,323,332</td>
+											<td class="text-right">1,376,048,943</td>
+											<td class="text-right">+0.5%</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/cn.svg') }}"
+												     alt="State Flag">
+												India
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">1,326,801,576</td>
+											<td class="text-right">1,311,050,527</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/us.svg') }}"
+												     alt="State Flag">
+												United States
+											</td>
+											<td>Americas</td>
+											<td>Northern America</td>
+											<td class="text-right">324,118,787</td>
+											<td class="text-right">321,773,631</td>
+											<td class="text-right">+0.7%</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/id.svg') }}"
+												     alt="State Flag">
+												Indonesia
+											</td>
+											<td>Asia</td>
+											<td>South-Eastern Asia</td>
+											<td class="text-right">260,581,100</td>
+											<td class="text-right">257,563,815</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/br.svg') }}"
+												     alt="State Flag">
+												Brazil
+											</td>
+											<td>Americas</td>
+											<td>South America</td>
+											<td class="text-right">209,567,920</td>
+											<td class="text-right">207,847,528</td>
+											<td class="text-right">+0.8%</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/pk.svg') }}"
+												     alt="State Flag">
+												Pakistan
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">192,826,502</td>
+											<td class="text-right">188,924,874</td>
+											<td class="text-right">+2.1%</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/ng.svg') }}"
+												     alt="State Flag">
+												Nigeria
+											</td>
+											<td>Africa</td>
+											<td>Western Africa</td>
+											<td class="text-right">186,987,563</td>
+											<td class="text-right">182,201,962</td>
+											<td class="text-right">+2.6%</td>
+										</tr>
+										<tr>
+											<td>8</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/bd.svg') }}"
+												     alt="State Flag">
+												Bangladesh
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">162,910,864</td>
+											<td class="text-right">160,995,642</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>9</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/ru.svg') }}"
+												     alt="State Flag">
+												Russia
+											</td>
+											<td>Europe</td>
+											<td>Eastern Europe</td>
+											<td class="text-right">143,439,832</td>
+											<td class="text-right">143,456,918</td>
+											<td class="text-right">0.0%</td>
+										</tr>
+										<tr>
+											<td>10</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/mx.svg') }}"
+												     alt="State Flag">
+												Mexico
+											</td>
+											<td>Americas</td>
+											<td>Central America</td>
+											<td class="text-right">128,632,004</td>
+											<td class="text-right">127,017,224</td>
+											<td class="text-right">+1.3%</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-center m-b">
+					<h3 class="m-b-0">Bootstrap Responsive Table</h3>
+					<small>Scroll horizontally on small devices, when viewing is smaller than 768px.</small>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-actions">
+									<button type="button" class="card-action card-toggler" title="Collapse"></button>
+									<button type="button" class="card-action card-reload" title="Reload"></button>
+									<button type="button" class="card-action card-remove" title="Remove"></button>
+								</div>
+								<strong>Horizontal Scroll</strong>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered">
+										<thead>
+										<tr>
+											<th>Rank</th>
+											<th>Country</th>
+											<th>Continent</th>
+											<th>Region</th>
+											<th class="text-right">2016</th>
+											<th class="text-right">2015</th>
+											<th class="text-right">Change</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td>—</td>
+											<td>
+												<i>World</i>
+											</td>
+											<td>—</td>
+											<td>—</td>
+											<td class="text-right">7,432,663,275</td>
+											<td class="text-right">7,349,472,099</td>
+											<td class="text-right">+1.1%</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/cn.svg') }}"
+												     alt="State Flag">
+												China
+											</td>
+											<td>Asia</td>
+											<td>Eastern Asia</td>
+											<td class="text-right">1,382,323,332</td>
+											<td class="text-right">1,376,048,943</td>
+											<td class="text-right">+0.5%</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/in.svg') }}"
+												     alt="State Flag">
+												India
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">1,326,801,576</td>
+											<td class="text-right">1,311,050,527</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/us.svg') }}"
+												     alt="State Flag">
+												United States
+											</td>
+											<td>Americas</td>
+											<td>Northern America</td>
+											<td class="text-right">324,118,787</td>
+											<td class="text-right">321,773,631</td>
+											<td class="text-right">+0.7%</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/id.svg') }}"
+												     alt="State Flag">
+												Indonesia
+											</td>
+											<td>Asia</td>
+											<td>South-Eastern Asia</td>
+											<td class="text-right">260,581,100</td>
+											<td class="text-right">257,563,815</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/br.svg') }}"
+												     alt="State Flag">
+												Brazil
+											</td>
+											<td>Americas</td>
+											<td>South America</td>
+											<td class="text-right">209,567,920</td>
+											<td class="text-right">207,847,528</td>
+											<td class="text-right">+0.8%</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/pk.svg') }}"
+												     alt="State Flag">
+												Pakistan
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">192,826,502</td>
+											<td class="text-right">188,924,874</td>
+											<td class="text-right">+2.1%</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/ng.svg') }}"
+												     alt="State Flag">
+												Nigeria
+											</td>
+											<td>Africa</td>
+											<td>Western Africa</td>
+											<td class="text-right">186,987,563</td>
+											<td class="text-right">182,201,962</td>
+											<td class="text-right">+2.6%</td>
+										</tr>
+										<tr>
+											<td>8</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/bd.svg') }}"
+												     alt="State Flag">
+												Bangladesh
+											</td>
+											<td>Asia</td>
+											<td>Southern Asia</td>
+											<td class="text-right">162,910,864</td>
+											<td class="text-right">160,995,642</td>
+											<td class="text-right">+1.2%</td>
+										</tr>
+										<tr>
+											<td>9</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/ru.svg') }}"
+												     alt="State Flag">
+												Russia
+											</td>
+											<td>Europe</td>
+											<td>Eastern Europe</td>
+											<td class="text-right">143,439,832</td>
+											<td class="text-right">143,456,918</td>
+											<td class="text-right">0.0%</td>
+										</tr>
+										<tr>
+											<td>10</td>
+											<td>
+												<img class="img-flag"
+												     src="{{ asset('assets/images/flags/4x3/mx.svg') }}"
+												     alt="State Flag">
+												Mexico
+											</td>
+											<td>Americas</td>
+											<td>Central America</td>
+											<td class="text-right">128,632,004</td>
+											<td class="text-right">127,017,224</td>
+											<td class="text-right">+1.3%</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -579,7 +955,8 @@
 							</li>
 							<li class="theme-settings-description">
                                 <span>
-                                    <strong>Sidebar sticky*</strong> - by scrolling up and down the page, the menu placed on the sidebar moves along with the content until the bottom of the menu is reached.
+                                    <strong>Sidebar sticky*</strong>
+	                                - by scrolling up and down the page, the menu placed on the sidebar moves along with the content until the bottom of the menu is reached.
 	                                <a href="page-layouts.html">Learn more</a>
                                 </span>
 							</li>
@@ -591,13 +968,11 @@
 								   data-container="body" data-trigger="hover" data-placement="top"
 								   data-toggle="tooltip">
 									<img class="img-responsive" src="{{ asset('assets/images/9722110524.jpg') }}"
-									     alt="Flaming Red Theme"/>
+									     alt="Flaming Red Theme">
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Flaming Red (inverse)"
@@ -608,9 +983,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Flatistic Green (default)"
@@ -621,9 +994,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Flatistic Green (inverse)"
@@ -634,9 +1005,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Midnight Blue (default)"
@@ -647,9 +1016,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Midnight Blue (inverse)"
@@ -660,9 +1027,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Materialistic Blue (default)"
@@ -673,9 +1038,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Materialistic Blue (inverse)"
@@ -686,9 +1049,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Eerie Black (default)"
@@ -699,9 +1060,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 							<li class="theme-variants-item">
 								<a class="theme-variants-link" href="" title="Eerie Black (inverse)"
@@ -712,9 +1071,7 @@
 								</a>
 								<a class="theme-variants-alt" href="" title="Rounded Corners Version"
 								   data-container="body" data-trigger="hover" data-placement="top"
-								   data-toggle="tooltip">
-									Rounded
-								</a>
+								   data-toggle="tooltip">Rounded</a>
 							</li>
 						</ul>
 					</div>
@@ -730,7 +1087,7 @@
 				<a class="rounded sq-36 bg-googleplus" href="" title="Share on Google+" target="_blank">
 					<span class="icon icon-google-plus"></span>
 				</a>
-				<a class="rounded sq-36 bg-linkedin" href="" target="_blank">
+				<a class="" target="_blank">
 					<span class="icon icon-linkedin"></span>
 				</a>
 				<a class="rounded sq-36 bg-pinterest" href="" title="Pin it" target="_blank">
@@ -746,5 +1103,6 @@
 	@section('custom-script')
 		@include('layouts/partials/script')
 		<script src="{{ asset('assets/js/application.min.js') }}"></script>
+		<script src="{{ asset('assets/js/demo.min.js') }}"></script>
 	</body>
 @endsection
