@@ -14,8 +14,8 @@ class HomeController extends Controller
 	public function index()
 	{
 		return view('pages.home');
-        //return ("<h1>Hello JJJJ</h1>");
 	}
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Method to call Register page view
@@ -25,6 +25,7 @@ class HomeController extends Controller
 	{
 		return view('pages.register');
 	}
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Method to call Login page view
@@ -34,13 +35,14 @@ class HomeController extends Controller
 	{
 		return view('pages.login');
 	}
-    /*
-    |--------------------------------------------------------------------------
-    | Method to call Dashboard page view
-    |--------------------------------------------------------------------------
-    */
-    public function getDashboard()
-    {
-        return view('pages.dashboard');
-    }
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call Dashboard page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getDashboard()
+	{
+		return view('pages.dashboard');
+	}
 }

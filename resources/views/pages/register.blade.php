@@ -7,7 +7,7 @@
 	<div class="signup">
 		<div class="signup-body">
 			<a class="signup-brand" href="{{ URL::to('/') }}">
-				<img class="img-responsive" src="{{ asset('assets/images/logo-black.png') }}" alt="Elephant">
+				<img class="img-responsive" src="{{ asset('assets/images/logo-black.png') }}" alt="Elephant"/>
 			</a>
 			<p class="signup-heading">
 				<em>Get started with a free account. 30 day free trial, unlimited users, no credit card required.</em>
@@ -18,13 +18,15 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="first_name" spellcheck="false" data-msg-required="Please enter your first name." required>
+								<input class="md-form-control" type="text" name="first_name" spellcheck="false"
+								       data-msg-required="Please enter your first name." required>
 								<label class="md-control-label">First name</label>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="last_name" spellcheck="false" data-msg-required="Please enter your last name." required>
+								<input class="md-form-control" type="text" name="last_name" spellcheck="false"
+								       data-msg-required="Please enter your last name." required>
 								<label class="md-control-label">Last name</label>
 							</div>
 						</div>
@@ -32,7 +34,8 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="email" name="email" spellcheck="false" autocomplete="off" data-msg-required="Please enter your email address." required>
+								<input class="md-form-control" type="email" name="email" spellcheck="false"
+								       autocomplete="off" data-msg-required="Please enter your email address." required>
 								<label class="md-control-label">Email</label>
 							</div>
 						</div>
@@ -40,7 +43,9 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="password" name="password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required>
+								<input class="md-form-control" type="password" name="password" minlength="6"
+								       data-msg-minlength="Password must be 6 characters or more."
+								       data-msg-required="Please enter your password." required>
 								<label class="md-control-label">Password</label>
 							</div>
 						</div>
@@ -51,8 +56,10 @@
 								<div class="row">
 									<div class="col-xs-6">
 										<div class="md-form-group">
-											<select class="md-form-control" name="birth_month" data-msg-required="Please enter your birthday." required>
-												<option value="" disabled="disabled" selected="selected">Birth Month</option>
+											<select class="md-form-control" name="birth_month"
+											        data-msg-required="Please enter your birthday." required>
+												<option value="" disabled="disabled" selected="selected">Birth Month
+												</option>
 												<option value="01">January</option>
 												<option value="02">February</option>
 												<option value="03">March</option>
@@ -71,7 +78,8 @@
 									</div>
 									<div class="col-xs-3">
 										<div class="md-form-group">
-											<select class="md-form-control" name="birth_day" data-msg-required="Please enter your birthday." required>
+											<select class="md-form-control" name="birth_day"
+											        data-msg-required="Please enter your birthday." required>
 												<option value="" selected="selected" disabled="disabled">Day</option>
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -110,7 +118,8 @@
 									</div>
 									<div class="col-xs-3">
 										<div class="md-form-group">
-											<select class="md-form-control" name="birth_year" data-msg-required="Please enter your birthday." required>
+											<select class="md-form-control" name="birth_year"
+											        data-msg-required="Please enter your birthday." required>
 												<option value="" selected="selected" disabled="disabled">Year</option>
 												<option value="2016">2016</option>
 												<option value="2015">2015</option>
@@ -240,7 +249,8 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="md-form-group">
-								<select class="md-form-control" name="gender" data-msg-required="Please indicate your gender." required>
+								<select class="md-form-control" name="gender"
+								        data-msg-required="Please indicate your gender." required>
 									<option value="" disabled="disabled" selected="selected">Gender</option>
 									<option value="1">Male</option>
 									<option value="2">Female</option>
@@ -255,11 +265,12 @@
 			</div>
 		</div>
 		<div class="signup-footer">
-			Already have an account? <a href="{{ URL::to('login') }}">Log in</a>
+			Already have an account?
+			<a href="{{ URL::to('login') }}">Log in</a>
 		</div>
 	</div>
-@endsection
-@section('custom-script')
-	@include('layouts/partials/script')
+	@endsection
+	@section('custom-script')
+		@include('layouts/partials/script')
 	</body>
 @endsection
