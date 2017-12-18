@@ -21,9 +21,11 @@
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'HomeController@index');
-Route::get('/register', 'HomeController@getRegister');
+//Route::get('/register', 'HomeController@getRegister');
+//Route::post('/register', 'HomeController@postRegister');
 Route::get('/login', 'HomeController@getLogin');
+Route::post('/login', 'HomeController@postLogin');
 Route::get('/logout', 'HomeController@getLogout');
-Route::get('/dashboard', 'HomeController@getDashboard');
-Route::get('/form-controls', 'HomeController@getFormControls');
-Route::get('/responsive-tables', 'HomeController@getResponsiveTables');
+Route::get('/dashboard', ['middleware' => 'authenticate', 'uses' => 'HomeController@getDashboard']);
+Route::get('/form-controls', ['middleware' => 'authenticate', 'uses' => 'HomeController@getFormControls']);
+Route::get('/responsive-tables', ['middleware' => 'authenticate', 'uses' => 'HomeController@getResponsiveTables']);

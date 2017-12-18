@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -21,10 +22,20 @@ class HomeController extends Controller
 	| Method to call Register page view
 	|--------------------------------------------------------------------------
 	*/
-	public function getRegister()
+	/*public function getRegister()
 	{
 		return view('pages.register');
-	}
+	}*/
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to Register users
+	|--------------------------------------------------------------------------
+	*/
+	/*public function postRegister()
+	{
+	
+	}*/
 	
 	/*
 	|--------------------------------------------------------------------------
@@ -33,7 +44,29 @@ class HomeController extends Controller
 	*/
 	public function getLogin()
 	{
+		if (Session::get('login')) {
+			return redirect('dashboard');
+		}
 		return view('pages.login');
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to login users
+	|--------------------------------------------------------------------------
+	*/
+	public function postLogin(Request $request)
+	{
+		$url = '192.168.33.11/test.php';
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_POST, 1); // Do a regular HTTP POST
+		$response = curl_exec($curl);
+		if (isset($response) AND $response == 'true') {
+			Session::put('login', $response);
+			Session::put('role', 'viewer');
+			return redirect('dashboard');
+		}
 	}
 	
 	/*
@@ -43,7 +76,8 @@ class HomeController extends Controller
 	*/
 	public function getLogout()
 	{
-		return view('pages.home');
+		Session::flush();
+		return redirect('/');
 	}
 	
 	/*

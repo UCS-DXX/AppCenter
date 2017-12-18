@@ -8,9 +8,9 @@
 	<div class="hero-area">
 		<div class="container-fluid">
 			<ul>
-				<li>
+				{{--<li>
 					<a href="{{ URL::to('register') }}">sign up</a>
-				</li>
+				</li>--}}
 				<li>
 					<a href="{{ URL::to('login') }}">login</a>
 				</li>
