@@ -14,7 +14,7 @@
 							</div>
 						</form>
 					</li>
-					<li class="sidenav-item has-subnav">
+					{{--<li class="sidenav-item has-subnav">
 						<a href="#" aria-haspopup="true">
 							<span class="sidenav-icon icon icon-edit"></span>
 							<span class="sidenav-label">Forms</span>
@@ -35,7 +35,7 @@
 								<a href="{{ URL::to('responsive-tables') }}">Responsive tables</a>
 							</li>
 						</ul>
-					</li>
+					</li>--}}
 				</ul>
 			</nav>
 		</div>
