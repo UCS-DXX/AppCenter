@@ -65,7 +65,7 @@ class HomeController extends Controller
 		if (isset($response) AND $response == 'true') {
 			Session::put('login', $response);
 			Session::put('role', 'viewer');
-			return redirect('dashboard');
+			return redirect('apps');
 		}
 	}
 	
@@ -82,14 +82,41 @@ class HomeController extends Controller
 	
 	/*
 	|--------------------------------------------------------------------------
+	| Method to call Apps page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getApps()
+	{
+		return view('pages.apps');
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call Change App
+	|--------------------------------------------------------------------------
+	*/
+	public function changeApp($appName)
+	{
+		Session::put('appName', $appName);
+		return redirect('dashboard');
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
 	| Method to call Dashboard page view
 	|--------------------------------------------------------------------------
 	*/
 	public function getDashboard()
 	{
-		return view('pages.dashboard');
+		$app = Session::get('appName');
+		return view('apps.' . $app . '.dashboard');
 	}
 	
+	public function testing()
+	{
+		$app = Session::get('appName');
+		return view('apps.'.$app.'.test');
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| Method to call FormControls page view

@@ -122,7 +122,9 @@
 			<div class="layout-content-body">
 				<div class="title-bar">
 					<h1 class="title-bar-title">
-						<span class="d-ib">Welcome to  UNACORE Dashboard</span>
+						@if(isset($data['dashboard']) AND $data['dashboard'] == 'transfer_money')
+							<span class="d-ib">Welcome to Transfer Money Dashboard</span>
+						@endif
 					</h1>
 				</div>
 			</div>

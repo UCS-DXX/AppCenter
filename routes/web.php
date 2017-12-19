@@ -26,10 +26,12 @@ Route::get('/', 'HomeController@index');
 Route::get('/login', 'HomeController@getLogin');
 Route::post('/login', 'HomeController@postLogin');
 Route::get('/logout', 'HomeController@getLogout');
+Route::get('/apps', ['middleware' => 'authenticate', 'uses' => 'HomeController@getApps']);
+Route::get('/changeapp/{appName}', ['middleware' => 'authenticate', 'uses' => 'HomeController@changeApp']);
 Route::get('/dashboard', ['middleware' => 'authenticate', 'uses' => 'HomeController@getDashboard']);
 Route::get('/form-controls', ['middleware' => 'authenticate', 'uses' => 'HomeController@getFormControls']);
 Route::get('/responsive-tables', ['middleware' => 'authenticate', 'uses' => 'HomeController@getResponsiveTables']);
-
+Route::get('/testing','HomeController@testing');
 /*
 |--------------------------------------------------------------------------
 | Test Controller Routes
