@@ -115,8 +115,20 @@ class HomeController extends Controller
 	public function testing()
 	{
 		$app = Session::get('appName');
-		return view('apps.'.$app.'.test');
+		return view('apps.' . $app . '.test');
 	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Method to call Dashboard page view
+	|--------------------------------------------------------------------------
+	*/
+	public function getCustomers()
+	{
+		$app = Session::get('appName');
+		return view('apps.' . $app . '.customers');
+	}
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Method to call FormControls page view

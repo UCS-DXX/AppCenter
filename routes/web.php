@@ -31,7 +31,9 @@ Route::get('/changeapp/{appName}', ['middleware' => 'authenticate', 'uses' => 'H
 Route::get('/dashboard', ['middleware' => 'authenticate', 'uses' => 'HomeController@getDashboard']);
 Route::get('/form-controls', ['middleware' => 'authenticate', 'uses' => 'HomeController@getFormControls']);
 Route::get('/responsive-tables', ['middleware' => 'authenticate', 'uses' => 'HomeController@getResponsiveTables']);
-Route::get('/testing','HomeController@testing');
+Route::get('/testing', 'HomeController@testing');
+Route::get('/customers', ['middleware' => 'authenticate', 'uses' => 'HomeController@getCustomers']);
+
 /*
 |--------------------------------------------------------------------------
 | Test Controller Routes

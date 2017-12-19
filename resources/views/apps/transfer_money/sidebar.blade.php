@@ -36,6 +36,9 @@
 							</li>
 						</ul>
 					</li>--}}
+					<li class="sidenav-item has-subnav">
+						<a href="{{ URL::to('customers') }}">Customers</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

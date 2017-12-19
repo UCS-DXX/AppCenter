@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/elephant.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/application.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/customer.css') }}">
 	@yield('custom-includes')
 	@yield('internal-css')
 </head>
