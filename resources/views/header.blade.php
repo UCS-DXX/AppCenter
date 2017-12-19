@@ -45,6 +45,9 @@
 					<li class="visible-xs-block">
 						<h4 class="navbar-text text-center">Hi, Teddy Wilson</h4>
 					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="{{ URL::to('apps') }}">Apps</a>
+					</li>
 					<li class="dropdown hidden-xs">
 						<button class="navbar-account-btn profile" data-toggle="dropdown" aria-haspopup="true">
 							Teddy Wilson
