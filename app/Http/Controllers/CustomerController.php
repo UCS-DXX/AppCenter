@@ -44,7 +44,16 @@ class CustomerController extends Controller
 		$customer = $customerModel->where('id', $id)->get()->toArray();
 		$customer = array_shift($customer);
 		$data = array();
-		$data['customer'] = $customer['name'];
+		$data['customer']['id'] = $customer['id'];
+		$data['customer']['name'] = $customer['name'];
 		return view('apps.' . $app . '.edit-customer', array('data' => $data));
+	}
+	
+	public function updateCustomer(Request $request) {
+		$app = Session::get('appName');
+		//$id = Input::get('id');
+		$customerModel = new CustomerModel();
+		$customer = $customerModel->where('id', $request->id)->update('name', $request->name);
+		return redirect('customers');
 	}
 }
