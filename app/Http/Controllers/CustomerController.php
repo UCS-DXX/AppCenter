@@ -17,7 +17,11 @@ class CustomerController extends Controller
 	public function customers()
 	{
 		$app = Session::get('appName');
-		return view('apps.' . $app . '.customers');
+		$customerModel = new CustomerModel();
+		$customers = $customerModel->get()->toArray();
+		$data = array();
+		$data['customers'] = $customers;
+		return view('apps.' . $app . '.customers', array('data' => $data));
 	}
 	
 	public function getCustomer(Request $request)
