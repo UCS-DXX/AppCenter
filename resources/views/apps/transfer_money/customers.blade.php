@@ -37,7 +37,7 @@
 										<tr>
 											<td>{{ $value['id'] }}</td>
 											<td>{{ $value['name'] }}</td>
-											<td><a href="{{ URL::to('/') }}">Edit</a></td>
+											<td><a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a></td>
 										</tr>
 									@endforeach
 								</tbody>

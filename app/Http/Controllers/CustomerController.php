@@ -33,9 +33,18 @@ class CustomerController extends Controller
 	public function postCustomer(Request $request)
 	{
 		$customerModel = new CustomerModel();
-		//$customerModel->id = 1;
 		$customerModel->name = $request->name;
 		$customerModel->save();
 		return redirect('customers');
+	}
+	
+	public function getEditCustomer(Request $request, $id) {
+		$app = Session::get('appName');
+		$customerModel = new CustomerModel();
+		$customer = $customerModel->where('id', $id)->get()->toArray();
+		$customer = array_shift($customer);
+		$data = array();
+		$data['customer'] = $customer['name'];
+		return view('apps.' . $app . '.edit-customer', array('data' => $data));
 	}
 }
