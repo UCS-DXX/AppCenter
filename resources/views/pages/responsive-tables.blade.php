@@ -2,6 +2,7 @@
 @section('custom-includes')
 	<link rel="stylesheet" href="{{ asset('assets/css/application.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/demo.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 @endsection
 @section('content')
 	<body class="layout layout-header-fixed">
@@ -53,8 +54,8 @@
 							<h4 class="navbar-text text-center">Hi, Teddy Wilson</h4>
 						</li>
 						<li class="dropdown hidden-xs">
-							<button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true">
-								<div style="height: 16px; width: 16px;"></div>
+							<button class="navbar-account-btn profile" data-toggle="dropdown" aria-haspopup="true">
+								Teddy Wilson
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right">
