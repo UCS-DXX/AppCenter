@@ -9,9 +9,9 @@
 			<a class="login-brand" href="{{ URL::to('/') }}">
 				<img class="img-responsive" src="{{ asset('assets/images/logo-black.png') }}" alt=""/>
 			</a>
-			<h3 class="login-heading">Sign in</h3>
+			<h3 class="login-heading">Admin Login</h3>
 			<div class="login-form">
-				<form data-toggle="md-validator" action="{{ URL::to('login') }}" method="post">
+				<form data-toggle="md-validator" action="{{ URL::to('admin/login') }}" method="post">
 					{{ csrf_field() }}
 					<div class="md-form-group md-label-floating">
 						<input class="md-form-control" type="text" name="username" spellcheck="false" autocomplete="off"

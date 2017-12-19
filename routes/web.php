@@ -44,9 +44,14 @@ Route::post('/create-customer', ['middleware' => 'authenticate', 'uses' => 'Cust
 Route::get('/customer/edit/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getEditCustomer']);
 Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@updateCustomer']);
 
+Route::get('admin/login','AdminController@getLogin');
+Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
+	Route::get('/dashboard','AdminController@dashboard');
+});
 /*
 |--------------------------------------------------------------------------
 | Test Controller Routes
 |--------------------------------------------------------------------------
 */
+Route::get('admin/temp-code','AdminController@tempCode');
 Route::get('test', 'TestController@index');
