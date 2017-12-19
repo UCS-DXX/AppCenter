@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Adldap;
 
 class HomeController extends Controller
 {
@@ -44,6 +45,7 @@ class HomeController extends Controller
 	*/
 	public function getLogin()
 	{
+		//$a = 0;
 		if (Session::get('login')) {
 			return redirect('dashboard');
 		}
@@ -57,6 +59,41 @@ class HomeController extends Controller
 	*/
 	public function postLogin(Request $request)
 	{
+		//$credentials = $request->only('riemann', 'password');
+		$username = 'riemann';
+		$password = 'password';
+
+		$user_format = env('ADLDAP_USER_FORMAT', 'uid=%s,'.env('ADLDAP_BASEDN', ''));
+		$userdn = "uid=riemann,dc=example,dc=com";
+
+		if(Adldap::auth()->attempt($userdn, $password, $bindAsUser = true)) {
+			// the user exists in the LDAP server, with the provided password
+
+			$user = \App\User::where($this->username(), $username) -> first();
+			if (!$user) {
+				// the user doesn't exist in the local database, so we have to create one
+
+				$user = new \App\User();
+				$user->username = $username;
+				$user->password = '';
+
+				// you can skip this if there are no extra attributes to read from the LDAP server
+				// or you can move it below this if(!$user) block if you want to keep the user always
+				// in sync with the LDAP server
+				$sync_attrs = $this->retrieveSyncAttributes($username);
+				foreach ($sync_attrs as $field => $value) {
+					$user->$field = $value !== null ? $value : '';
+				}
+			}
+
+			// by logging the user we create the session so there is no need to login again (in the configured time)
+			$this->guard()->login($user, true);
+			return true;
+		}
+
+		// the user doesn't exist in the LDAP server or the password is wrong
+		// log error
+		return false;
 		$url = '192.168.33.11/test.php';
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);
