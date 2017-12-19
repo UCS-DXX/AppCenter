@@ -32,7 +32,15 @@ Route::get('/dashboard', ['middleware' => 'authenticate', 'uses' => 'HomeControl
 Route::get('/form-controls', ['middleware' => 'authenticate', 'uses' => 'HomeController@getFormControls']);
 Route::get('/responsive-tables', ['middleware' => 'authenticate', 'uses' => 'HomeController@getResponsiveTables']);
 Route::get('/testing', 'HomeController@testing');
-Route::get('/customers', ['middleware' => 'authenticate', 'uses' => 'HomeController@getCustomers']);
+
+/*
+|--------------------------------------------------------------------------
+| Customer Controller Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/customers', ['middleware' => 'authenticate', 'uses' => 'CustomerController@customers']);
+Route::get('/create-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getCustomer']);
+Route::post('/create-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@postCustomer']);
 
 /*
 |--------------------------------------------------------------------------

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/application.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/customer.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/signup-3.min.css') }}">
 	@yield('custom-includes')
 	@yield('internal-css')
 </head>
