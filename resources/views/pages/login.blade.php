@@ -28,10 +28,6 @@
 				</form>
 			</div>
 		</div>
-		<div class="login-footer">
-			Don't have an account?
-			<a href="{{ URL::to('register') }}">Sign Up</a>
-		</div>
 	</div>
 	@endsection
 	@section('custom-script')
