@@ -19,7 +19,7 @@
 			<div class="title-bar">
 				<h6 class="title-bar-title">
 				<span class="d-ib">
-					<a href="{{ URL::to('create-customer') }}" id="create_customer">Add New Customer</a>
+					<a href="{{ URL::to('create-product-code') }}" id="create_customer">Create New Product Code</a>
 				</span>
 				</h6>
 			</div>
@@ -41,20 +41,24 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Name</th>
+										<th>SCHEME CODE</th>
+										<th>TRANSFER TYPE</th>
+										<th>ACTIVE</th>
 										@if(Session::get('maker') == 1)
-											<th>Edit Customer</th>
+											<th>EDIT LINK</th>
 										@endif
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data['customers'] as $key => $value)
+									@foreach($data['productcodes'] as $key => $value)
 										<tr>
 											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['name'] }}</td>
+											<td>{{ $value['schemecode'] }}</td>
+											<td>{{ $value['transfer_type'] }}</td>
+											<td>{{ $value['active'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a>
+													<a href="{{ URL::to('product-code/edit') . '/' . $value['id'] }}">Edit</a>
 												</td>
 											@endif
 										</tr>
