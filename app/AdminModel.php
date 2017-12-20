@@ -10,4 +10,5 @@ class AdminModel extends Model
     protected $connection = 'oracle';
     protected $fillable = ['USER_ID','PASSWORD','STATUS'];
     public $timestamps = FALSE;
+    public $incrementing = FALSE;
 }

@@ -51,29 +51,40 @@ class AdminController extends Controller
 		return view('apps.admin.users',compact('user_permissions'));
 	}
 
-	public function createUserPermission() {
-		return view('apps.admin.create-user-permission');
+	public function createUserPermission(Request $request) {
+		$user_permission = array();
+		if($request->user_id) {
+			$user_id = $request->user_id;
+			$user_permission_model = new UserPermission();
+			$user_permission  = $user_permission_model->where('user_id','=',$user_id)->get()->toArray();
+		}
+		return view('apps.admin.create-user-permission',compact('user_permission'));
 	}
 
 	public function doCreateUserPermission(Request $request) {
-		$viewer  = 0;
-		$maker 	 = 0;
+		$viewer = 0;
+		$maker = 0;
 		$checker = 0;
-		if(isset($request->viewer)) {
+		if (isset($request->viewer)) {
 			$viewer = 1;
 		}
-		if(isset($request->maker)) {
+		if (isset($request->maker)) {
 			$maker = 1;
 		}
-		if(isset($request->checker)) {
+		if (isset($request->checker)) {
 			$checker = 1;
 		}
 		$user_permission_model = new UserPermission();
-		$user_permission_model->user_id = $request->username;
-		$user_permission_model->viewer = $viewer;
-		$user_permission_model->maker = $maker;
-		$user_permission_model->checker = $checker;
-		$user_permission_model->save();
+		if(!isset($request->user_id)) {
+			$user_permission_model->user_id = $request->username;
+			$user_permission_model->viewer = $viewer;
+			$user_permission_model->maker = $maker;
+			$user_permission_model->checker = $checker;
+			$user_permission_model->save();
+		}
+		else {
+			$user_permission_model->where('user_id','=',$request->username)->update(['viewer' => $viewer,'maker' => $maker,'checker' => $checker]);
+		}
 		return redirect('admin/users');
 	}
 

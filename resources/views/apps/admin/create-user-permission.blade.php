@@ -13,31 +13,40 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" name="username" spellcheck="false"
-								       data-msg-required="Please enter username." required>
+									   data-msg-required="Please enter username." required @if(isset($user_permission[0])) readonly value="{{ $user_permission[0]['user_id'] }}" @endif>
 								<label class="md-control-label">Username</label>
 							</div>
 							<div class="md-form-group md-label-floating">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="viewer" checked="checked"> Viewer
+										<input type="checkbox" name="viewer" @if(isset($user_permission[0]['viewer']) && $user_permission[0]['viewer'] == 1 ) checked="checked" @endif> Viewer
 									</label>
-							</div>
-							<div class="md-form-group md-label-floating">
+								</div>
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="maker" checked="checked"> Maker
+										<input type="checkbox" name="maker" @if(isset($user_permission[0]['maker']) && $user_permission[0]['maker'] == 1 )checked="checked" @endif> Maker
 									</label>
-							</div>
-								<div class="md-form-group md-label-floating">
+								</div>
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" name="checker" checked="checked"> Checker
+											<input type="checkbox" name="checker" @if(isset($user_permission[0]['checker']) && $user_permission[0]['checker'] == 1 )checked="checked" @endif> Checker
 										</label>
 									</div>
+								</div>
+							</div>
 						</div>
+						@if(isset($user_permission[0]))
+							<input type="hidden" name="user_id" value="{{ $user_permission[0]['user_id'] }}">
+						<button class="btn btn-primary btn-block" type="submit">Update</button>
+						@else
+							<button class="btn btn-primary btn-block" type="submit">Create</button>
+						@endif
+
+
+
 					</div>
-					<button class="btn btn-primary btn-block" type="submit">Create</button>
 				</form>
+
 			</div>
 		</div>
 	</div>

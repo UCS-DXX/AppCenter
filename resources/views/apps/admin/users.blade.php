@@ -42,7 +42,7 @@
 											<td>{{ $value['viewer'] }}</td>
 											<td>{{ $value['maker'] }}</td>
 											<td>{{ $value['checker'] }}</td>
-											<td><a href="{{ URL::to('admin/user-permision-edit') . '/' . $value['user_id'] }}">Edit</a></td>
+											<td><a href="{{ URL::to('admin/create-user-permission') . '/' . $value['user_id'] }}">Edit</a></td>
 										</tr>
 									@endforeach
 								</tbody>
