@@ -3,13 +3,24 @@
 
 @endsection
 @section('content')
+	<style>
+		#create_customer:link {
+			padding: 8px;
+			text-align: center;
+			display: inline-block;
+			border: 2px solid;
+		}
+		.title-bar-title {
+			font-size: 16px;
+		}
+	</style>
 	<div class="layout-content-body">
 		<div class="title-bar">
-			<h1 class="title-bar-title">
+			<h6 class="title-bar-title">
 				<span class="d-ib">
-					<a href="{{ URL::to('create-customer') }}">Add New Customer</a>
+					<a href="{{ URL::to('create-customer') }}" id="create_customer">Add New Customer</a>
 				</span>
-			</h1>
+			</h6>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
