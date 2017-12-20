@@ -60,7 +60,7 @@ class AdminController extends Controller
 		$maker 	 = 0;
 		$checker = 0;
 		if(isset($request->viewer)) {
-			$viewer = 0;
+			$viewer = 1;
 		}
 		if(isset($request->maker)) {
 			$maker = 1;
