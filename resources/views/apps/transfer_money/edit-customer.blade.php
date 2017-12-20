@@ -19,6 +19,15 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="md-form-group md-label-floating">
+								<input readonly class="md-form-control" type="text" value="{{ $data['customer']['customer_id'] }}" name="customer_id" spellcheck="false"
+								       data-msg-required="Please enter your customer ID." required>
+								<label class="md-control-label">Customer ID</label>
+							</div>
+						</div>
+					</div>
 					<button class="btn btn-primary btn-block" type="submit">Update</button>
 				</form>
 			</div>

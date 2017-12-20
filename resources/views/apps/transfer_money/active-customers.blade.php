@@ -15,15 +15,6 @@
 		}
 	</style>
 	<div class="layout-content-body">
-		@if(Session::get('maker') == 1)
-			<div class="title-bar">
-				<h6 class="title-bar-title">
-				<span class="d-ib">
-					<a href="{{ URL::to('create-customer') }}" id="create_customer">Add New Customer</a>
-				</span>
-				</h6>
-			</div>
-		@endif
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="card">
@@ -43,8 +34,8 @@
 										<th>ID</th>
 										<th>Name</th>
 										<th>Customer ID</th>
-										@if(Session::get('maker') == 1)
-											<th>Edit Customer</th>
+										@if(Session::get('checker') == 1)
+											<th>Activate Customer</th>
 										@endif
 									</tr>
 								</thead>
@@ -56,7 +47,7 @@
 											<td>{{ $value['customer_id'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a>
+													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'] }}">Activate</a>
 												</td>
 											@endif
 										</tr>
