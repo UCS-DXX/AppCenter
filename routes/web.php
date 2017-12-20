@@ -20,7 +20,7 @@
 | Home Controller Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@getLogin');
 //Route::get('/register', 'HomeController@getRegister');
 //Route::post('/register', 'HomeController@postRegister');
 Route::get('/login', 'HomeController@getLogin');
