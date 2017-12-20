@@ -31,6 +31,6 @@
 	</div>
 	@endsection
 	@section('custom-script')
-		@include('layouts/partials/script')
+		@include('layouts.partials.script')
 	</body>
 @endsection

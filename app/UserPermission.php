@@ -8,5 +8,5 @@ class UserPermission extends Model
 {
     protected $table = 'USERS';
     protected $connection = 'oracle';
-    protected $fillable = ['USER_ID','VIEWER','CHECKER','MAKER'];
+    public $timestamps = false;
 }

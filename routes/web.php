@@ -46,8 +46,12 @@ Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'Cust
 
 Route::get('admin/login','AdminController@getLogin');
 Route::post('admin/login','AdminController@doLogin');
+Route::get('admin/logout','AdminController@logout');
 Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
 	Route::get('/dashboard','AdminController@dashboard');
+	Route::get('/users','AdminController@showUser');
+	Route::get('/create-user-permission','AdminController@createUserPermission');
+	Route::post('/create-user-permission','AdminController@doCreateUserPermission');
 });
 /*
 |--------------------------------------------------------------------------
