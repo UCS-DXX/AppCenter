@@ -72,25 +72,25 @@ class HomeController extends Controller
 		$user_permission_model = new UserPermission();
 		if(Adldap::auth()->attempt($userdn, $password, $bindAsUser = true)) {
 			$user_permission = $user_permission_model->where('USER_ID','=',$username)->get()->toArray();
-			if(empty($user_permission) || ($user_permission[0]['VIEWER'] == 0 && $user_permission[0]['CHECKER'] == 0 && $user_permission[0]['MAKER'] == 0)) {
+			if(empty($user_permission) || ($user_permission[0]['viewer'] == 0 && $user_permission[0]['checker'] == 0 && $user_permission[0]['maker'] == 0)) {
 				return redirect('/login')->with('err_msg','You do not have permission');
 			}
 			else {
 				$viewer = 0;
 				$checker = 0;
 				$maker = 0;
-				if($user_permission[0]['VIEWER'] == 1)
+				if($user_permission[0]['viewer'] == 1)
 					$viewer = 1;
-				if($user_permission[0]['CHECKER'] == 1)
+				if($user_permission[0]['checker'] == 1)
 					$checker = 1;
-				if($user_permission[0]['MAKER'] == 1)
+				if($user_permission[0]['maker'] == 1)
 					$maker = 1;
 
 				Session::put('login', TRUE);
 				Session::put('viewer', $viewer);
 				Session::put('checker', $checker);
 				Session::put('maker', $maker);
-				return redirect('dashboard');
+				return redirect('apps');
 			}
 			// the user exists in the LDAP server, with the provided password
 
