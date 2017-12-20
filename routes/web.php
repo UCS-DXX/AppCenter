@@ -52,6 +52,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
 	Route::get('/users','AdminController@showUser');
 	Route::get('/create-user-permission/{user_id?}','AdminController@createUserPermission');
 	Route::post('/create-user-permission','AdminController@doCreateUserPermission');
+	Route::get('/change-password','AdminController@showChangePassword');
+	Route::post('/change-password','AdminController@doChangePassword');
 });
 /*
 |--------------------------------------------------------------------------

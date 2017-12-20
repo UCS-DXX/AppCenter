@@ -39,6 +39,9 @@
 					<li class="sidenav-item has-subnav">
 						<a href="{{ URL::to('admin/users') }}">Users</a>
 					</li>
+					<li class="sidenav-item has-subnav">
+						<a href="{{ URL::to('admin/change-password') }}">Change Password</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

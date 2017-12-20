@@ -88,6 +88,28 @@ class AdminController extends Controller
 		return redirect('admin/users');
 	}
 
+	public function showChangePassword() {
+		return view('apps.admin.change-password');
+	}
+
+	public function doChangePassword(Request $request) {
+		if($request->password == $request->password_confirmation) {
+			$admin_model = new AdminModel();
+			$admin = $admin_model->where('user_id', '=', 'Admin')->get()->toArray();
+			if (password_verify($request->old_password, $admin[0]['password'])) {
+				$admin_model->where('user_id', '=', 'Admin')
+					->update(['password' => Hash::make($request->password)]);
+				return redirect('admin/dashboard')->with('success_msg', 'Password Update successfully done');
+			}
+			else {
+				return redirect('admin/change-password')->with('err_msg', 'Old password does not match');
+			}
+		}
+		else {
+			return redirect('admin/change-password')->with('err_msg', 'New password and confirm password does not match');
+		}
+	}
+
 	public function tempCode() {
 		$admin_model = new AdminModel();
 		$password = Hash::make('12345678');
