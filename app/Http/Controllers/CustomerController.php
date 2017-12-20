@@ -51,9 +51,8 @@ class CustomerController extends Controller
 	
 	public function updateCustomer(Request $request) {
 		$app = Session::get('appName');
-		//$id = Input::get('id');
 		$customerModel = new CustomerModel();
-		$customer = $customerModel->where('id', $request->id)->update('name', $request->name);
+		$customer = $customerModel->where('id', $request->id)->update(['name' => $request->name]);
 		return redirect('customers');
 	}
 }
