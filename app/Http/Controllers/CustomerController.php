@@ -18,7 +18,7 @@ class CustomerController extends Controller
 	{
 		$app = Session::get('appName');
 		$customerModel = new CustomerModel();
-		$customers = $customerModel->get()->toArray();
+		$customers = $customerModel->orderBy('name', 'asc')->get()->toArray();
 		$data = array();
 		$data['customers'] = $customers;
 		return view('apps.' . $app . '.customers', array('data' => $data));
