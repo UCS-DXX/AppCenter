@@ -37,7 +37,20 @@
 						</ul>
 					</li>--}}
 					<li class="sidenav-item has-subnav">
-						<a href="{{ URL::to('customers') }}">Customers</a>
+						<a href="{{ URL::to('customers') }}">
+							<span class="sidenav-icon">
+								<i class="material-icons" style="transform: translate(0, -2px);">people</i>
+							</span>
+							<span class="sidenav-label">Customers</span>
+						</a>
+					</li>
+					<li class="sidenav-item has-subnav">
+						<a href="{{ URL::to('transactions') }}">
+							<span class="sidenav-icon">
+								<i class="material-icons" style="transform: translate(0, -2px);">account_balance_wallet</i>
+							</span>
+							<span class="sidenav-label">Transactions</span>
+						</a>
 					</li>
 				</ul>
 			</nav>

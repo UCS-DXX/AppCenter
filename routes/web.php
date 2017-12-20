@@ -44,21 +44,29 @@ Route::post('/create-customer', ['middleware' => 'authenticate', 'uses' => 'Cust
 Route::get('/customer/edit/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getEditCustomer']);
 Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@updateCustomer']);
 
-Route::get('admin/login','AdminController@getLogin');
-Route::post('admin/login','AdminController@doLogin');
-Route::get('admin/logout','AdminController@logout');
+Route::get('admin/login', 'AdminController@getLogin');
+Route::post('admin/login', 'AdminController@doLogin');
+Route::get('admin/logout', 'AdminController@logout');
 Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
-	Route::get('/dashboard','AdminController@dashboard');
-	Route::get('/users','AdminController@showUser');
-	Route::get('/create-user-permission/{user_id?}','AdminController@createUserPermission');
-	Route::post('/create-user-permission','AdminController@doCreateUserPermission');
-	Route::get('/change-password','AdminController@showChangePassword');
-	Route::post('/change-password','AdminController@doChangePassword');
+	Route::get('/dashboard', 'AdminController@dashboard');
+	Route::get('/users', 'AdminController@showUser');
+	Route::get('/create-user-permission/{user_id?}', 'AdminController@createUserPermission');
+	Route::post('/create-user-permission', 'AdminController@doCreateUserPermission');
+	Route::get('/change-password', 'AdminController@showChangePassword');
+	Route::post('/change-password', 'AdminController@doChangePassword');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Transaction Controller Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/transactions', ['middleware' => 'authenticate', 'uses' => 'TransactionController@getTransactions']);
+
 /*
 |--------------------------------------------------------------------------
 | Test Controller Routes
 |--------------------------------------------------------------------------
 */
-Route::get('admin/temp-code','AdminController@tempCode');
+Route::get('admin/temp-code', 'AdminController@tempCode');
 Route::get('test', 'TestController@index');

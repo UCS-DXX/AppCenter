@@ -64,4 +64,5 @@
 @section('custom-script')
 	@include('layouts/partials/script')
 	<script src="{{ asset('assets/js/application.min.js') }}"></script>
+	<script src="{{ asset('assets/js/demo.min.js') }}"></script>
 @endsection

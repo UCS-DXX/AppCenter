@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/customer.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/signup-3.min.css') }}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	      rel="stylesheet">
 	@yield('custom-includes')
 	@yield('internal-css')
 </head>
