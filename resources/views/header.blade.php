@@ -50,7 +50,7 @@
 					</li>
 					<li class="dropdown hidden-xs">
 						<button class="navbar-account-btn profile" data-toggle="dropdown" aria-haspopup="true">
-							Teddy Wilson
+							{{ Session::get('user_id') }}
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-right">

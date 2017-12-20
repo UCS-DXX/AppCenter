@@ -90,6 +90,7 @@ class HomeController extends Controller
 				Session::put('viewer', $viewer);
 				Session::put('checker', $checker);
 				Session::put('maker', $maker);
+				Session::put('user_id', $username);
 				return redirect('apps');
 			}
 			// the user exists in the LDAP server, with the provided password
