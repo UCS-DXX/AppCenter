@@ -45,6 +45,7 @@ Route::get('/customer/edit/{id}', ['middleware' => 'authenticate', 'uses' => 'Cu
 Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@updateCustomer']);
 
 Route::get('admin/login','AdminController@getLogin');
+Route::post('admin/login','AdminController@doLogin');
 Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
 	Route::get('/dashboard','AdminController@dashboard');
 });
