@@ -38,10 +38,10 @@ class CustomerController extends Controller
 		return redirect('customers');
 	}
 	
-	public function getEditCustomer(Request $request, $id) {
+	public function getEditCustomer(Request $request) {
 		$app = Session::get('appName');
 		$customerModel = new CustomerModel();
-		$customer = $customerModel->where('id', $id)->get()->toArray();
+		$customer = $customerModel->where('id', $request->id)->get()->toArray();
 		$customer = array_shift($customer);
 		$data = array();
 		$data['customer']['id'] = $customer['id'];
