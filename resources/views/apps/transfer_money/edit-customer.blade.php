@@ -14,7 +14,7 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['app_id'] }}" name="app_id" spellcheck="false"
-								       data-msg-required="Please enter your app ID." required>
+								       data-msg-required="Please enter your app ID.">
 								<label class="md-control-label">App ID</label>
 							</div>
 						</div>
@@ -41,14 +41,14 @@
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['low_balance_alert_at'] }}" name="low_balance_alert_at" spellcheck="false"
-								       data-msg-required="Please enter low balance alert at." required>
+								       data-msg-required="Please enter low balance alert at.">
 								<label class="md-control-label">Low Balance Alert At</label>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['identity_user_id'] }}" name="identity_user_id" spellcheck="false"
-								       data-msg-required="Please enter identity user id." required>
+								       data-msg-required="Please enter identity user id.">
 								<label class="md-control-label">Identity User Id</label>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['lock_version'] }}" name="lock_version" spellcheck="false"
-								       data-msg-required="Please enter lock version." required>
+								       data-msg-required="Please enter lock version.">
 								<label class="md-control-label">Lock Version</label>
 							</div>
 						</div>
@@ -124,14 +124,14 @@
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['approved_version'] }}" name="approved_version" spellcheck="false"
-								       data-msg-required="Please enter approved version." required>
+								       data-msg-required="Please enter approved version.">
 								<label class="md-control-label">Approved Version</label>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['approved_id'] }}" name="approved_id" spellcheck="false"
-								       data-msg-required="Please enter approved ID." required>
+								       data-msg-required="Please enter approved ID.">
 								<label class="md-control-label">Approved ID</label>
 							</div>
 						</div>
@@ -140,13 +140,13 @@
 						<div class="col-sm-5">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['needs_purpose_code'] }}" name="needs_purpose_code" spellcheck="false"
-								       data-msg-required="Please enter purpose code." required>
+								       data-msg-required="Please enter purpose code.">
 								<label class="md-control-label">Needs Purpose Code</label>
 							</div>
 						</div>
 						<div class="col-xs-7">
 							<div class="md-form-group">
-								<select class="md-form-control" name="reply_with_bene_name" data-msg-required="Reply With Bene Name." required>
+								<select class="md-form-control" name="reply_with_bene_name" data-msg-required="Reply With Bene Name.">
 									<option value="" disabled="disabled" selected="selected">Reply With Bene Name</option>
 									<option value="Y">Yes</option>
 									<option value="N">No</option>
@@ -158,7 +158,7 @@
 					<div class="row">
 						<div class="col-xs-7">
 							<div class="md-form-group">
-								<select class="md-form-control" name="allow_all_accounts" data-msg-required="Allow All Accounts." required>
+								<select class="md-form-control" name="allow_all_accounts" data-msg-required="Allow All Accounts.">
 									<option value="" disabled="disabled" selected="selected">Allow All Accounts</option>
 									<option value="Y">Yes</option>
 									<option value="N">No</option>
@@ -169,7 +169,7 @@
 						<div class="col-sm-5">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['notify_app_code'] }}" name="notify_app_code" spellcheck="false"
-								       data-msg-required="Please enter purpose code." required>
+								       data-msg-required="Please enter purpose code.">
 								<label class="md-control-label">Notify App Code</label>
 							</div>
 						</div>
@@ -177,7 +177,7 @@
 					<div class="row">
 						<div class="col-xs-6">
 							<div class="md-form-group">
-								<select class="md-form-control" name="notify_on_status_change" data-msg-required="Notify On Status Change." required>
+								<select class="md-form-control" name="notify_on_status_change" data-msg-required="Notify On Status Change.">
 									<option value="" disabled="disabled" selected="selected">Notify On Status Change</option>
 									<option value="Y">Yes</option>
 									<option value="N">No</option>
@@ -187,7 +187,7 @@
 						</div>
 						<div class="col-xs-6">
 							<div class="md-form-group">
-								<select class="md-form-control" name="is_filetoapi_allowed" data-msg-required="Is Filetoapi Allowed." required>
+								<select class="md-form-control" name="is_filetoapi_allowed" data-msg-required="Is Filetoapi Allowed.">
 									<option value="" disabled="disabled" selected="selected">Is Filetoapi Allowed</option>
 									<option value="Y">Yes</option>
 									<option value="N">No</option>
@@ -209,7 +209,7 @@
 						<div class="col-sm-3">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['apbs_user_no'] }}" name="apbs_user_no" spellcheck="false"
-								       data-msg-required="Please enter purpose code." required>
+								       data-msg-required="Please enter purpose code.">
 								<label class="md-control-label">APBS User No</label>
 							</div>
 						</div>
