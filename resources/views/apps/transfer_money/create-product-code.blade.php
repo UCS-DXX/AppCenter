@@ -36,6 +36,17 @@
 							</div>
 							</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="md-form-group">
+								<label class="md-form-control" for="form-control-22">Validation At</label>
+								<select class="custom-select" id="form-control-22" name="validation_at" data-msg-required="Please indicate product code status." required>
+									<option value="Credit" selected="selected">Credit</option>
+									<option value="Debit">Debit</option>
+								</select>
+							</div>
+						</div>
+					</div>
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="md-form-group">
@@ -47,6 +58,7 @@
 									</div>
 								</div>
 							</div>
+
 					<button class="btn btn-primary btn-block" type="submit">Create</button>
 				</form>
 			</div>

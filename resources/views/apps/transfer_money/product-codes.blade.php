@@ -39,6 +39,7 @@
 										<th>ID</th>
 										<th>SCHEME CODE</th>
 										<th>TRANSFER TYPE</th>
+										<th>VALIDATION AT</th>
 										<th>ACTIVE</th>
 										@if(Session::get('maker') == 1)
 											<th>EDIT LINK</th>
@@ -51,6 +52,7 @@
 											<td>{{ $value['id'] }}</td>
 											<td>{{ $value['schemecode'] }}</td>
 											<td>{{ $value['transfer_type'] }}</td>
+											<td>{{ $value['validation_at'] }}</td>
 											<td>{{ $value['active'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>

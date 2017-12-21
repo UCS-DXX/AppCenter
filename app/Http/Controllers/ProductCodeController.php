@@ -37,6 +37,7 @@ class ProductCodeController extends Controller
 		$productCodeModel->schemecode = $request->schemecode;
 		$productCodeModel->transfer_type = $request->transfertype;
 		$productCodeModel->active = $request->status;
+		$productCodeModel->validation_at = $request->validation_at;
 		$productCodeModel->save();
 		return redirect('product-codes');
 	}
@@ -51,13 +52,14 @@ class ProductCodeController extends Controller
 		$data['productcodes']['schemecode'] = $productCodes['schemecode'];
 		$data['productcodes']['transfertype'] = $productCodes['transfer_type'];
 		$data['productcodes']['status'] = $productCodes['active'];
+		$data['productcodes']['validation_at'] = $productCodes['validation_at'];
 		return view('apps.' . $app . '.edit-product-code', array('data' => $data));
 	}
 	
 	public function updateProductCode(Request $request) {
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
-		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'active' => $request->status]);
+		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'active' => $request->status,'validation_at' => $request->validation_at]);
 		return redirect('product-codes');
 	}
 }
