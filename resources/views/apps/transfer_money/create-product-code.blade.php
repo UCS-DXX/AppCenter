@@ -15,11 +15,14 @@
 				<form data-toggle="md-validator" data-groups='{"birthdate": "birth_month birth_day birth_year"}' action="{{ URL::to('create-product-code') }}" method="post">
 					{{ csrf_field() }}
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="number" name="schemecode" spellcheck="false"
-								       data-msg-required="Please enter scheme code." required>
-								<label class="md-control-label">Scheme Code</label>
+						<div class="col-xs-12">
+							<div class="md-form-group">
+								<label class="md-form-control" for="form-control-23">Scheme Code</label>
+								<select id="form-control-23" name="schemecode" class="custom-select">
+									<option value="NRI">NRI</option>
+									<option value="NRO">NRO</option>
+									<option value="SBO">SBO</option>
+								</select>
 							</div>
 						</div>
 					</div>

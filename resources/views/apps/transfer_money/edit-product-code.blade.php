@@ -16,11 +16,14 @@
 					{{ csrf_field() }}
 					<input type="hidden" value="{{ $data['productcodes']['id'] }}" name="id">
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="number" value="{{ $data['productcodes']['schemecode'] }}" name="schemecode" spellcheck="false"
-								       data-msg-required="Please enter scheme code." required >
-								<label class="md-control-label">Scheme Code</label>
+						<div class="col-xs-12">
+							<div class="md-form-group">
+								<label class="md-form-control" for="form-control-23">Scheme Code</label>
+								<select id="form-control-23" name="schemecode" class="custom-select">
+									<option value="NRI" @if($data['productcodes']['schemecode'] == 'NRI') selected="selected" @endif>NRI</option>
+									<option value="NRO" @if($data['productcodes']['schemecode'] == 'NRO') selected="selected" @endif>NRO</option>
+									<option value="SBO" @if($data['productcodes']['schemecode'] == 'SBO') selected="selected" @endif>SBO</option>
+								</select>
 							</div>
 						</div>
 					</div>
