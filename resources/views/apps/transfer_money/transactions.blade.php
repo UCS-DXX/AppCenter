@@ -26,15 +26,16 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th>ID</th>
+										<th>SHOW LINK</th>
+										{{--<th>ID</th>
 										<th>REQ NO</th>
 										<th>REQ VERSION</th>
 										<th>REQ TIMESTAMP</th>
 										<th>CUSTOMER ID</th>
 										<th>DEBIT ACCOUNT NO</th>
-										<th>BENE CODE</th>
+										<th>BENE CODE</th>--}}
 										<th>BENE FULL NAME</th>
-										<th>BENE ADDRESS1</th>
+										{{--<th>BENE ADDRESS1</th>
 										<th>BENE ADDRESS2</th>
 										<th>BENE ADDRESS3</th>
 										<th>BENE POSTAL CODE</th>
@@ -42,17 +43,18 @@
 										<th>BENE STATE</th>
 										<th>BENE COUNTRY</th>
 										<th>BENE CONTACT EMAIL ID</th>
-										<th>BENE CONTACT MOBILE NO</th>
+										<th>BENE CONTACT MOBILE NO</th>--}}
 										<th>BENE ACCOUNT NO</th>
 										<th>BENE ACCOUNT IFSC</th>
-										<th>BENE ACCOUNT MOBILE NO</th>
+										{{--<th>BENE ACCOUNT MOBILE NO</th>
 										<th>BENE ACCOUNT MMID</th>
-										<th>TRANSFER TYPE</th>
+										<th>TRANSFER TYPE</th>--}}
+										<th>TRANSFER DATE</th>
 										<th>TRANSFER AMOUNT</th>
-										<th>TRANSFER CCY</th>
-										<th>RMTR TO BENE NOTE</th>
+										{{--<th>TRANSFER CCY</th>
+										<th>RMTR TO BENE NOTE</th>--}}
 										<th>STATUS CODE</th>
-										<th>BANK REF</th>
+										{{--<th>BANK REF</th>
 										<th>REP NO</th>
 										<th>REP VERSION</th>
 										<th>REP TIMESTAMP</th>
@@ -74,21 +76,24 @@
 										<th>AADHAAR NO</th>
 										<th>AADHAAR MOBILE NO</th>
 										<th>BENE BANK NAME</th>
-										<th>PURPOSE CODE</th>
+										<th>PURPOSE CODE</th>--}}
 									</tr>
 								</thead>
 								<tbody>
 									@foreach($data['transactions'] as $key => $value)
 										<tr>
-											<td>{{ $value['id'] }}</td>
+											<td>
+												<a href="#">Show</a>
+											</td>
+											{{--<td>{{ $value['id'] }}</td>
 											<td>{{ $value['req_no'] }}</td>
 											<td>{{ $value['req_version'] }}</td>
 											<td>{{ $value['req_timestamp'] }}</td>
 											<td>{{ $value['customer_id'] }}</td>
 											<td>{{ $value['debit_account_no'] }}</td>
-											<td>{{ $value['bene_code'] }}</td>
+											<td>{{ $value['bene_code'] }}</td>--}}
 											<td>{{ $value['bene_full_name'] }}</td>
-											<td>{{ $value['bene_address1'] }}</td>
+											{{--<td>{{ $value['bene_address1'] }}</td>
 											<td>{{ $value['bene_address2'] }}</td>
 											<td>{{ $value['bene_address3'] }}</td>
 											<td>{{ $value['bene_postal_code'] }}</td>
@@ -96,17 +101,18 @@
 											<td>{{ $value['bene_state'] }}</td>
 											<td>{{ $value['bene_country'] }}</td>
 											<td>{{ $value['bene_contact_email_id'] }}</td>
-											<td>{{ $value['bene_contact_mobile_no'] }}</td>
+											<td>{{ $value['bene_contact_mobile_no'] }}</td>--}}
 											<td>{{ $value['bene_account_no'] }}</td>
 											<td>{{ $value['bene_account_ifsc'] }}</td>
-											<td>{{ $value['bene_account_mobile_no'] }}</td>
+											{{--<td>{{ $value['bene_account_mobile_no'] }}</td>
 											<td>{{ $value['bene_account_mmid'] }}</td>
-											<td>{{ $value['transfer_type'] }}</td>
+											<td>{{ $value['transfer_type'] }}</td>--}}
+											<td></td>
 											<td>{{ $value['transfer_amount'] }}</td>
-											<td>{{ $value['transfer_ccy'] }}</td>
-											<td>{{ $value['rmtr_to_bene_note'] }}</td>
+											{{--<td>{{ $value['transfer_ccy'] }}</td>
+											<td>{{ $value['rmtr_to_bene_note'] }}</td>--}}
 											<td>{{ $value['status_code'] }}</td>
-											<td>{{ $value['bank_ref'] }}</td>
+											{{--<td>{{ $value['bank_ref'] }}</td>
 											<td>{{ $value['rep_no'] }}</td>
 											<td>{{ $value['rep_version'] }}</td>
 											<td>{{ $value['rep_timestamp'] }}</td>
@@ -128,7 +134,7 @@
 											<td>{{ $value['aadhaar_no'] }}</td>
 											<td>{{ $value['aadhaar_mobile_no'] }}</td>
 											<td>{{ $value['bene_bank_name'] }}</td>
-											<td>{{ $value['purpose_code'] }}</td>
+											<td>{{ $value['purpose_code'] }}</td>--}}
 										</tr>
 									@endforeach
 								</tbody>
