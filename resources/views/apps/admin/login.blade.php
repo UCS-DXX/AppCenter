@@ -5,6 +5,12 @@
 @section('content')
 	<body>
 	<div class="login">
+		<div class="login">
+			@if (session('err_msg'))
+				<div class="alert alert-danger">
+					{{ session('err_msg') }}
+				</div>
+			@endif
 		<div class="login-body">
 			<a class="login-brand" href="{{ URL::to('/') }}">
 				<img class="img-responsive" src="{{ asset('assets/images/logo-black.png') }}" alt=""/>
