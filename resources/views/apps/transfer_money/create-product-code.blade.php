@@ -3,6 +3,11 @@
 
 @endsection
 @section('content')
+	<style>
+		.md-form-control {
+			border-style: none;
+		}
+	</style>
 	<div class="signup">
 		<div class="signup-body">
 			<h3 class="signup-heading">Create New Product Code</h3>
@@ -19,26 +24,29 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="transfertype" spellcheck="false"
-								       data-msg-required="Please enter transfer type." required>
-								<label class="md-control-label">Transfer Type</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-xs-12">
 							<div class="md-form-group">
-								<select class="md-form-control" name="status" data-msg-required="Please indicate product code status." required>
-									<option value="" disabled="disabled" selected="selected">Status</option>
-									<option value="1">Active</option>
-									<option value="0">Inactive</option>
+								<label class="md-form-control" for="form-control-21">Transfer Type</label>
+								<select id="form-control-21" name="transfertype" class="custom-select">
+									<option value="NEFT">NEFT</option>
+									<option value="RTGS">RTGS</option>
+									<option value="IFT">IFT</option>
+									<option value="IMPS">IMPS</option>
 								</select>
-								<label class="md-control-label"></label>
 							</div>
-						</div>
+							</div>
 					</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="md-form-group">
+										<label class="md-form-control" for="form-control-22">Status</label>
+										<select class="custom-select" id="form-control-22" name="status" data-msg-required="Please indicate product code status." required>
+												<option value="1" selected="selected">Active</option>
+												<option value="0">Inactive</option>
+										</select>
+									</div>
+								</div>
+							</div>
 					<button class="btn btn-primary btn-block" type="submit">Create</button>
 				</form>
 			</div>

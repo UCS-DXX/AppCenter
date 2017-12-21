@@ -3,6 +3,11 @@
 
 @endsection
 @section('content')
+	<style>
+		.md-form-control {
+			border-style: none;
+		}
+	</style>
 	<div class="signup">
 		<div class="signup-body">
 			<h3 class="signup-heading">Edit Product Code</h3>
@@ -14,25 +19,29 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="number" value="{{ $data['productcodes']['schemecode'] }}" name="schemecode" spellcheck="false"
-								       data-msg-required="Please enter scheme code." required>
+								       data-msg-required="Please enter scheme code." required >
 								<label class="md-control-label">Scheme Code</label>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" value="{{ $data['productcodes']['transfertype'] }}" name="transfertype" spellcheck="false"
-								       data-msg-required="Please enter transfer type." required>
-								<label class="md-control-label">Transfer Type</label>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="md-form-group">
-								<select class="md-form-control" name="status" data-msg-required="Please indicate product code status." required>
-									<option value="" disabled="disabled">Status</option>
+							<label class="md-form-control" for="form-control-21">Transfer Type</label>
+								<select id="form-control-21" name="transfertype" class="custom-select">
+									<option value="NEFT" @if($data['productcodes']['transfertype'] == 'NEFT') selected="selected" @endif>NEFT</option>
+									<option value="RTGS" @if($data['productcodes']['transfertype'] == 'RTGS') selected="selected" @endif>RTGS</option>
+									<option value="IFT" @if($data['productcodes']['transfertype'] == 'IFT') selected="selected" @endif>IFT</option>
+									<option value="IMPS" @if($data['productcodes']['transfertype'] == 'IMPS') selected="selected" @endif>IMPS</option>
+								</select>
+							</div>
+							</div>
+						</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="md-form-group">
+								<label class="md-form-control" for="form-control-22">Status</label>
+								<select class="custom-select" id="form-control-22" name="status" data-msg-required="Please indicate product code status." required>
 									@if($data['productcodes']['status'] == 1)
 										<option value="{{ $data['productcodes']['status'] }}" selected="selected">Active</option>
 										<option value="0">Inactive</option>
@@ -41,7 +50,6 @@
 										<option value="{{ $data['productcodes']['status'] }}" selected="selected">Inactive</option>
 									@endif
 								</select>
-								<label class="md-control-label"></label>
 							</div>
 						</div>
 					</div>
