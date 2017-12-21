@@ -33,9 +33,14 @@ class CustomerController extends Controller
 	public function postCustomer(Request $request)
 	{
 		$customerModel = new CustomerModel();
+		$customerModel->app_id = $request->app_id;
 		$customerModel->name = $request->name;
 		$customerModel->customer_id = $request->customer_id;
-		$customerModel->approval_status = 'a';
+		$customerModel->allow_neft = $request->allow_neft;
+		$customerModel->allow_rtgs = $request->allow_rtgs;
+		$customerModel->allow_imps = $request->allow_imps;
+		$customerModel->enabled = $request->enabled;
+		$customerModel->approval_status = 'u';
 		$customerModel->save();
 		return redirect('customers');
 	}
@@ -90,6 +95,16 @@ class CustomerController extends Controller
 		$customerModel->save();
 		//$customer = $customerModel->where('id', $request->id)->update(['name' => $request->name, 'customer_id' => $request->customer_id]);
 		return redirect('customers');
+	}
+	
+	public function viewCustomer($id) {
+		$app = Session::get('appName');
+		$customerModel = new CustomerModel();
+		$customers = $customerModel->where('id', $id)->orderBy('name', 'asc')->get()->toArray();
+		$customers = array_shift($customers);
+		$data = array();
+		$data['customers'] = $customers;
+		return view('apps.' . $app . '.view-customer', array('data' => $data));
 	}
 	
 	public function getInactivateCustomers()

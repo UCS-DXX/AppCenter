@@ -12,6 +12,15 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
+								<input class="md-form-control" type="text" name="app_id" spellcheck="false"
+								       data-msg-required="Please enter application ID." required>
+								<label class="md-control-label">Application ID</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" name="name" spellcheck="false"
 								       data-msg-required="Please enter your name." required>
 								<label class="md-control-label">Name</label>
@@ -24,6 +33,46 @@
 								<input class="md-form-control" type="text" name="customer_id" spellcheck="false"
 								       data-msg-required="Please enter your customer ID." required>
 								<label class="md-control-label">Customer ID</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="allow_neft">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label" style="font-size: 16px;">Allow NEFT</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="allow_rtgs">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label" style="font-size: 16px;">Allow RTGS</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="allow_imps">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label" style="font-size: 16px;">Allow IMPS</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="checkbox" name="enabled">
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label" style="font-size: 16px;">Enabled</span>
+								</label>
 							</div>
 						</div>
 					</div>

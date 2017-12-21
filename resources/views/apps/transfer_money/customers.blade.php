@@ -37,24 +37,38 @@
 								<thead>
 									<tr>
 										<th>ID</th>
+										<th>Application ID</th>
 										<th>Name</th>
 										<th>Customer ID</th>
+										<th>Allow NEFT</th>
+										<th>Allow RTGS</th>
+										<th>Allow IMPS</th>
+										<th>Enabled</th>
 										@if(Session::get('maker') == 1)
 											<th>Edit Customer</th>
 										@endif
+										<th>View Customer</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach($data['customers'] as $key => $value)
 										<tr>
 											<td>{{ $value['id'] }}</td>
+											<td>{{ $value['app_id'] }}</td>
 											<td>{{ $value['name'] }}</td>
 											<td>{{ $value['customer_id'] }}</td>
+											<td>{{ $value['allow_neft'] }}</td>
+											<td>{{ $value['allow_rtgs'] }}</td>
+											<td>{{ $value['allow_imps'] }}</td>
+											<td>{{ $value['enabled'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
 													<a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a>
 												</td>
 											@endif
+											<td>
+												<a href="{{ URL::to('customer') . '/' . $value['id'] }}">View</a>
+											</td>
 										</tr>
 									@endforeach
 								</tbody>

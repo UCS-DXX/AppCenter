@@ -5,10 +5,11 @@
 @section('content')
 	<style>
 		#create_customer:link {
-			padding: 8px;
+			padding: 4px;
 			text-align: center;
 			display: inline-block;
 			border: 2px solid;
+			font-size: 14px;
 		}
 		.title-bar-title {
 			font-size: 16px;
@@ -16,9 +17,6 @@
 	</style>
 	<div class="layout-content-body">
 		<div class="row">
-			<div class="text-center m-b">
-				<h3 class="m-b-0">List of Inactive Customers</h3>
-			</div>
 			<div class="col-xs-12">
 				<div class="card">
 					<div class="card-body">
@@ -34,29 +32,19 @@
 										<th>Allow RTGS</th>
 										<th>Allow IMPS</th>
 										<th>Enabled</th>
-										@if(Session::get('checker') == 1)
-											<th>Approve Customer</th>
-										@endif
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data['customers'] as $key => $value)
-										<tr>
-											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['app_id'] }}</td>
-											<td>{{ $value['name'] }}</td>
-											<td>{{ $value['customer_id'] }}</td>
-											<td>{{ $value['allow_neft'] }}</td>
-											<td>{{ $value['allow_rtgs'] }}</td>
-											<td>{{ $value['allow_imps'] }}</td>
-											<td>{{ $value['enabled'] }}</td>
-											@if(Session::get('maker') == 1)
-												<td>
-													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'].'/'.$value['id'] }}">Approve</a>
-												</td>
-											@endif
-										</tr>
-									@endforeach
+									<tr>
+										<td>{{ $data['customers']['id'] }}</td>
+										<td>{{ $data['customers']['app_id'] }}</td>
+										<td>{{ $data['customers']['name'] }}</td>
+										<td>{{ $data['customers']['customer_id'] }}</td>
+										<td>{{ $data['customers']['allow_neft'] }}</td>
+										<td>{{ $data['customers']['allow_rtgs'] }}</td>
+										<td>{{ $data['customers']['allow_imps'] }}</td>
+										<td>{{ $data['customers']['enabled'] }}</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
