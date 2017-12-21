@@ -102,11 +102,12 @@ class CustomerController extends Controller
 		return view('apps.' . $app . '.active-customers', array('data' => $data));
 	}
 	
-	public function activateCustomers(Request $request, $customerId)
+	public function activateCustomers(Request $request, $customerId,$row_id)
 	{
 		$app = Session::get('appName');
 		$customerModel = new CustomerModel();
-		$customers = $customerModel->where('customer_id', $customerId)->update(['approval_status' => 'a']);
+		$customers = $customerModel->where('customer_id', $customerId)->update(['approval_status' => 'r']);
+		$customers = $customerModel->where('id','=',$row_id)->update(['approval_status' => 'a']);
 		return redirect('activate-customers');
 	}
 }

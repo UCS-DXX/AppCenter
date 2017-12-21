@@ -42,7 +42,7 @@
 											<td>{{ $value['customer_id'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'] }}">Approve</a>
+													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'].'/'.$value['id'] }}">Approve</a>
 												</td>
 											@endif
 										</tr>
