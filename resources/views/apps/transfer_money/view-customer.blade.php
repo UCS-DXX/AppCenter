@@ -3,7 +3,7 @@
 
 @endsection
 @section('content')
-	<div class="signup">
+	<div class="signup" style="max-width: 580px;">
 		<div class="signup-body">
 			<div class="signup-form">
 				<div class="row" style="height: 50px;">
