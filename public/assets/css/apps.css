@@ -12,15 +12,19 @@ body{
 	width: 100%;
 }
 .apps-container {
-	width: 1024px;
-	margin: 32px auto;
+	width: 100vw;
+	#margin: 0 auto;
 }
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
 	#background-color: DodgerBlue;
 	flex-grow: 1;
-	justify-content: space-between;
+	justify-content: center;
+	align-content: center;
+	height: calc(100vh - 50px);
+	width: 100vw;
+	flex-direction: column;
 }
 .flex-container > div {
 	#background-color: #f1f1f1;
