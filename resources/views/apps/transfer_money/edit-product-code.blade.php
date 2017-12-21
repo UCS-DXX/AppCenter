@@ -42,8 +42,8 @@
 							<div class="md-form-group">
 								<label class="md-form-control" for="form-control-22">Validation At</label>
 								<select class="custom-select" id="form-control-22" name="validation_at" data-msg-required="Please indicate product code status." required>
-									<option value="Credit" @if($data['productcodes']['validation_at'] == 'Credit') selected="selected" @endif>Credit</option>
-									<option value="Debit" @if($data['productcodes']['validation_at'] == 'Debit') selected="selected" @endif>Debit</option>
+									<option value="C" @if($data['productcodes']['validation_at'] == 'C') selected="selected" @endif>Credit</option>
+									<option value="D" @if($data['productcodes']['validation_at'] == 'D') selected="selected" @endif>Debit</option>
 								</select>
 							</div>
 						</div>
