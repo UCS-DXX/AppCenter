@@ -5,10 +5,11 @@
 @section('content')
 	<style>
 		#create_customer:link {
-			padding: 8px;
+			padding: 4px;
 			text-align: center;
 			display: inline-block;
 			border: 2px solid;
+			font-size: 14px;
 		}
 		.title-bar-title {
 			font-size: 16px;
@@ -25,16 +26,11 @@
 			</div>
 		@endif
 		<div class="row">
+			<div class="text-center m-b">
+				<h3 class="m-b-0">List of Product Codes</h3>
+			</div>
 			<div class="col-xs-12">
 				<div class="card">
-					{{--<div class="card-header">
-						<div class="card-actions">
-							<button type="button" class="card-action card-toggler" title="Collapse"></button>
-							<button type="button" class="card-action card-reload" title="Reload"></button>
-							<button type="button" class="card-action card-remove" title="Remove"></button>
-						</div>
-						<strong>Flip Scroll</strong>
-					</div>--}}
 					<div class="card-body">
 						<div class="table-flip-scroll">
 							<table class="table table-striped">

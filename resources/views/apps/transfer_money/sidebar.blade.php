@@ -66,7 +66,7 @@
 							<span class="sidenav-icon">
 								<i class="material-icons" style="transform: translate(0, -2px);">done</i>
 							</span>
-								<span class="sidenav-label">Activate Customer</span>
+								<span class="sidenav-label">Approve Customer</span>
 							</a>
 						</li>
 					@endif

@@ -16,16 +16,11 @@
 	</style>
 	<div class="layout-content-body">
 		<div class="row">
+			<div class="text-center m-b">
+				<h3 class="m-b-0">List of Inactive Customers</h3>
+			</div>
 			<div class="col-xs-12">
 				<div class="card">
-					{{--<div class="card-header">
-						<div class="card-actions">
-							<button type="button" class="card-action card-toggler" title="Collapse"></button>
-							<button type="button" class="card-action card-reload" title="Reload"></button>
-							<button type="button" class="card-action card-remove" title="Remove"></button>
-						</div>
-						<strong>Flip Scroll</strong>
-					</div>--}}
 					<div class="card-body">
 						<div class="table-flip-scroll">
 							<table class="table table-striped">
@@ -35,7 +30,7 @@
 										<th>Name</th>
 										<th>Customer ID</th>
 										@if(Session::get('checker') == 1)
-											<th>Activate Customer</th>
+											<th>Approve Customer</th>
 										@endif
 									</tr>
 								</thead>
@@ -47,7 +42,7 @@
 											<td>{{ $value['customer_id'] }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'] }}">Activate</a>
+													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'] }}">Approve</a>
 												</td>
 											@endif
 										</tr>
