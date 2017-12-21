@@ -32,14 +32,30 @@ class CustomerController extends Controller
 	
 	public function postCustomer(Request $request)
 	{
+		$neft = 'N';
+		$rtgs = 'N';
+		$imps = 'N';
+		$enable = 'N';
+		if($request->allow_neft != '') {
+			$neft = 'Y';
+		}
+		if($request->allow_rtgs != '') {
+			$rtgs = 'Y';
+		}
+		if($request->allow_imps != '') {
+			$imps = 'Y';
+		}
+		if($request->enabled != '') {
+			$enable = 'Y';
+		}
 		$customerModel = new CustomerModel();
 		$customerModel->app_id = $request->app_id;
 		$customerModel->name = $request->name;
 		$customerModel->customer_id = $request->customer_id;
-		$customerModel->allow_neft = $request->allow_neft;
-		$customerModel->allow_rtgs = $request->allow_rtgs;
-		$customerModel->allow_imps = $request->allow_imps;
-		$customerModel->enabled = $request->enabled;
+		$customerModel->allow_neft = $neft;
+		$customerModel->allow_rtgs = $rtgs;
+		$customerModel->allow_imps = $imps;
+		$customerModel->enabled = $enable;
 		$customerModel->approval_status = 'u';
 		$customerModel->save();
 		return redirect('customers');
@@ -87,10 +103,31 @@ class CustomerController extends Controller
 	}
 	
 	public function updateCustomer(Request $request) {
+		$neft = 'N';
+		$rtgs = 'N';
+		$imps = 'N';
+		$enable = 'N';
+		if($request->allow_neft != '') {
+			$neft = 'Y';
+		}
+		if($request->allow_rtgs != '') {
+			$rtgs = 'Y';
+		}
+		if($request->allow_imps != '') {
+			$imps = 'Y';
+		}
+		if($request->enabled != '') {
+			$enable = 'Y';
+		}
 		$app = Session::get('appName');
 		$customerModel = new CustomerModel();
+		$customerModel->app_id = $request->app_id;
 		$customerModel->name = $request->name;
 		$customerModel->customer_id = $request->customer_id;
+		$customerModel->allow_neft = $neft;
+		$customerModel->allow_rtgs = $rtgs;
+		$customerModel->allow_imps = $imps;
+		$customerModel->enabled = $enable;
 		$customerModel->approval_status = 'u';
 		$customerModel->save();
 		//$customer = $customerModel->where('id', $request->id)->update(['name' => $request->name, 'customer_id' => $request->customer_id]);

@@ -13,10 +13,14 @@
 		.title-bar-title {
 			font-size: 16px;
 		}
+		.card {
+			max-width: 100%;
+			overflow-x: auto;
+		}
 	</style>
 	<div class="layout-content-body">
 		<div class="row">
-			<div class="text-center m-b" style="width: 100vw;">
+			<div class="text-center m-b">
 				<h3 class="m-b-0">List of Transactions</h3>
 			</div>
 			<div class="col-xs-12">
@@ -34,7 +38,7 @@
 										<th>CUSTOMER ID</th>
 										<th>DEBIT ACCOUNT NO</th>
 										<th>BENE CODE</th>--}}
-										<th>BENE FULL NAME</th>
+										<th>BENEFICIARY FULL NAME</th>
 										{{--<th>BENE ADDRESS1</th>
 										<th>BENE ADDRESS2</th>
 										<th>BENE ADDRESS3</th>
@@ -44,16 +48,17 @@
 										<th>BENE COUNTRY</th>
 										<th>BENE CONTACT EMAIL ID</th>
 										<th>BENE CONTACT MOBILE NO</th>--}}
-										<th>BENE ACCOUNT NO</th>
-										<th>BENE ACCOUNT IFSC</th>
+										<th>BENEFICIARY ACCOUNT NO</th>
+										<th>BENEFICIARY ACCOUNT IFSC</th>
 										{{--<th>BENE ACCOUNT MOBILE NO</th>
 										<th>BENE ACCOUNT MMID</th>
 										<th>TRANSFER TYPE</th>--}}
+										<th>REMITTER NAME</th>
 										<th>TRANSFER DATE</th>
 										<th>TRANSFER AMOUNT</th>
 										{{--<th>TRANSFER CCY</th>
 										<th>RMTR TO BENE NOTE</th>--}}
-										<th>STATUS CODE</th>
+										<th>STATUS</th>
 										{{--<th>BANK REF</th>
 										<th>REP NO</th>
 										<th>REP VERSION</th>
@@ -107,6 +112,7 @@
 											{{--<td>{{ $value['bene_account_mobile_no'] }}</td>
 											<td>{{ $value['bene_account_mmid'] }}</td>
 											<td>{{ $value['transfer_type'] }}</td>--}}
+											<td></td>
 											<td></td>
 											<td>{{ $value['transfer_amount'] }}</td>
 											{{--<td>{{ $value['transfer_ccy'] }}</td>
