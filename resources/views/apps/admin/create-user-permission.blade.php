@@ -13,10 +13,35 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" name="username" spellcheck="false"
-									   data-msg-required="Please enter username." required @if(isset($user_permission[0])) readonly value="{{ $user_permission[0]['user_id'] }}" @endif>
+									   data-msg-required="Please enter username." required @if(isset($user_permission[0]['user_id'])) readonly value="{{ $user_permission[0]['user_id'] }}"  @elseif(isset($user_permission[0]['username'])) value="{{ $user_permission[0]['username'] }}" @endif >
 								<label class="md-control-label">Username</label>
 							</div>
 							<div class="md-form-group md-label-floating">
+								<input class="md-form-control" type="text" name="application_name" spellcheck="false"
+									   data-msg-required="Please enter username." required @if(isset($user_permission[0])) value="{{ $user_permission[0]['application_name'] }}" @elseif(old('user_id') != '') value="{{ old('user_id') }}" @endif>
+								<label class="md-control-label">Application Name</label>
+							</div>
+							<div class="md-form-group md-label-floating">
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="radio" name="permission" value="viewer" required
+										   @if(isset($user_permission[0]['viewer']) && $user_permission[0]['viewer'] == 1 ) checked="checked" @elseif(isset($user_permission[0]['permission']) && $user_permission[0]['permission'] == 'viewer')  checked="checked" @endif>
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label">Viewer</span>
+								</label>
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="radio" name="permission" value="maker" required
+										   @if(isset($user_permission[0]['maker']) && $user_permission[0]['maker'] == 1 )checked="checked" @elseif(isset($user_permission[0]['permission']) && $user_permission[0]['permission'] == 'maker')  checked="checked" @endif>
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label">Maker</span>
+								</label>
+								<label class="custom-control custom-control-primary custom-checkbox">
+									<input class="custom-control-input" type="radio" name="permission" value="checker" required
+										   @if(isset($user_permission[0]['checker']) && $user_permission[0]['checker'] == 1 )checked="checked" @elseif(isset($user_permission[0]['permission']) && $user_permission[0]['permission'] == 'checker')  checked="checked" @endif>
+									<span class="custom-control-indicator"></span>
+									<span class="custom-control-label">Checker</span>
+								</label>
+							</div>
+{{--							<div class="md-form-group md-label-floating">
 								<div class="checkbox">
 									<label>
 										<input type="checkbox" name="viewer" @if(isset($user_permission[0]['viewer']) && $user_permission[0]['viewer'] == 1 ) checked="checked" @endif> Viewer
@@ -32,10 +57,10 @@
 											<input type="checkbox" name="checker" @if(isset($user_permission[0]['checker']) && $user_permission[0]['checker'] == 1 )checked="checked" @endif> Checker
 										</label>
 									</div>
-								</div>
+								</div>--}}
 							</div>
 						</div>
-						@if(isset($user_permission[0]))
+						@if(isset($user_permission[0]['user_id']))
 							<input type="hidden" name="user_id" value="{{ $user_permission[0]['user_id'] }}">
 						<button class="btn btn-primary btn-block" type="submit">Update</button>
 						@else

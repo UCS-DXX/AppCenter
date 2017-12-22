@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\AdminModel;
 use Hash;
 use DB;
+use Illuminate\Support\Facades\Input;
 use Session;
 use App\UserPermission;
 class AdminController extends Controller
@@ -53,6 +54,7 @@ class AdminController extends Controller
 
 	public function createUserPermission(Request $request) {
 		$user_permission = array();
+		$user_permission[0] = Session::get('_old_input');
 		if($request->user_id) {
 			$user_id = $request->user_id;
 			$user_permission_model = new UserPermission();
@@ -65,25 +67,34 @@ class AdminController extends Controller
 		$viewer = 0;
 		$maker = 0;
 		$checker = 0;
-		if (isset($request->viewer)) {
+		if ($request->permission == 'viewer') {
 			$viewer = 1;
 		}
-		if (isset($request->maker)) {
+		if ($request->permission == 'maker') {
 			$maker = 1;
 		}
-		if (isset($request->checker)) {
+		if ($request->permission == 'checker') {
 			$checker = 1;
 		}
 		$user_permission_model = new UserPermission();
 		if(!isset($request->user_id)) {
-			$user_permission_model->user_id = $request->username;
-			$user_permission_model->viewer = $viewer;
-			$user_permission_model->maker = $maker;
-			$user_permission_model->checker = $checker;
-			$user_permission_model->save();
+			$user_permission = $user_permission_model->where('user_id','=',$request->username)->where('application_name','=',$request->application_name)->get()->toArray();
+			if(empty($user_permission)) {
+				$user_permission_model->user_id = $request->username;
+				$user_permission_model->application_name = $request->application_name;
+				$user_permission_model->viewer = $viewer;
+				$user_permission_model->maker = $maker;
+				$user_permission_model->checker = $checker;
+				$user_permission_model->save();
+			}
+			else {
+				Session::flash('err_msg','User already exist into this application');
+				return back()->withInput(Input::all());
+				//return redirect('admin/create-user-permission')->with('err_msg','User already exist into this application');
+			}
 		}
 		else {
-			$user_permission_model->where('user_id','=',$request->username)->update(['viewer' => $viewer,'maker' => $maker,'checker' => $checker]);
+			$user_permission_model->where('user_id','=',$request->username)->update(['viewer' => $viewer,'maker' => $maker,'checker' => $checker,'application_name'=>$request->application_name]);
 		}
 		return redirect('admin/users');
 	}

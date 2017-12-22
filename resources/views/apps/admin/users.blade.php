@@ -28,6 +28,7 @@
 								<thead>
 									<tr>
 										<th>Username</th>
+										<th>Application Name</th>
 										<th>Viewer</th>
 										<th>Maker</th>
 										<th>Checker</th>
@@ -39,6 +40,7 @@
 									@foreach($user_permissions as $key => $value)
 										<tr>
 											<td>{{ $value['user_id'] }}</td>
+											<td>{{ $value['application_name'] }}</td>
 											<td>{{ $value['viewer'] }}</td>
 											<td>{{ $value['maker'] }}</td>
 											<td>{{ $value['checker'] }}</td>

@@ -6,6 +6,11 @@
 	<div class="layout-main">
 		@include('apps.'.Session::get("appName") .'.sidebar')
 		<div class="layout-content">
+			@if (session('err_msg'))
+				<div class="alert alert-danger">
+					{{ session('err_msg') }}
+				</div>
+			@endif
 			@yield('content')
 		</div>
 		<div class="layout-footer">
