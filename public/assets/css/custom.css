@@ -2,3 +2,16 @@
 	min-height: 50px;
 	max-height: 50px;
 }
+
+.unacore-logo {
+	width: 168px;
+	margin-top: 8px;
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.site_logo {
+	height: 46px;
+	width: auto;
+}

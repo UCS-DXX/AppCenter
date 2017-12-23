@@ -21,9 +21,9 @@ body{
 	#background-color: DodgerBlue;
 	flex-grow: 1;
 	justify-content: center;
-	align-content: center;
+	align-items: center;
 	height: calc(100vh - 50px);
-	width: 100vw;
+	width: 100%;
 	flex-direction: column;
 }
 .flex-container > div {

@@ -4,19 +4,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="">
 	<meta property="" content="">
-	<title>UNACORES</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon-32x32.png') }}">
+	<title>DCB BANK </title>
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon.ico') }}">
 	<link rel="stylesheet" type="text/css"
 	      href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700">
 	<link rel="stylesheet" href="{{ asset('assets/css/apps.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/elephant.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/application.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+	<style>
+		.navbar-account-btn {
+			color: #ffffff !important;
+		}
+		.navbar-account-btn:hover {
+			color: #222 !important;
+		}
+	</style>
 </head>
 <body>
 <div class="layout-header">
 	<div class="navbar navbar-default">
-		<div class="navbar-toggleable" style="margin-left: 0; background-color: #0ac29d;">
+		<div class="navbar-toggleable" style="margin-left: 0; background-color: #0D479B;">
 			<nav id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown hidden-xs">
@@ -41,7 +49,7 @@
 		</div>
 	</div>
 </div>
-<div class="width-100" style="margin-top: 50px; padding: 8px 0;">
+<div class="width-100" style="margin-top: 50px;">
 		<div class="flex-container">
 			<div>
 				<a href="{{ URL::to('changeapp/transfer_money') }}">

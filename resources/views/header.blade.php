@@ -1,8 +1,8 @@
 <div class="layout-header">
 	<div class="navbar navbar-default">
 		<div class="navbar-header">
-			<a class="navbar-brand navbar-brand-center" href="{{ URL::to('/') }}">
-				<img class="navbar-brand-logo" src="{{ asset('assets/images/logo.png') }}" alt="Elephant"/>
+			<a class="navbar-brand-center" href="{{ URL::to('/') }}">
+				<img class="site_logo" src="{{ asset('assets/images/dcb_logo.png') }}" alt="Elephant"/>
 			</a>
 			<button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse"
 			        data-target="#sidenav">
@@ -21,10 +21,10 @@
 			        data-target="#navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="arrow-up"></span>
-				<span class="ellipsis ellipsis-vertical">
+				{{--<span class="ellipsis ellipsis-vertical">
                         <img class="ellipsis-object" width="32" height="32"
                              src="{{ asset('assets/images/0180441436.jpg') }}" alt="Teddy Wilson">
-                    </span>
+                    </span>--}}
 			</button>
 		</div>
 		<div class="navbar-toggleable">
@@ -64,6 +64,9 @@
 							Sign out
 						</a>
 					</li>
+						<li class="dropdown">
+							<img class="unacore-logo" src="{{  asset('assets/images/logo-black.png') }}" alt="">
+						</li>
 				</ul>
 			</nav>
 		</div>
