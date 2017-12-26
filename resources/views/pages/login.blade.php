@@ -12,7 +12,7 @@
 		@endif
 		<div class="login-body">
 			<a class="login-brand" href="{{ URL::to('/') }}">
-				<img class="img-responsive" src="{{ asset('assets/images/logo-black.png') }}" alt=""/>
+				<img class="img-responsive" src="{{ asset('assets/images/logo.png') }}" alt=""/>
 			</a>
 			<h3 class="login-heading">Sign in</h3>
 			<div class="login-form">

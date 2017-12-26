@@ -5,7 +5,7 @@
 	<meta name="description" content="">
 	<meta property="" content="">
 	<title>UNACORES</title>
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon-32x32.png') }}">
 	<link rel="stylesheet" type="text/css"
 	      href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700">
 	<link rel="stylesheet" href="{{ asset('assets/css/vendor.min.css') }}">
