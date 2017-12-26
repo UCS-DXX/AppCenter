@@ -50,7 +50,7 @@
 											<td>{{ $value['allow_rtgs'] }}</td>
 											<td>{{ $value['allow_imps'] }}</td>
 											<td>{{ $value['enabled'] }}</td>
-											@if(Session::get('maker') == 1)
+											@if(Session::get('checker') == 1)
 												<td>
 													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'].'/'.$value['id'] }}">Approve</a>
 												</td>
