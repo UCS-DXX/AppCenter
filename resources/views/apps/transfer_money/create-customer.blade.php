@@ -1,13 +1,23 @@
 @extends('master')
 @section('custom-includes')
-
+<script>
+	function  validate_form() {
+        var TCode = document.getElementById('customer_id').value;
+		var validate = true;
+        if( /[ !$%!^*@*(#()#(&#^]/.test( TCode ) ) {
+            alert('Input is not alphanumeric');
+            return false;
+        }
+        return true;
+    }
+</script>
 @endsection
 @section('content')
 	<div class="signup">
 		<div class="signup-body">
 			<h3 class="signup-heading">Create New Customer</h3>
 			<div class="signup-form">
-				<form data-toggle="md-validator" data-groups='{"birthdate": "birth_month birth_day birth_year"}' action="{{ URL::to('create-customer') }}" method="post">
+				<form data-toggle="md-validator" data-groups='{"birthdate": "birth_month birth_day birth_year"}' action="{{ URL::to('create-customer') }}" method="post" onsubmit="return validate_form();">
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-sm-12">
@@ -21,7 +31,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="name" spellcheck="false"
+								<input class="md-form-control" type="text" id="customer_name" name="name" spellcheck="false"
 								       data-msg-required="Please enter your name." required>
 								<label class="md-control-label">Name</label>
 							</div>
@@ -30,7 +40,7 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="customer_id" spellcheck="false"
+								<input class="md-form-control" id="customer_id" type="text" name="customer_id" spellcheck="false"
 								       data-msg-required="Please enter your customer ID." required>
 								<label class="md-control-label">Customer ID</label>
 							</div>
