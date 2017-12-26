@@ -4,11 +4,11 @@
 }
 
 .unacore-logo {
-	width: 140px;
-	margin-top: 11px;
+	width: 78px;
+	#margin-top: 11px;
 	display: block;
 	max-width: 100%;
-	height: 38px;
+	height: auto;
 	padding: 0 16px;
 }
 
