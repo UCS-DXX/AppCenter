@@ -70,16 +70,16 @@ class CustomerController extends Controller
 		$data['customer']['id'] = $customer['id'];
 		$data['customer']['app_id'] = $customer['app_id'];
 		$data['customer']['name'] = $customer['name'];
-		$data['customer']['low_balance_alert_at'] = $customer['low_balance_alert_at'];
-		$data['customer']['identity_user_id'] = $customer['identity_user_id'];
+		/*$data['customer']['low_balance_alert_at'] = $customer['low_balance_alert_at'];
+		$data['customer']['identity_user_id'] = $customer['identity_user_id'];*/
 		$data['customer']['allow_neft'] = $customer['allow_neft'];
 		$data['customer']['allow_imps'] = $customer['allow_imps'];
 		$data['customer']['allow_rtgs'] = $customer['allow_rtgs'];
-		$data['customer']['string'] = $customer['string'];
+		/*$data['customer']['string'] = $customer['string'];*/
 		$data['customer']['enabled'] = $customer['enabled'];
-		$data['customer']['is_retail'] = $customer['is_retail'];
+		/*$data['customer']['is_retail'] = $customer['is_retail'];*/
 		$data['customer']['customer_id'] = $customer['customer_id'];
-		$data['customer']['created_by'] = $customer['created_by'];
+		/*$data['customer']['created_by'] = $customer['created_by'];
 		$data['customer']['updated_by'] = $customer['updated_by'];
 		$data['customer']['created_at'] = $customer['created_at'];
 		$data['customer']['updated_at'] = $customer['updated_at'];
@@ -98,7 +98,7 @@ class CustomerController extends Controller
 		$data['customer']['apbs_user_no'] = $customer['apbs_user_no'];
 		$data['customer']['notification_sent_at'] = $customer['notification_sent_at'];
 		$data['customer']['allowed_relns'] = $customer['allowed_relns'];
-		$data['customer']['bene_backend'] = $customer['bene_backend'];
+		$data['customer']['bene_backend'] = $customer['bene_backend'];*/
 		return view('apps.' . $app . '.edit-customer', array('data' => $data));
 	}
 	

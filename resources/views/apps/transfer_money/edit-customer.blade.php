@@ -37,7 +37,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					{{--<div class="row">
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['low_balance_alert_at'] }}" name="low_balance_alert_at" spellcheck="false"
@@ -52,7 +52,7 @@
 								<label class="md-control-label">Identity User Id</label>
 							</div>
 						</div>
-					</div>
+					</div>--}}
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
@@ -83,7 +83,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-4">
+						{{--<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
 									<input class="custom-control-input" type="checkbox" name="string" @if(isset($data['customer']['string']) AND $data['customer']['string'] != null) checked="checked" @endif>
@@ -91,7 +91,7 @@
 									<span class="custom-control-label" style="font-size: 16px;">String</span>
 								</label>
 							</div>
-						</div>
+						</div>--}}
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
@@ -101,7 +101,7 @@
 								</label>
 							</div>
 						</div>
-						<div class="col-sm-4">
+						{{--<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
 									<input class="custom-control-input" type="checkbox" name="is_retail" @if(isset($data['customer']['is_retail']) AND $data['customer']['is_retail'] != null) checked="checked" @endif>
@@ -109,9 +109,9 @@
 									<span class="custom-control-label" style="font-size: 16px;">Is Retail</span>
 								</label>
 							</div>
-						</div>
+						</div>--}}
 					</div>
-					<div class="row">
+					{{--<div class="row">
 						<div class="col-sm-6">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" value="{{ $data['customer']['lock_version'] }}" name="lock_version" spellcheck="false"
@@ -222,7 +222,7 @@
 								</label>
 							</div>
 						</div>
-					</div>
+					</div>--}}
 					<button class="btn btn-primary btn-block" type="submit">Update</button>
 				</form>
 			</div>
