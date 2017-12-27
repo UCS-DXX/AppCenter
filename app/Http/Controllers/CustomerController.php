@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CustomerModel;
+use App\CustomerRevisionsModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -17,10 +18,16 @@ class CustomerController extends Controller
 	public function customers()
 	{
 		$app = Session::get('appName');
+        $data = array();
+
 		$customerModel = new CustomerModel();
 		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->get()->toArray();
-		$data = array();
 		$data['customers'] = $customers;
+
+        $customerRevisionsModel = new CustomerRevisionsModel();
+        $pendingCustomers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
+        $data['pendingCustomers'] = $pendingCustomers;
+
 		return view('apps.' . $app . '.customers', array('data' => $data));
 	}
 	
@@ -48,16 +55,17 @@ class CustomerController extends Controller
 		if($request->enabled != '') {
 			$enable = 'Y';
 		}
-		$customerModel = new CustomerModel();
-		$customerModel->app_id = $request->app_id;
-		$customerModel->name = $request->name;
-		$customerModel->customer_id = $request->customer_id;
-		$customerModel->allow_neft = $neft;
-		$customerModel->allow_rtgs = $rtgs;
-		$customerModel->allow_imps = $imps;
-		$customerModel->enabled = $enable;
-		$customerModel->approval_status = 'u';
-		$customerModel->save();
+		$customerRevisionsModel = new CustomerRevisionsModel();
+		$customerRevisionsModel->app_id = $request->app_id;
+		$customerRevisionsModel->name = $request->name;
+		$customerRevisionsModel->customer_id = $request->customer_id;
+		$customerRevisionsModel->allow_neft = $neft;
+		$customerRevisionsModel->allow_rtgs = $rtgs;
+		$customerRevisionsModel->allow_imps = $imps;
+		$customerRevisionsModel->enabled = $enable;
+		$customerRevisionsModel->customers_row_id = 0;
+		$customerRevisionsModel->revision_status = 'Pending First';
+		$customerRevisionsModel->save();
 		return redirect('customers');
 	}
 	
@@ -103,35 +111,34 @@ class CustomerController extends Controller
 	}
 	
 	public function updateCustomer(Request $request) {
-		$neft = 'N';
-		$rtgs = 'N';
-		$imps = 'N';
-		$enable = 'N';
-		if($request->allow_neft != '') {
-			$neft = 'Y';
-		}
-		if($request->allow_rtgs != '') {
-			$rtgs = 'Y';
-		}
-		if($request->allow_imps != '') {
-			$imps = 'Y';
-		}
-		if($request->enabled != '') {
-			$enable = 'Y';
-		}
-		$app = Session::get('appName');
-		$customerModel = new CustomerModel();
-		$customerModel->app_id = $request->app_id;
-		$customerModel->name = $request->name;
-		$customerModel->customer_id = $request->customer_id;
-		$customerModel->allow_neft = $neft;
-		$customerModel->allow_rtgs = $rtgs;
-		$customerModel->allow_imps = $imps;
-		$customerModel->enabled = $enable;
-		$customerModel->approval_status = 'u';
-		$customerModel->save();
-		//$customer = $customerModel->where('id', $request->id)->update(['name' => $request->name, 'customer_id' => $request->customer_id]);
-		return redirect('customers');
+        $neft = 'N';
+        $rtgs = 'N';
+        $imps = 'N';
+        $enable = 'N';
+        if($request->allow_neft != '') {
+            $neft = 'Y';
+        }
+        if($request->allow_rtgs != '') {
+            $rtgs = 'Y';
+        }
+        if($request->allow_imps != '') {
+            $imps = 'Y';
+        }
+        if($request->enabled != '') {
+            $enable = 'Y';
+        }
+        $customerRevisionModel = new CustomerRevisionsModel();
+        $customerRevisionModel->app_id = $request->app_id;
+        $customerRevisionModel->name = $request->name;
+        $customerRevisionModel->customer_id = $request->customer_id;
+        $customerRevisionModel->allow_neft = $neft;
+        $customerRevisionModel->allow_rtgs = $rtgs;
+        $customerRevisionModel->allow_imps = $imps;
+        $customerRevisionModel->enabled = $enable;
+        $customerRevisionModel->customers_row_id = $request->id;
+        $customerRevisionModel->revision_status = 'Pending';
+        $customerRevisionModel->save();
+        return redirect('customers');
 	}
 	
 	public function viewCustomer($id) {
@@ -147,19 +154,66 @@ class CustomerController extends Controller
 	public function getInactivateCustomers()
 	{
 		$app = Session::get('appName');
-		$customerModel = new CustomerModel();
-		$customers = $customerModel->where('approval_status', 'u')->orderBy('name', 'asc')->get()->toArray();
-		$data = array();
+        $data = array();
+
+        $customerRevisionsModel = new CustomerRevisionsModel();
+        $customers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
 		$data['customers'] = $customers;
+
 		return view('apps.' . $app . '.active-customers', array('data' => $data));
 	}
 	
 	public function activateCustomers(Request $request, $customerId,$row_id)
 	{
 		$app = Session::get('appName');
-		$customerModel = new CustomerModel();
-		$customers = $customerModel->where('customer_id', $customerId)->update(['approval_status' => 'r']);
-		$customers = $customerModel->where('id','=',$row_id)->update(['approval_status' => 'a']);
-		return redirect('activate-customers');
+
+		$customerRevisionModel = CustomerRevisionsModel::find($row_id);
+
+		if($customerRevisionModel->revision_status == 'Pending First'){
+            $customerModel = new CustomerModel();
+            $customerModel->app_id = $customerRevisionModel->app_id;
+            $customerModel->name = $customerRevisionModel->name;
+            $customerModel->customer_id = $customerRevisionModel->customer_id;
+            $customerModel->allow_neft = $customerRevisionModel->allow_neft;
+            $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
+            $customerModel->allow_imps = $customerRevisionModel->allow_imps;
+            $customerModel->enabled = $customerRevisionModel->enabled;
+            $customerModel->approval_status = 'a';
+            $customerModel->save();
+
+            $customerRevisionModel->revision_status = 'Approved';
+            $customerRevisionModel->save();
+
+            return redirect('activate-customers');
+        }
+
+        if($customerRevisionModel->revision_status == 'Pending'){
+            $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
+            $customerModel->app_id = $customerRevisionModel->app_id;
+            $customerModel->name = $customerRevisionModel->name;
+            $customerModel->customer_id = $customerRevisionModel->customer_id;
+            $customerModel->allow_neft = $customerRevisionModel->allow_neft;
+            $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
+            $customerModel->allow_imps = $customerRevisionModel->allow_imps;
+            $customerModel->enabled = $customerRevisionModel->enabled;
+            $customerModel->approval_status = 'a';
+            $customerModel->approved_id = $customerRevisionModel->id;
+            $customerModel->save();
+
+            $customerRevisionModel->revision_status = 'Approved';
+            $customerRevisionModel->save();
+
+            return redirect('activate-customers');
+        }
+
 	}
+
+    public function rejectCustomers($id)
+    {
+        $customerRevisionModel = CustomerRevisionsModel::find($id);
+        $customerRevisionModel->revision_status = 'Rejected';
+        $customerRevisionModel->save();
+        return redirect('activate-customers');
+
+    }
 }

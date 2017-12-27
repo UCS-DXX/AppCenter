@@ -34,8 +34,9 @@
 										<th>Allow RTGS</th>
 										<th>Allow IMPS</th>
 										<th>Enabled</th>
+										<th>Revision Status</th>
 										@if(Session::get('checker') == 1)
-											<th>Approve Customer</th>
+											<th>Actions</th>
 										@endif
 									</tr>
 								</thead>
@@ -50,9 +51,12 @@
 											<td>{{ $value['allow_rtgs'] }}</td>
 											<td>{{ $value['allow_imps'] }}</td>
 											<td>{{ $value['enabled'] }}</td>
+											<td>{{ $value['revision_status'] }}</td>
 											@if(Session::get('checker') == 1)
 												<td>
 													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'].'/'.$value['id'] }}">Approve</a>
+													&nbsp;&nbsp;
+													<a href="{{ URL::to('reject-customers') . '/'.$value['id'] }}">Reject</a>
 												</td>
 											@endif
 										</tr>

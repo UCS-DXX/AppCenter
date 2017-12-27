@@ -57,7 +57,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_neft" @if(isset($data['customer']['allow_neft']) AND $data['customer']['allow_neft'] != null) checked="checked" @endif>
+									<input class="custom-control-input" type="checkbox" name="allow_neft" @if(isset($data['customer']['allow_neft']) AND $data['customer']['allow_neft'] == 'Y') checked="checked" @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow NEFT</span>
 								</label>
@@ -66,7 +66,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_imps" @if(isset($data['customer']['allow_imps']) AND $data['customer']['allow_imps'] != null) checked="checked" @endif>
+									<input class="custom-control-input" type="checkbox" name="allow_imps" @if(isset($data['customer']['allow_imps']) AND $data['customer']['allow_imps'] == 'Y') checked="checked" @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow IMPS</span>
 								</label>
@@ -75,7 +75,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_rtgs" @if(isset($data['customer']['allow_rtgs']) AND $data['customer']['allow_rtgs'] != null) checked="checked" @endif>
+									<input class="custom-control-input" type="checkbox" name="allow_rtgs" @if(isset($data['customer']['allow_rtgs']) AND $data['customer']['allow_rtgs'] == 'Y') checked="checked" @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow RTGS</span>
 								</label>
@@ -95,7 +95,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="enabled" @if(isset($data['customer']['enabled']) AND $data['customer']['enabled'] != null) checked="checked" @endif>
+									<input class="custom-control-input" type="checkbox" name="enabled" @if(isset($data['customer']['enabled']) AND $data['customer']['enabled'] == 'Y') checked="checked" @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Enabled</span>
 								</label>

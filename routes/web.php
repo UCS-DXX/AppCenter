@@ -46,6 +46,7 @@ Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'Cust
 Route::get('/customer/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@viewCustomer']);
 Route::get('/activate-customers', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getInactivateCustomers']);
 Route::get('/activate-customers/{customerId}/{row_id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@activateCustomers']);
+Route::get('/reject-customers/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@rejectCustomers']);
 
 Route::get('admin/login', 'AdminController@getLogin');
 Route::post('admin/login', 'AdminController@doLogin');
