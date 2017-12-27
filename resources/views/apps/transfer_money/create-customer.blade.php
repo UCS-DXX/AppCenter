@@ -14,7 +14,7 @@
 @endsection
 @section('content')
 	<div class="signup">
-		<div class="signup-body">
+		<div class="signup-body" style="margin-bottom: 45px;">
 			<h3 class="signup-heading">Create New Customer</h3>
 			<div class="signup-form">
 				<form data-toggle="md-validator" data-groups='{"birthdate": "birth_month birth_day birth_year"}' action="{{ URL::to('create-customer') }}" method="post" onsubmit="return validate_form();">
