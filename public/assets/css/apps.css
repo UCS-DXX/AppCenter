@@ -16,15 +16,14 @@ body{
 	#margin: 0 auto;
 }
 .flex-container {
-	display: flex;
+	padding: 24px;
 	flex-wrap: wrap;
 	#background-color: DodgerBlue;
 	flex-grow: 1;
-	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	height: calc(100vh - 50px);
 	width: 100%;
-	flex-direction: column;
+	flex-direction: row;
 }
 .flex-container > div {
 	#background-color: #f1f1f1;

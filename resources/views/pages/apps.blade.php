@@ -51,13 +51,15 @@
 </div>
 <div class="width-100" style="margin-top: 50px;">
 		<div class="flex-container">
-			<div>
-				<a href="{{ URL::to('changeapp/transfer_money') }}">
-					<div>
-						<img src="{{ asset('assets/images/money-transfer.jpg') }}" height="150px" width="150px"/>
-					</div>
-					<div>Transfer Money</div>
-				</a>
+			<div class="row">
+				<div class="col col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<a href="{{ URL::to('changeapp/transfer_money') }}">
+						<div>
+							<img src="{{ asset('assets/images/money-transfer.png') }}" height="150px" width="150px"/>
+						</div>
+						<div>Transfer Money</div>
+					</a>
+				</div>
 			</div>
 		</div>
 </div>
