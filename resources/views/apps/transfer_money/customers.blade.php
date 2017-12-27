@@ -32,6 +32,36 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-body">
+                            <form data-toggle="md-validator" method="get" action="{{ url('/customers') }}">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="md-form-group md-label-floating">
+                                            <input class="md-form-control" type="text" name="app_id" spellcheck="false"
+                                                   data-msg-required="Please enter application ID.">
+                                            <label class="md-control-label">Application ID</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="md-form-group md-label-floating">
+                                            <input class="md-form-control" type="text" name="name" spellcheck="false"
+                                                   data-msg-required="Please enter name">
+                                            <label class="md-control-label">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="md-form-group md-label-floating">
+                                            <input class="md-form-control" type="text" name="customer_id" spellcheck="false"
+                                                   data-msg-required="Please enter customer ID.">
+                                            <label class="md-control-label">Customer ID</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="md-form-group md-label-floating">
+                                            <button class="btn btn-primary btn-block" type="submit">Filter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 							<div class="table-flip-scroll">
 								<table class="table table-striped">
 									<thead>
@@ -51,23 +81,23 @@
 									</tr>
 									</thead>
 									<tbody>
-									@foreach($data['customers'] as $key => $value)
+									@foreach($customers as $customer)
 										<tr>
-											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['app_id'] }}</td>
-											<td>{{ $value['name'] }}</td>
-											<td>{{ $value['customer_id'] }}</td>
-											<td>{{ $value['allow_neft'] }}</td>
-											<td>{{ $value['allow_rtgs'] }}</td>
-											<td>{{ $value['allow_imps'] }}</td>
-											<td>{{ $value['enabled'] }}</td>
+											<td>{{ $customer->id }}</td>
+											<td>{{ $customer->app_id }}</td>
+											<td>{{ $customer->name }}</td>
+											<td>{{ $customer->customer_id }}</td>
+											<td>{{ $customer->allow_neft }}</td>
+											<td>{{ $customer->allow_rtgs }}</td>
+											<td>{{ $customer->allow_imps }}</td>
+											<td>{{ $customer->enabled }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a>
+													<a href="{{ URL::to('customer/edit') . '/' . $customer->id }}">Edit</a>
 												</td>
 											@endif
 											<td>
-												<a href="{{ URL::to('customer') . '/' . $value['id'] }}">View</a>
+												<a href="{{ URL::to('customer') . '/' . $customer->id }}">View</a>
 											</td>
 										</tr>
 									@endforeach
@@ -75,6 +105,7 @@
 								</table>
 							</div>
 						</div>
+						{{ $customers->links() }}
 					</div>
 				</div>
 			</div>
@@ -105,24 +136,24 @@
 									</tr>
 									</thead>
 									<tbody>
-									@foreach($data['pendingCustomers'] as $key => $value)
+									@foreach($pendingCustomers as $pendingCustomer)
 										<tr>
-											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['app_id'] }}</td>
-											<td>{{ $value['name'] }}</td>
-											<td>{{ $value['customer_id'] }}</td>
-											<td>{{ $value['allow_neft'] }}</td>
-											<td>{{ $value['allow_rtgs'] }}</td>
-											<td>{{ $value['allow_imps'] }}</td>
-											<td>{{ $value['enabled'] }}</td>
-											<td>{{ $value['revision_status'] }}</td>
+											<td>{{ $pendingCustomer->id }}</td>
+											<td>{{ $pendingCustomer->app_id }}</td>
+											<td>{{ $pendingCustomer->name }}</td>
+											<td>{{ $pendingCustomer->customer_id }}</td>
+											<td>{{ $pendingCustomer->allow_neft }}</td>
+											<td>{{ $pendingCustomer->allow_rtgs }}</td>
+											<td>{{ $pendingCustomer->allow_imps }}</td>
+											<td>{{ $pendingCustomer->enabled }}</td>
+											<td>{{ $pendingCustomer->revision_status }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $value['id'] }}">Edit</a>
+													<a href="{{ URL::to('customer/edit') . '/' . $pendingCustomer->id }}">Edit</a>
 												</td>
 											@endif
 											<td>
-												<a href="{{ URL::to('customer') . '/' . $value['id'] }}">View</a>
+												<a href="{{ URL::to('customer') . '/' . $pendingCustomer->id }}">View</a>
 											</td>
 										</tr>
 									@endforeach

@@ -15,20 +15,48 @@ class CustomerController extends Controller
 	| Method to call Customer page view
 	|--------------------------------------------------------------------------
 	*/
-	public function customers()
+	public function customers(Request $request)
 	{
 		$app = Session::get('appName');
         $data = array();
 
-		$customerModel = new CustomerModel();
-		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->get()->toArray();
-		$data['customers'] = $customers;
+        $customerModel = new CustomerModel();
 
-        $customerRevisionsModel = new CustomerRevisionsModel();
-        $pendingCustomers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
-        $data['pendingCustomers'] = $pendingCustomers;
+        $app_id = $request->input('app_id');
+        $name = $request->input('name');
+        $customer_id = $request->input('customer_id');
 
-		return view('apps.' . $app . '.customers', array('data' => $data));
+
+
+        $customers = $customerModel->where('approval_status', 'a')
+            ->where(function ($query)  use ($app_id) {
+                if (sizeof($app_id)>0) {
+                    $query->where('app_id', 'like', '%' . $app_id . '%');
+                }
+            })
+            ->where(function ($query)  use ($name) {
+                if (sizeof($name)>0) {
+                    $query->where('name', 'like', '%' . $name . '%');
+                }
+            })
+            ->where(function ($query)  use ($customer_id) {
+                if (sizeof($customer_id)>0) {
+                    $query->where('customer_id', 'like', '%' . $customer_id . '%');
+                }
+            })
+            ->orderBy('name', 'asc')->paginate(10);
+
+//		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->get()->toArray();
+//		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->paginate(10);
+//		$data['customers'] = $customers;
+
+//        $customerRevisionsModel = CustomerRevisionsModel::all();
+//        $pendingCustomers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
+        $pendingCustomers = CustomerRevisionsModel::where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get();
+//        $data['pendingCustomers'] = $pendingCustomers;
+
+//		return view('apps.' . $app . '.customers', array('data' => $data))->with('customers',$customers)->with('pendingCustomers',$pendingCustomers);
+		return view('apps.' . $app . '.customers')->with('customers',$customers)->with('pendingCustomers',$pendingCustomers);
 	}
 	
 	public function getCustomer(Request $request)

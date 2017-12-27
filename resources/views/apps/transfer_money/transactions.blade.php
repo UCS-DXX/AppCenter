@@ -26,6 +26,29 @@
 			<div class="col-xs-12">
 				<div class="card">
 					<div class="card-body">
+						<form data-toggle="md-validator" method="get" action="{{ url('/transactions') }}">
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="md-form-group md-label-floating">
+										<input class="md-form-control" type="text" name="acc_no" spellcheck="false"
+											   data-msg-required="Please enter Beneficiary account no.">
+										<label class="md-control-label">BENEFICIARY ACCOUNT NO</label>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="md-form-group md-label-floating">
+										<input class="md-form-control" type="text" name="status" spellcheck="false"
+											   data-msg-required="Please enter status">
+										<label class="md-control-label">STATUS</label>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="md-form-group md-label-floating">
+										<button class="btn btn-primary btn-block" type="submit">Filter</button>
+									</div>
+								</div>
+							</div>
+						</form>
 						<div class="table-flip-scroll">
 							<table class="table table-striped">
 								<thead>

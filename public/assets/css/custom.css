@@ -22,3 +22,7 @@ span.sidenav-icon {
 	justify-content: center;
 	align-items: center;
 }
+
+.pagination {
+	margin: 20px;
+}
