@@ -173,6 +173,28 @@ class CustomerController extends Controller
 	}
 	
 	public function updateCustomer(Request $request) {
+
+        $customerModel = new CustomerModel();
+        $customer = $customerModel->where('id', $request->id)->get()->toArray();
+        $customer = array_shift($customer);
+
+        $checkUser = DB::table('FT_CUSTOMERS')
+            ->join('FT_CUSTOMERS_REVISIONS','FT_CUSTOMERS.customer_id','=','FT_CUSTOMERS_REVISIONS.customer_id')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status','=','Pending')
+            ->select('FT_CUSTOMERS_REVISIONS.customer_id')
+            ->get();
+
+        $data1 = array();
+        $data1['checkUser'] = json_decode($checkUser, true);
+
+        foreach ($data1['checkUser'] as $key => $value){
+            if($value['customer_id'] == $customer['customer_id']){
+                return redirect('customers');
+            }
+        }
+        unset($data1);
+
+
         $neft = 'N';
         $rtgs = 'N';
         $imps = 'N';
