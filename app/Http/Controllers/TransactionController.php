@@ -27,11 +27,9 @@ class TransactionController extends Controller
                     $query->where('status_code', 'like', '%' . $status . '%');
                 }
             })
-            ->orderBy('req_timestamp', 'asc')->get()->toArray();
+            ->orderBy('req_timestamp', 'asc')->paginate(10);
 
-//		$transactions = $transactionModel->orderBy('req_timestamp', 'asc')->get()->toArray();
-		$data = array();
-		$data['transactions'] = $transactions;
-		return view('apps.' . $app . '.transactions', array('data' => $data));
+
+		return view('apps.' . $app . '.transactions')->with('transactions',$transactions);
 	}
 }

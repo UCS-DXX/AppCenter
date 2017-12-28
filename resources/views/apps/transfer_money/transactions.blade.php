@@ -109,7 +109,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data['transactions'] as $key => $value)
+									@foreach($transactions as $transaction)
 										<tr>
 											<td>
 												<a href="#">Show</a>
@@ -121,7 +121,7 @@
 											<td>{{ $value['customer_id'] }}</td>
 											<td>{{ $value['debit_account_no'] }}</td>
 											<td>{{ $value['bene_code'] }}</td>--}}
-											<td>{{ $value['bene_full_name'] }}</td>
+											<td>{{ $transaction->bene_full_name }}</td>
 											{{--<td>{{ $value['bene_address1'] }}</td>
 											<td>{{ $value['bene_address2'] }}</td>
 											<td>{{ $value['bene_address3'] }}</td>
@@ -131,17 +131,17 @@
 											<td>{{ $value['bene_country'] }}</td>
 											<td>{{ $value['bene_contact_email_id'] }}</td>
 											<td>{{ $value['bene_contact_mobile_no'] }}</td>--}}
-											<td>{{ $value['bene_account_no'] }}</td>
-											<td>{{ $value['bene_account_ifsc'] }}</td>
+											<td>{{ $transaction->bene_account_no }}</td>
+											<td>{{ $transaction->bene_account_ifsc }}</td>
 											{{--<td>{{ $value['bene_account_mobile_no'] }}</td>
 											<td>{{ $value['bene_account_mmid'] }}</td>
 											<td>{{ $value['transfer_type'] }}</td>--}}
 											<td></td>
 											<td></td>
-											<td>{{ $value['transfer_amount'] }}</td>
+											<td>{{ $transaction->transfer_amount }}</td>
 											{{--<td>{{ $value['transfer_ccy'] }}</td>
 											<td>{{ $value['rmtr_to_bene_note'] }}</td>--}}
-											<td>{{ $value['status_code'] }}</td>
+											<td>{{ $transaction->status_code }}</td>
 											{{--<td>{{ $value['bank_ref'] }}</td>
 											<td>{{ $value['rep_no'] }}</td>
 											<td>{{ $value['rep_version'] }}</td>
@@ -171,6 +171,7 @@
 							</table>
 						</div>
 					</div>
+					{{ $transactions->links() }}
 				</div>
 			</div>
 		</div>
