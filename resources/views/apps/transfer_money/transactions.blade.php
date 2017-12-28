@@ -31,20 +31,21 @@
 								<div class="col-sm-4">
 									<div class="md-form-group md-label-floating">
 										<input class="md-form-control" type="text" name="acc_no" spellcheck="false"
-											   data-msg-required="Please enter Beneficiary account no.">
+											   data-msg-required="Please enter Beneficiary account no." value="{{ app('request')->input('acc_no') }}">
 										<label class="md-control-label">BENEFICIARY ACCOUNT NO</label>
 									</div>
 								</div>
 								<div class="col-sm-4">
 									<div class="md-form-group md-label-floating">
 										<input class="md-form-control" type="text" name="status" spellcheck="false"
-											   data-msg-required="Please enter status">
+											   data-msg-required="Please enter status" value="{{ app('request')->input('status') }}">
 										<label class="md-control-label">STATUS</label>
 									</div>
 								</div>
 								<div class="col-sm-4">
-									<div class="md-form-group md-label-floating">
-										<button class="btn btn-primary btn-block" type="submit">Filter</button>
+									<div class="md-form-group md-label-floating" style="display:flex; flex-direction: row; justify-content: space-around">
+										<button class="btn btn-primary" type="submit">Filter</button>
+										<a class="btn btn-primary" href="{{ url('/transactions') }}">Reset</a>
 									</div>
 								</div>
 							</div>
