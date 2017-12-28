@@ -48,7 +48,7 @@ class CustomerController extends Controller
             })
             ->orderBy('name', 'asc')->paginate(10, ['*'], 'customers');
 
-        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Pending First','Pending'])->orderBy('id', 'asc')->paginate(10, ['*'], 'pendingCustomers');
+        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Created','Pending'])->orderBy('id', 'asc')->paginate(10, ['*'], 'pendingCustomers');
 
         $checkUser = DB::table('FT_CUSTOMERS')
             ->join('FT_CUSTOMERS_REVISIONS','FT_CUSTOMERS.customer_id','=','FT_CUSTOMERS_REVISIONS.customer_id')
@@ -100,7 +100,7 @@ class CustomerController extends Controller
 			$customerRevisionsModel->allow_imps = $imps;
 			$customerRevisionsModel->enabled = $enable;
 			$customerRevisionsModel->customers_row_id = 0;
-			$customerRevisionsModel->revision_status = 'Pending First';
+			$customerRevisionsModel->revision_status = 'Created';
 			$customerRevisionsModel->save();
 			return redirect('customers');
 		}
@@ -241,7 +241,7 @@ class CustomerController extends Controller
         $data = array();
 
         $customerRevisionsModel = new CustomerRevisionsModel();
-        $customers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
+        $customers = $customerRevisionsModel->where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
 		$data['customers'] = $customers;
 
 		return view('apps.' . $app . '.active-customers', array('data' => $data));
@@ -253,7 +253,7 @@ class CustomerController extends Controller
 
 		$customerRevisionModel = CustomerRevisionsModel::find($row_id);
 
-		if($customerRevisionModel->revision_status == 'Pending First'){
+		if($customerRevisionModel->revision_status == 'Created'){
             $customerModel = new CustomerModel();
             $customerModel->app_id = $customerRevisionModel->app_id;
             $customerModel->name = $customerRevisionModel->name;
