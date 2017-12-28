@@ -23,7 +23,7 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" name="app_id" spellcheck="false"
-								       data-msg-required="Please enter application ID." required>
+								       data-msg-required="Please enter application ID." required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
 								<label class="md-control-label">Application ID</label>
 							</div>
 						</div>
@@ -32,7 +32,7 @@
 						<div class="col-sm-12">
 							<div class="md-form-group md-label-floating">
 								<input class="md-form-control" type="text" id="customer_name" name="name" spellcheck="false"
-								       data-msg-required="Please enter your name." required>
+								       data-msg-required="Please enter your name." required @if(isset($customer['name'])) value="{{ $customer['name'] }}" @endif>
 								<label class="md-control-label">Name</label>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_neft">
+									<input class="custom-control-input" type="checkbox" name="allow_neft" @if(isset($customer['allow_neft'])) checked @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow NEFT</span>
 								</label>
@@ -59,7 +59,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_rtgs">
+									<input class="custom-control-input" type="checkbox" name="allow_rtgs" @if(isset($customer['allow_rtgs'])) checked @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow RTGS</span>
 								</label>
@@ -68,7 +68,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="allow_imps">
+									<input class="custom-control-input" type="checkbox" name="allow_imps" @if(isset($customer['allow_imps'])) checked @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Allow IMPS</span>
 								</label>
@@ -79,7 +79,7 @@
 						<div class="col-sm-4">
 							<div class="custom-controls-stacked m-t" style="margin-bottom: 20px; padding: 20px 0; position: relative;">
 								<label class="custom-control custom-control-primary custom-checkbox">
-									<input class="custom-control-input" type="checkbox" name="enabled">
+									<input class="custom-control-input" type="checkbox" name="enabled" @if(isset($customer['enabled'])) checked @endif>
 									<span class="custom-control-indicator"></span>
 									<span class="custom-control-label" style="font-size: 16px;">Enabled</span>
 								</label>

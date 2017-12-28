@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class CustomerController extends Controller
 {
@@ -19,12 +20,13 @@ class CustomerController extends Controller
 	public function customers(Request $request)
 	{
 		$app = Session::get('appName');
+		$data = array();
 
-        $customerModel = new CustomerModel();
+		$customerModel = new CustomerModel();
 
-        $app_id = $request->input('app_id');
-        $name = $request->input('name');
-        $customer_id = $request->input('customer_id');
+		$app_id = $request->input('app_id');
+		$name = $request->input('name');
+		$customer_id = $request->input('customer_id');
 
 
 
@@ -63,7 +65,9 @@ class CustomerController extends Controller
 	public function getCustomer(Request $request)
 	{
 		$app = Session::get('appName');
-		return view('apps.' . $app . '.create-customer');
+		$customer = array();
+		$customer = Session::get('_old_input');
+		return view('apps.' . $app . '.create-customer',compact('customer'));
 	}
 	
 	public function postCustomer(Request $request)
@@ -85,17 +89,25 @@ class CustomerController extends Controller
 			$enable = 'Y';
 		}
 		$customerRevisionsModel = new CustomerRevisionsModel();
-		$customerRevisionsModel->app_id = $request->app_id;
-		$customerRevisionsModel->name = $request->name;
-		$customerRevisionsModel->customer_id = $request->customer_id;
-		$customerRevisionsModel->allow_neft = $neft;
-		$customerRevisionsModel->allow_rtgs = $rtgs;
-		$customerRevisionsModel->allow_imps = $imps;
-		$customerRevisionsModel->enabled = $enable;
-		$customerRevisionsModel->customers_row_id = 0;
-		$customerRevisionsModel->revision_status = 'Pending First';
-		$customerRevisionsModel->save();
-		return redirect('customers');
+		$customer_model = new CustomerModel();
+		$customer = $customer_model->where('customer_id','=',$request->customer_id)->get()->toArray();
+		if(empty($customer)) {
+			$customerRevisionsModel->app_id = $request->app_id;
+			$customerRevisionsModel->name = $request->name;
+			$customerRevisionsModel->customer_id = $request->customer_id;
+			$customerRevisionsModel->allow_neft = $neft;
+			$customerRevisionsModel->allow_rtgs = $rtgs;
+			$customerRevisionsModel->allow_imps = $imps;
+			$customerRevisionsModel->enabled = $enable;
+			$customerRevisionsModel->customers_row_id = 0;
+			$customerRevisionsModel->revision_status = 'Pending First';
+			$customerRevisionsModel->save();
+			return redirect('customers');
+		}
+		else {
+			Session::flash('err_msg','Customer Id Already Exist');
+			return back()->withInput(Input::all());
+		}
 	}
 	
 	public function getEditCustomer(Request $request) {
