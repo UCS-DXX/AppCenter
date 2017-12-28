@@ -6,6 +6,7 @@ use App\CustomerModel;
 use App\CustomerRevisionsModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
@@ -18,7 +19,6 @@ class CustomerController extends Controller
 	public function customers(Request $request)
 	{
 		$app = Session::get('appName');
-        $data = array();
 
         $customerModel = new CustomerModel();
 
@@ -44,19 +44,20 @@ class CustomerController extends Controller
                     $query->where('customer_id', 'like', '%' . $customer_id . '%');
                 }
             })
-            ->orderBy('name', 'asc')->paginate(10);
+            ->orderBy('name', 'asc')->paginate(10, ['*'], 'customers');
 
-//		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->get()->toArray();
-//		$customers = $customerModel->where('approval_status', 'a')->orderBy('name', 'asc')->paginate(10);
-//		$data['customers'] = $customers;
+        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Pending First','Pending'])->orderBy('id', 'asc')->paginate(10, ['*'], 'pendingCustomers');
 
-//        $customerRevisionsModel = CustomerRevisionsModel::all();
-//        $pendingCustomers = $customerRevisionsModel->where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
-        $pendingCustomers = CustomerRevisionsModel::where('revision_status', 'Pending First')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get();
-//        $data['pendingCustomers'] = $pendingCustomers;
+        $checkUser = DB::table('FT_CUSTOMERS')
+            ->join('FT_CUSTOMERS_REVISIONS','FT_CUSTOMERS.customer_id','=','FT_CUSTOMERS_REVISIONS.customer_id')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status','=','Pending')
+            ->select('FT_CUSTOMERS_REVISIONS.customer_id')
+            ->get();
 
-//		return view('apps.' . $app . '.customers', array('data' => $data))->with('customers',$customers)->with('pendingCustomers',$pendingCustomers);
-		return view('apps.' . $app . '.customers')->with('customers',$customers)->with('pendingCustomers',$pendingCustomers);
+        $data = array();
+        $data['checkUser'] = json_decode($checkUser, true);
+
+		return view('apps.' . $app . '.customers', array('data' => $data))->with('customers',$customers)->with('pendingCustomers',$pendingCustomers);
 	}
 	
 	public function getCustomer(Request $request)
@@ -99,9 +100,30 @@ class CustomerController extends Controller
 	
 	public function getEditCustomer(Request $request) {
 		$app = Session::get('appName');
-		$customerModel = new CustomerModel();
-		$customer = $customerModel->where('id', $request->id)->get()->toArray();
-		$customer = array_shift($customer);
+
+        $customerModel = new CustomerModel();
+        $customer = $customerModel->where('id', $request->id)->get()->toArray();
+        $customer = array_shift($customer);
+
+        $checkUser = DB::table('FT_CUSTOMERS')
+            ->join('FT_CUSTOMERS_REVISIONS','FT_CUSTOMERS.customer_id','=','FT_CUSTOMERS_REVISIONS.customer_id')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status','=','Pending')
+            ->select('FT_CUSTOMERS_REVISIONS.customer_id')
+            ->get();
+
+        $data1 = array();
+        $data1['checkUser'] = json_decode($checkUser, true);
+
+        foreach ($data1['checkUser'] as $key => $value){
+            if($value['customer_id'] == $customer['customer_id']){
+                return redirect('customers');
+            }
+        }
+        unset($data1);
+
+
+
+
 		$data = array();
 		$data['customer']['id'] = $customer['id'];
 		$data['customer']['app_id'] = $customer['app_id'];

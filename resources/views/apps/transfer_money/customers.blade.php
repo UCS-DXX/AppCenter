@@ -92,9 +92,23 @@
 											<td>{{ $customer->allow_imps }}</td>
 											<td>{{ $customer->enabled }}</td>
 											@if(Session::get('maker') == 1)
-												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $customer->id }}">Edit</a>
-												</td>
+												@php ($flag = 0)
+
+												@foreach($data['checkUser'] as $key => $value)
+													@if($value['customer_id'] == $customer->customer_id)
+														@php ($flag = 1)
+														@break
+													@endif
+												@endforeach
+
+												@if($flag == 0)
+													<td>
+														<a href="{{ URL::to('customer/edit') . '/' . $customer->id }}">Edit</a>
+													</td>
+												@else
+													<td>Approval Pending</td>
+												@endif
+
 											@endif
 											<td>
 												<a href="{{ URL::to('customer') . '/' . $customer->id }}">View</a>
@@ -120,7 +134,6 @@
 								<table class="table table-striped">
 									<thead>
 									<tr>
-										<th>ID</th>
 										<th>Application ID</th>
 										<th>Name</th>
 										<th>Customer ID</th>
@@ -129,16 +142,11 @@
 										<th>Allow IMPS</th>
 										<th>Enabled</th>
 										<th>Revision Status</th>
-										@if(Session::get('maker') == 1)
-											<th>Edit Customer</th>
-										@endif
-										<th>View Customer</th>
 									</tr>
 									</thead>
 									<tbody>
 									@foreach($pendingCustomers as $pendingCustomer)
 										<tr>
-											<td>{{ $pendingCustomer->id }}</td>
 											<td>{{ $pendingCustomer->app_id }}</td>
 											<td>{{ $pendingCustomer->name }}</td>
 											<td>{{ $pendingCustomer->customer_id }}</td>
@@ -147,20 +155,13 @@
 											<td>{{ $pendingCustomer->allow_imps }}</td>
 											<td>{{ $pendingCustomer->enabled }}</td>
 											<td>{{ $pendingCustomer->revision_status }}</td>
-											@if(Session::get('maker') == 1)
-												<td>
-													<a href="{{ URL::to('customer/edit') . '/' . $pendingCustomer->id }}">Edit</a>
-												</td>
-											@endif
-											<td>
-												<a href="{{ URL::to('customer') . '/' . $pendingCustomer->id }}">View</a>
-											</td>
 										</tr>
 									@endforeach
 									</tbody>
 								</table>
 							</div>
 						</div>
+						{{ $pendingCustomers->links() }}
 					</div>
 				</div>
 			</div>
