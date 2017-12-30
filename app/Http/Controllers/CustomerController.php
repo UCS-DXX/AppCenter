@@ -238,6 +238,11 @@ class CustomerController extends Controller
 	public function getInactivateCustomers()
 	{
 		$app = Session::get('appName');
+
+		if(Session::get('checker') != 1){
+            return redirect('dashboard');
+        }
+
         $data = array();
 
         $customerRevisionsModel = new CustomerRevisionsModel();
