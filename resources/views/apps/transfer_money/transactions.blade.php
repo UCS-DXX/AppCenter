@@ -57,10 +57,21 @@
 									</div>
 								</div>
 								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating">
-										<input class="md-form-control" type="text" name="status" spellcheck="false"
-											   data-msg-required="Please enter status" value="{{ app('request')->input('status') }}">
-										<label class="md-control-label">STATUS</label>
+									<div class="md-form-group">
+										<select id="status" name="status" class="custom-select">
+											<option value="SEND_TO_BENEFICIARY">
+												SEND TO BENEFICIARY
+											</option>
+											<option value="INPROCESS" >
+												IN PROCESS
+											</option>
+											<option value="SUCCESS" >
+												SUCCESS
+											</option>
+											<option value="FAILED" >
+												FAILED
+											</option>
+										</select>
 									</div>
 								</div>
 								<div class="col-sm-2">
