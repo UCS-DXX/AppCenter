@@ -113,6 +113,10 @@ class CustomerController extends Controller
 	public function getEditCustomer(Request $request) {
 		$app = Session::get('appName');
 
+        if(Session::get('maker') != 1){
+            return redirect('dashboard');
+        }
+
         $customerModel = new CustomerModel();
         $customer = $customerModel->where('id', $request->id)->get()->toArray();
         $customer = array_shift($customer);
@@ -173,6 +177,10 @@ class CustomerController extends Controller
 	}
 	
 	public function updateCustomer(Request $request) {
+
+        if(Session::get('maker') != 1){
+            return redirect('dashboard');
+        }
 
         $customerModel = new CustomerModel();
         $customer = $customerModel->where('id', $request->id)->get()->toArray();
@@ -256,6 +264,10 @@ class CustomerController extends Controller
 	{
 		$app = Session::get('appName');
 
+        if(Session::get('checker') != 1){
+            return redirect('dashboard');
+        }
+
 		$customerRevisionModel = CustomerRevisionsModel::find($row_id);
 
 		if($customerRevisionModel->revision_status == 'Created'){
@@ -299,6 +311,11 @@ class CustomerController extends Controller
 
     public function rejectCustomers($id)
     {
+
+        if(Session::get('checker') != 1){
+            return redirect('dashboard');
+        }
+
         $customerRevisionModel = CustomerRevisionsModel::find($id);
         $customerRevisionModel->revision_status = 'Rejected';
         $customerRevisionModel->save();
