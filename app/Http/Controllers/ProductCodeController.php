@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProductCodeModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class ProductCodeController extends Controller
@@ -23,15 +24,31 @@ class ProductCodeController extends Controller
 		$data['productcodes'] = $productCodes;
 		return view('apps.' . $app . '.product-codes', array('data' => $data));
 	}
-	
+
 	public function getProductCode(Request $request)
 	{
 		$app = Session::get('appName');
-		return view('apps.' . $app . '.create-product-code');
+
+        $product_code = array();
+        $product_code = Session::get('_old_input');
+
+		return view('apps.' . $app . '.create-product-code',compact('product_code'));
 	}
-	
+
 	public function postProductCode(Request $request)
 	{
+
+        $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
+            ->where('transfer_type',$request->transfertype)
+            ->where('active',$request->status)
+            ->where('validation_at',$request->validation_at)
+            ->get()->toArray();
+
+        if(sizeof($productCodeModel)>0){
+            Session::flash('err_msg','Product Code Already Exist');
+            return back()->withInput(Input::all());
+        }
+
 		$productCodeModel = new ProductCodeModel();
 		$productCodeModel->id = 2;
 		$productCodeModel->schemecode = $request->schemecode;
@@ -41,7 +58,7 @@ class ProductCodeController extends Controller
 		$productCodeModel->save();
 		return redirect('product-codes');
 	}
-	
+
 	public function getEditProductCode(Request $request) {
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
@@ -55,7 +72,7 @@ class ProductCodeController extends Controller
 		$data['productcodes']['validation_at'] = $productCodes['validation_at'];
 		return view('apps.' . $app . '.edit-product-code', array('data' => $data));
 	}
-	
+
 	public function updateProductCode(Request $request) {
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();

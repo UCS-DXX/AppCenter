@@ -19,9 +19,9 @@
 							<div class="md-form-group">
 								<label class="md-form-control" for="form-control-23">Scheme Code</label>
 								<select id="form-control-23" name="schemecode" class="custom-select">
-									<option value="NRI">NRI</option>
-									<option value="NRO">NRO</option>
-									<option value="SBO">SBO</option>
+									<option value="NRI" @if($product_code['schemecode']=='NRI'){{ 'selected' }}@endif>NRI</option>
+									<option value="NRO" @if($product_code['schemecode']=='NRO'){{ 'selected' }}@endif>NRO</option>
+									<option value="SBO" @if($product_code['schemecode']=='SBO'){{ 'selected' }}@endif>SBO</option>
 								</select>
 							</div>
 						</div>
@@ -31,10 +31,10 @@
 							<div class="md-form-group">
 								<label class="md-form-control" for="form-control-21">Transfer Type</label>
 								<select id="form-control-21" name="transfertype" class="custom-select">
-									<option value="NEFT">NEFT</option>
-									<option value="RTGS">RTGS</option>
-									<option value="IFT">IFT</option>
-									<option value="IMPS">IMPS</option>
+									<option value="NEFT" @if($product_code['transfertype']=='NEFT'){{ 'selected' }}@endif>NEFT</option>
+									<option value="RTGS" @if($product_code['transfertype']=='RTGS'){{ 'selected' }}@endif>RTGS</option>
+									<option value="IFT" @if($product_code['transfertype']=='IFT'){{ 'selected' }}@endif>IFT</option>
+									<option value="IMPS" @if($product_code['transfertype']=='IMPS'){{ 'selected' }}@endif>IMPS</option>
 								</select>
 							</div>
 							</div>
@@ -44,8 +44,8 @@
 							<div class="md-form-group">
 								<label class="md-form-control" for="form-control-22">Validation At</label>
 								<select class="custom-select" id="form-control-22" name="validation_at" data-msg-required="Please indicate product code status." required>
-									<option value="C" selected="selected">Credit</option>
-									<option value="D">Debit</option>
+									<option value="C" @if($product_code['validation_at']=='C'){{ 'selected' }}@endif>Credit</option>
+									<option value="D" @if($product_code['validation_at']=='D'){{ 'selected' }}@endif>Debit</option>
 								</select>
 							</div>
 						</div>
@@ -55,8 +55,8 @@
 									<div class="md-form-group">
 										<label class="md-form-control" for="form-control-22">Status</label>
 										<select class="custom-select" id="form-control-22" name="status" data-msg-required="Please indicate product code status." required>
-												<option value="1" selected="selected">Active</option>
-												<option value="0">Inactive</option>
+												<option value="1" @if($product_code['status']=='1'){{ 'selected' }}@endif >Active</option>
+												<option value="0" @if($product_code['status']=='0'){{ 'selected' }}@endif>Inactive</option>
 										</select>
 									</div>
 								</div>

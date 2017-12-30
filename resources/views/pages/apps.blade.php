@@ -14,17 +14,23 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<style>
 		.navbar-account-btn {
-			color: #ffffff !important;
+			color: #222 !important;
 		}
 		.navbar-account-btn:hover {
-			color: #222 !important;
+			color: #0D479B !important;
 		}
 	</style>
 </head>
 <body>
 <div class="layout-header">
 	<div class="navbar navbar-default">
-		<div class="navbar-toggleable" style="margin-left: 0; background-color: #0D479B;">
+		<div class="navbar-header">
+			<a class="navbar-brand-center" href="{{ URL::to('/') }}">
+				<img class="site_logo" src="{{ asset('assets/images/dcb_logo.png') }}" alt="Elephant"/>
+			</a>
+		</div>
+		<a class="navbar-brand">APP CENTER</a>
+		<div class="navbar-toggleable" style="margin-left: 0; background-color: #fff;">
 			<nav id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown hidden-xs">
@@ -43,6 +49,9 @@
 							<span class="icon icon-power-off icon-lg icon-fw"></span>
 							Sign out
 						</a>
+					</li>
+					<li class="dropdown">
+						<img class="unacore-logo" src="{{  asset('assets/images/logo.png') }}" alt="">
 					</li>
 				</ul>
 			</nav>

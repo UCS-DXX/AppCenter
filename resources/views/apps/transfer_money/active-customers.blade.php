@@ -17,7 +17,7 @@
 	<div class="layout-content-body">
 		<div class="row">
 			<div class="text-center m-b">
-				<h3 class="m-b-0">List of Inactive Customers</h3>
+				<h3 class="m-b-0">List of Pending Customers</h3>
 			</div>
 			<div class="col-xs-12">
 				<div class="card">
