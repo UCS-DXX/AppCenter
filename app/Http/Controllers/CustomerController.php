@@ -31,6 +31,7 @@ class CustomerController extends Controller
 
 
         $customers = $customerModel->where('approval_status', 'a')
+            ->orWhere('approval_status', 'u')
             ->where(function ($query)  use ($app_id) {
                 if (sizeof($app_id)>0) {
                     $query->where('app_id', 'like', '%' . $app_id . '%');
@@ -203,6 +204,7 @@ class CustomerController extends Controller
         unset($data1);
 
 
+
         $neft = 'N';
         $rtgs = 'N';
         $imps = 'N';
@@ -230,6 +232,9 @@ class CustomerController extends Controller
         $customerRevisionModel->customers_row_id = $request->id;
         $customerRevisionModel->revision_status = 'Pending';
         $customerRevisionModel->save();
+
+        $customerModel = $customerModel->where('id', $request->id)->update(['approval_status' => 'u']);
+
         return redirect('customers');
 	}
 	
@@ -317,8 +322,14 @@ class CustomerController extends Controller
         }
 
         $customerRevisionModel = CustomerRevisionsModel::find($id);
+
         $customerRevisionModel->revision_status = 'Rejected';
         $customerRevisionModel->save();
+
+        $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
+        $customerModel->approval_status = 'a';
+        $customerModel->save();
+
         return redirect('activate-customers');
 
     }

@@ -93,23 +93,13 @@
 											<td>{{ $customer->allow_imps }}</td>
 											<td>{{ $customer->enabled }}</td>
 											@if(Session::get('maker') == 1)
-												@php ($flag = 0)
-
-												@foreach($data['checkUser'] as $key => $value)
-													@if($value['customer_id'] == $customer->customer_id)
-														@php ($flag = 1)
-														@break
-													@endif
-												@endforeach
-
-												@if($flag == 0)
+												@if($customer->approval_status == 'a')
 													<td>
 														<a href="{{ URL::to('customer/edit') . '/' . $customer->id }}">Edit</a>
 													</td>
 												@else
 													<td>Approval Pending</td>
 												@endif
-
 											@endif
 											<td>
 												<a href="{{ URL::to('customer') . '/' . $customer->id }}">View</a>
