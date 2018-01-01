@@ -21,28 +21,28 @@
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" name="app_id" spellcheck="false"
-								       data-msg-required="Please enter application ID." required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
-								<label class="md-control-label">Application ID</label>
+							<div class="form-group ">
+								<label >Application ID</label>
+								<input class="form-control" type="text" name="app_id" spellcheck="false"
+								       placeholder="Application ID" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" type="text" id="customer_name" name="name" spellcheck="false"
-								       data-msg-required="Please enter your name." required @if(isset($customer['name'])) value="{{ $customer['name'] }}" @endif>
-								<label class="md-control-label">Name</label>
+							<div class="form-group">
+								<label >Name</label>
+								<input class="form-control" type="text" id="customer_name" name="name" spellcheck="false"
+								       placeholder="Name" required @if(isset($customer['name'])) value="{{ $customer['name'] }}" @endif>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="md-form-group md-label-floating">
-								<input class="md-form-control" id="customer_id" type="text" name="customer_id" spellcheck="false"
-								       data-msg-required="Please enter your customer ID." required>
-								<label class="md-control-label">Customer ID</label>
+							<div class="form-group">
+								<label >Customer ID</label>
+								<input class="form-control" id="customer_id" type="text" name="customer_id" spellcheck="false"
+								       placeholder="Customer ID" required>
 							</div>
 						</div>
 					</div>

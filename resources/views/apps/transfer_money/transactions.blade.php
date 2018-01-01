@@ -25,7 +25,7 @@
 			</div>
 			<div class="col-xs-12">
 				<form method="get" action="{{ url('/transactions') }}">
-					<div class="row" style="padding-top: 20px; padding-bottom: 20px">
+					<div class="row" style="padding-top: 20px; padding-bottom: 20px;">
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label>BENEFICIARY ACC NO</label>

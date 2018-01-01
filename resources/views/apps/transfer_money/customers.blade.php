@@ -30,39 +30,39 @@
 					<h3 class="m-b-0">Approved Customers</h3>
 				</div>
 				<div class="col-xs-12">
+					<form data-toggle="md-validator" method="get" action="{{ url('/customers') }}">
+						<div class="row"  style="padding-top: 20px; padding-bottom: 20px;">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="">Application ID</label>
+									<input class="form-control" type="text" name="app_id" spellcheck="false"
+										   placeholder="Application ID" value="{{ app('request')->input('app_id') }}">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="">Name</label>
+									<input class="form-control" type="text" name="name" spellcheck="false"
+										   placeholder="Name" value="{{ app('request')->input('name') }}">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label class="">Customer ID</label>
+									<input class="form-control" type="text" name="customer_id" spellcheck="false"
+										   placeholder="Customer ID" value="{{ app('request')->input('customer_id') }}">
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group" style="display:flex; flex-direction: row; justify-content: flex-end; padding-top: 20px;">
+									<button class="btn btn-primary" style="margin-right: 10px;" type="submit">Filter</button>
+									<a class="btn btn-primary" style="margin-right: 10px;" href="{{ url('/customers') }}">Reset</a>
+								</div>
+							</div>
+						</div>
+					</form>
 					<div class="card">
 						<div class="card-body">
-                            <form data-toggle="md-validator" method="get" action="{{ url('/customers') }}">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="md-form-group md-label-floating">
-                                            <input class="md-form-control" type="text" name="app_id" spellcheck="false"
-                                                   data-msg-required="Please enter application ID." value="{{ app('request')->input('app_id') }}">
-                                            <label class="md-control-label">Application ID</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="md-form-group md-label-floating">
-                                            <input class="md-form-control" type="text" name="name" spellcheck="false"
-                                                   data-msg-required="Please enter name" value="{{ app('request')->input('name') }}">
-                                            <label class="md-control-label">Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="md-form-group md-label-floating">
-                                            <input class="md-form-control" type="text" name="customer_id" spellcheck="false"
-                                                   data-msg-required="Please enter customer ID." value="{{ app('request')->input('customer_id') }}">
-                                            <label class="md-control-label">Customer ID</label>
-                                        </div>
-                                    </div>
-									<div class="col-sm-3">
-										<div class="md-form-group md-label-floating" style="display:flex; flex-direction: row; justify-content: space-around">
-											<button class="btn btn-primary" type="submit">Filter</button>
-											<a class="btn btn-primary" href="{{ url('/customers') }}">Reset</a>
-										</div>
-									</div>
-                                </div>
-                            </form>
 							<div class="table-flip-scroll">
 								<table class="table table-striped">
 									<thead>
