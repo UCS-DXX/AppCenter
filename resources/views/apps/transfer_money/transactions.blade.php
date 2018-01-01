@@ -24,78 +24,80 @@
 				<h3 class="m-b-0">List of Transactions</h3>
 			</div>
 			<div class="col-xs-12">
+				<form method="get" action="{{ url('/transactions') }}">
+					<div class="row" style="padding-top: 20px; padding-bottom: 20px">
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label>BENEFICIARY ACC NO</label>
+								<input class="form-control" type="text" name="acc_no" spellcheck="false" placeholder="Beneficiary account no." value="{{ app('request')->input('acc_no') }}">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label>TRANSFER DATE</label>
+								<input class="form-control" type="text" name="transfer_date" spellcheck="false"
+									   placeholder="Transfer Date" value="{{ app('request')->input('transfer_date') }}">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label>REQUEST NO</label>
+								<input class="form-control" type="text" name="req_no" spellcheck="false"
+									   placeholder="Request no." value="{{ app('request')->input('req_no') }}">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label>BANK REFERENCE</label>
+								<input class="form-control" type="text" name="bank_ref" spellcheck="false"
+									   placeholder="Bank Reference" value="{{ app('request')->input('bank_ref') }}">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group">
+								<label>Status</label>
+								<select id="status" name="status" class="custom-select">
+									<option value="" @if(app('request')->input('status') == "") {{ 'selected' }}@endif>
+										All
+									</option>
+									<option value="SEND_TO_BENEFICIARY" @if(app('request')->input('status') == "SEND_TO_BENEFICIARY") {{ 'selected' }}@endif>
+										SEND TO BENEFICIARY
+									</option>
+									<option value="INPROCESS" @if(app('request')->input('status') == "INPROCESS") {{ 'selected' }}@endif>
+										IN PROCESS
+									</option>
+									<option value="SUCCESS" @if(app('request')->input('status') == "SUCCESS") {{ 'selected' }}@endif>
+										SUCCESS
+									</option>
+									<option value="FAILED" @if(app('request')->input('status') == "FAILED") {{ 'selected' }}@endif>
+										FAILED
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group" style="display:flex; flex-direction: row; justify-content: flex-end; padding-top: 20px;">
+								<button class="btn btn-primary" type="submit" style="margin-right: 10px;">Filter</button>
+								<a class="btn btn-primary" style="margin-right: 10px;" href="{{ url('/transactions') }}">Reset</a>
+							</div>
+						</div>
+					</div>
+				</form>
 				<div class="card">
 					<div class="card-body">
-						<form data-toggle="md-validator" method="get" action="{{ url('/transactions') }}">
-							<div class="row">
-								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating">
-										<input class="md-form-control" type="text" name="acc_no" spellcheck="false"
-											   data-msg-required="Please enter Beneficiary account no." value="{{ app('request')->input('acc_no') }}">
-										<label class="md-control-label">BENEFICIARY ACCOUNT NO</label>
-									</div>
-								</div>
-								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating">
-										<input class="md-form-control" type="text" name="transfer_date" spellcheck="false"
-											   data-msg-required="Please enter Transfer Date" value="{{ app('request')->input('transfer_date') }}">
-										<label class="md-control-label">TRANSFER DATE</label>
-									</div>
-								</div>
-								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating">
-										<input class="md-form-control" type="text" name="req_no" spellcheck="false"
-											   data-msg-required="Please enter Request no." value="{{ app('request')->input('req_no') }}">
-										<label class="md-control-label">REQUEST NO</label>
-									</div>
-								</div>
-								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating">
-										<input class="md-form-control" type="text" name="bank_ref" spellcheck="false"
-											   data-msg-required="Please enter Bank Reference" value="{{ app('request')->input('bank_ref') }}">
-										<label class="md-control-label">BANK REFERENCE</label>
-									</div>
-								</div>
-								<div class="col-sm-2">
-									<div class="md-form-group">
-										<select id="status" name="status" class="custom-select">
-											<option value="SEND_TO_BENEFICIARY">
-												SEND TO BENEFICIARY
-											</option>
-											<option value="INPROCESS" >
-												IN PROCESS
-											</option>
-											<option value="SUCCESS" >
-												SUCCESS
-											</option>
-											<option value="FAILED" >
-												FAILED
-											</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-sm-2">
-									<div class="md-form-group md-label-floating" style="display:flex; flex-direction: row; justify-content: space-around">
-										<button class="btn btn-primary" type="submit">Filter</button>
-										<a class="btn btn-primary" href="{{ url('/transactions') }}">Reset</a>
-									</div>
-								</div>
-							</div>
-						</form>
 						<div class="table-flip-scroll">
 							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>SHOW LINK</th>
-										<th>BENEFICIARY FULL NAME</th>
-										<th>BENEFICIARY ACCOUNT NO</th>
-										<th>BENEFICIARY ACCOUNT IFSC</th>
+										<th>BENE NAME</th>
+										<th>BENE ACCOUNT</th>
 										<th>REMITTER NAME</th>
-										<th>TRANSFER DATE</th>
+										<th>DATE</th>
 										<th>TRANSFER AMOUNT</th>
 										<th>STATUS</th>
-										<th>REQUEST NO.</th>
-										<th>BANK REFERENCE</th>
+										<th>REQ NO</th>
+										<th>BANK REF</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -106,7 +108,6 @@
 											</td>
 											<td>{{ $transaction->bene_full_name }}</td>
 											<td>{{ $transaction->bene_account_no }}</td>
-											<td>{{ $transaction->bene_account_ifsc }}</td>
 											<td></td>
 											<td>{{ $transaction->transfer_date }}</td>
 											<td>{{ $transaction->transfer_amount }}</td>
