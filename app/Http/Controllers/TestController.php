@@ -17,7 +17,7 @@ class TestController extends Controller
 
     public function generateTransactions(){
 
-        for($i=0;$i<10;$i++){
+        for($i=0;$i<100;$i++){
             $transactionModel = new TransactionModel();
             $transactionModel->bene_full_name = "Sample";
             $transactionModel->bene_account_no = 123456789;
@@ -34,7 +34,7 @@ class TestController extends Controller
             $transactionModel->attempt_no = '123';
             $transactionModel->save();
         }
-        echo "10 Transactions Created Successfully";
+        echo "100 Transactions Created Successfully";
 
     }
 }
