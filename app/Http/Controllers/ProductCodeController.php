@@ -74,6 +74,18 @@ class ProductCodeController extends Controller
 	}
 
 	public function updateProductCode(Request $request) {
+
+        $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
+            ->where('transfer_type',$request->transfertype)
+            ->where('active',$request->status)
+            ->where('validation_at',$request->validation_at)
+            ->get()->toArray();
+
+        if(sizeof($productCodeModel)>0){
+            Session::flash('err_msg','Product Code Already Exist');
+            return back()->withInput(Input::all());
+        }
+
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
 		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'active' => $request->status,'validation_at' => $request->validation_at]);
