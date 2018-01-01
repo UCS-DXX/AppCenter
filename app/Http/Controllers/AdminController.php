@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TransactionModel;
 use Illuminate\Http\Request;
 use App\AdminModel;
 use Hash;

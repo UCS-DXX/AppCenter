@@ -85,3 +85,4 @@ Route::post('/update-product-code', ['middleware' => 'authenticate', 'uses' => '
 */
 Route::get('admin/temp-code', 'AdminController@tempCode');
 Route::get('test', 'TestController@index');
+Route::get('/generate/transactions', 'TestController@generateTransactions');
