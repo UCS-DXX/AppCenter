@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Input;
 
 class CustomerController extends Controller
 {
-	/*
-	|--------------------------------------------------------------------------
-	| Method to call Customer page view
-	|--------------------------------------------------------------------------
-	*/
+    public function __construct()
+    {
+        $this->middleware('app');
+    }
+
 	public function customers(Request $request)
 	{
 		$app = Session::get('appName');
@@ -30,8 +30,7 @@ class CustomerController extends Controller
 
 
 
-        $customers = $customerModel->where('approval_status', 'a')
-            ->orWhere('approval_status', 'u')
+        $customers = $customerModel->whereIn('approval_status', ['a','u'])
             ->where(function ($query)  use ($app_id) {
                 if (sizeof($app_id)>0) {
                     $query->where('app_id', 'like', '%' . $app_id . '%');
@@ -39,7 +38,7 @@ class CustomerController extends Controller
             })
             ->where(function ($query)  use ($name) {
                 if (sizeof($name)>0) {
-                    $query->where('name', 'like', '%' . $name . '%');
+                    $query->whereRaw('LOWER(NAME) LIKE \'%' . strtolower($name) . '%\'');
                 }
             })
             ->where(function ($query)  use ($customer_id) {

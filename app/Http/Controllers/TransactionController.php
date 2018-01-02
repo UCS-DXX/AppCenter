@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('app');
+    }
+
 	public function getTransactions(Request $request) {
 		$app = Session::get('appName');
 		$transactionModel = new TransactionModel();
@@ -42,7 +47,7 @@ class TransactionController extends Controller
             })
             ->where(function ($query)  use ($bank_ref) {
                 if (sizeof($bank_ref)>0) {
-                    $query->where('bank_ref', 'like', '%' . $bank_ref . '%');
+                    $query->whereRaw('LOWER(BANK_REF) LIKE \'%' . strtolower($bank_ref) . '%\'');
                 }
             })
             ->orderBy('req_timestamp', 'asc')->paginate(10);

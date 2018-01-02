@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Session;
 
 class ProductCodeController extends Controller
 {
-	/*
-	|--------------------------------------------------------------------------
-	| Method to call Product Code page view
-	|--------------------------------------------------------------------------
-	*/
+    public function __construct()
+    {
+        $this->middleware('app');
+    }
+
 	public function productcodes()
 	{
 		$app = Session::get('appName');

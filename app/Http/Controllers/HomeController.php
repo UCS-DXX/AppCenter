@@ -10,55 +10,26 @@ use App\Test;
 
 class HomeController extends Controller
 {
-	/*
-	|--------------------------------------------------------------------------
-	| Method to call Home page view
-	|--------------------------------------------------------------------------
-	*/
+
+    public function __construct()
+    {
+        $this->middleware('app',['except' => ['getLogin','postLogin','getApps','getLogout','changeApp']]);
+//        $this->middleware('app')->except('getApps')->except('getDashboard')->except('getLogout');
+    }
+
 	public function index()
 	{
 		return view('pages.home');
 	}
-	
-	/*
-	|--------------------------------------------------------------------------
-	| Method to call Register page view
-	|--------------------------------------------------------------------------
-	*/
-	/*public function getRegister()
-	{
-		return view('pages.register');
-	}*/
-	
-	/*
-	|--------------------------------------------------------------------------
-	| Method to Register users
-	|--------------------------------------------------------------------------
-	*/
-	/*public function postRegister()
-	{
-	
-	}*/
-	
-	/*
-	|--------------------------------------------------------------------------
-	| Method to call Login page view
-	|--------------------------------------------------------------------------
-	*/
+
 	public function getLogin()
 	{
-		//$a = 0;
 		if (Session::get('login')) {
 			return redirect('dashboard');
 		}
 		return view('pages.login');
 	}
-	
-	/*
-	|--------------------------------------------------------------------------
-	| Method to login users
-	|--------------------------------------------------------------------------
-	*/
+
 	public function postLogin(Request $request)
 	{
 		//$credentials = $request->only('riemann', 'password');
