@@ -14,7 +14,7 @@
 			<a class="" style="display: flex; justify-content: center;" href="{{ URL::to('/') }}">
 				<img class="img-flag" src="{{ asset('assets/images/dcb_logo.png') }}" style="width: 160px; height: 42px;" alt=""/>
 			</a>
-			<h3 class="login-heading" style="font-weight: 400">App Centre</h3>
+			<h3 class="login-heading" style="font-weight: 400">App Center</h3>
 			<h4 class="login-heading">Sign in</h4>
 			<div class="login-form">
 				<form data-toggle="md-validator" action="{{ URL::to('login') }}" method="post">
