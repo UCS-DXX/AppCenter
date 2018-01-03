@@ -8,18 +8,22 @@
             border-style: none;
         }
     </style>
-    <div class="signup">
-        <div class="signup-body">
-            <h3 class="signup-heading">Create New Product Code</h3>
-            <div class="signup-form">
-                <form data-toggle="md-validator" data-groups='{"birthdate": "birth_month birth_day birth_year"}'
-                      action="{{ URL::to('create-product-code') }}" method="post">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="md-form-group">
-                                <label class="md-form-control" for="form-control-23">Scheme Code</label>
-                                <select id="form-control-23" name="schemecode" class="custom-select">
+    <div class="layout-content-body">
+        <div class="title-bar">
+            <h1 class="title-bar-title" style="">
+                <span class="d-ib">Create Product Code</span>
+                </span>
+            </h1>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-8">
+                <div class="demo-form-wrapper">
+                    <form class="form form-horizontal" style="margin-bottom: 50px;" action="{{ URL::to('create-product-code') }}" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="form-control-23">Scheme Code</label>
+                            <div class="col-sm-9">
+                                <select id="form-control-23" class="form-control" name="schemecode" >
                                     <option value="NRI" @if($product_code['schemecode']=='NRI'){{ 'selected' }}@endif>
                                         NRI
                                     </option>
@@ -32,12 +36,10 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="md-form-group">
-                                <label class="md-form-control" for="form-control-21">Transfer Type</label>
-                                <select id="form-control-21" name="transfertype" class="custom-select">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="form-control-21">Transfer Type</label>
+                            <div class="col-sm-9">
+                                <select id="form-control-21" class="form-control" name="transfertype" >
                                     <option value="NEFT" @if($product_code['transfertype']=='NEFT'){{ 'selected' }}@endif>
                                         NEFT
                                     </option>
@@ -53,12 +55,10 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="md-form-group">
-                                <label class="md-form-control" for="form-control-22">Validation At</label>
-                                <select class="custom-select" id="form-control-22" name="validation_at"
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="form-control-22">Validation At</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="form-control-22" name="validation_at"
                                         data-msg-required="Please indicate product code status." required>
                                     <option value="C" @if($product_code['validation_at']=='C'){{ 'selected' }}@endif>
                                         Credit
@@ -69,12 +69,10 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="md-form-group">
-                                <label class="md-form-control" for="form-control-22">Status</label>
-                                <select class="custom-select" id="form-control-22" name="status"
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="form-control-22">Status</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="form-control-22" name="status"
                                         data-msg-required="Please indicate product code status." required>
                                     <option value="1" @if($product_code['status']=='1'){{ 'selected' }}@endif >Active
                                     </option>
@@ -83,10 +81,11 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <button class="btn btn-primary btn-block" type="submit">Create</button>
-                </form>
+                        <div style="margin-top: 50px;display: flex;justify-content: flex-end;">
+                            <button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
