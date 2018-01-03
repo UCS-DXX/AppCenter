@@ -19,6 +19,9 @@ class AppSession
         if(!Session::has('appName')){
             return redirect('apps');
         }
+        if(Session::get('appName') == 'admin'){
+            return redirect('/admin/dashboard');
+        }
         return $next($request);
     }
 }
