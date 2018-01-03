@@ -29,9 +29,9 @@
 				<div class="text-center m-b">
 					<h3 class="m-b-0">Approved Customers</h3>
 				</div>
-				<div class="col-xs-12">
-					<form data-toggle="md-validator" method="get" action="{{ url('/customers') }}">
-						<div class="row"  style="padding-top: 20px; padding-bottom: 20px;">
+				<form data-toggle="md-validator" method="get" action="{{ url('/customers') }}">
+					<div class="container" style="margin: 0; padding-right: 20px;">
+						<div class="row" style="padding-top: 20px; padding-bottom: 20px; margin: 10px">
 							<div class="col-sm-3">
 								<div class="form-group">
 									<label class="">Application ID</label>
@@ -54,13 +54,15 @@
 								</div>
 							</div>
 							<div class="col-sm-3">
-								<div class="form-group" style="display:flex; flex-direction: row; justify-content: flex-end; padding-top: 20px;">
+								<div class="form-group" style="padding-top: 22px;">
 									<button class="btn btn-primary" style="margin-right: 10px;" type="submit">Filter</button>
 									<a class="btn btn-primary" style="margin-right: 10px;" href="{{ url('/customers') }}">Reset</a>
 								</div>
 							</div>
 						</div>
-					</form>
+					</div>
+				</form>
+				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-body">
 							<div class="table-flip-scroll">

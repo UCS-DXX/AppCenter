@@ -23,9 +23,9 @@
 			<div class="text-center m-b">
 				<h3 class="m-b-0">List of Transactions</h3>
 			</div>
-			<div class="col-xs-12">
-				<form method="get" action="{{ url('/transactions') }}">
-					<div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+			<form method="get" action="{{ url('/transactions') }}">
+				<div class="container" style="margin: 0; padding-right: 20px;">
+					<div class="row"style="padding-top: 20px; padding-bottom: 20px; margin: 10px" >
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label>BENEFICIARY ACC NO</label>
@@ -76,13 +76,15 @@
 							</div>
 						</div>
 						<div class="col-sm-2">
-							<div class="form-group" style="display:flex; flex-direction: row; justify-content: flex-end; padding-top: 20px;">
-								<button class="btn btn-primary" type="submit" style="margin-right: 10px;">Filter</button>
-								<a class="btn btn-primary" style="margin-right: 10px;" href="{{ url('/transactions') }}">Reset</a>
+							<div class="form-group" style="padding-top: 12px;">
+								<button class="btn btn-primary" type="submit" style="margin-top: 10px;margin-right: 10px;">Filter</button>
+								<a class="btn btn-primary" style="margin-top: 10px;margin-right: 10px;" href="{{ url('/transactions') }}">Reset</a>
 							</div>
 						</div>
 					</div>
-				</form>
+				</div>
+			</form>
+			<div class="col-xs-12">
 				<div class="card">
 					<div class="card-body">
 						<div class="table-flip-scroll">
