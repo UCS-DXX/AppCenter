@@ -233,13 +233,9 @@ class CustomerController extends Controller
             return redirect('dashboard');
         }
 
-        $data = array();
+        $customers = CustomerRevisionsModel::where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->paginate(10);
 
-        $customerRevisionsModel = new CustomerRevisionsModel();
-        $customers = $customerRevisionsModel->where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->get()->toArray();
-		$data['customers'] = $customers;
-
-		return view('apps.' . $app . '.active-customers', array('data' => $data));
+		return view('apps.' . $app . '.active-customers')->with('customers',$customers);
 	}
 	
 	public function activateCustomers(Request $request, $customerId,$row_id)
@@ -300,12 +296,14 @@ class CustomerController extends Controller
 
         $customerRevisionModel = CustomerRevisionsModel::find($id);
 
+        if($customerRevisionModel->revision_status == 'Pending'){
+            $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
+            $customerModel->approval_status = 'a';
+            $customerModel->save();
+        }
+
         $customerRevisionModel->revision_status = 'Rejected';
         $customerRevisionModel->save();
-
-        $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
-        $customerModel->approval_status = 'a';
-        $customerModel->save();
 
         return redirect('activate-customers');
 

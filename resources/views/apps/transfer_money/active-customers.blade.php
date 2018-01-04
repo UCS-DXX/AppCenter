@@ -41,22 +41,22 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data['customers'] as $key => $value)
+									@foreach($customers as $customer)
 										<tr>
-											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['app_id'] }}</td>
-											<td>{{ $value['name'] }}</td>
-											<td>{{ $value['customer_id'] }}</td>
-											<td>{{ $value['allow_neft'] }}</td>
-											<td>{{ $value['allow_rtgs'] }}</td>
-											<td>{{ $value['allow_imps'] }}</td>
-											<td>{{ $value['enabled'] }}</td>
-											<td>{{ $value['revision_status'] }}</td>
+											<td>{{ $customer->id }}</td>
+											<td>{{ $customer->app_id }}</td>
+											<td>{{ $customer->name }}</td>
+											<td>{{ $customer->customer_id }}</td>
+											<td>{{ $customer->allow_neft }}</td>
+											<td>{{ $customer->allow_rtgs }}</td>
+											<td>{{ $customer->allow_imps }}</td>
+											<td>{{ $customer->enabled }}</td>
+											<td>{{ $customer->revision_status }}</td>
 											@if(Session::get('checker') == 1)
 												<td>
-													<a href="{{ URL::to('activate-customers') . '/' . $value['customer_id'].'/'.$value['id'] }}">Approve</a>
+													<a href="{{ URL::to('activate-customers') . '/' . $customer->customer_id.'/'.$customer->id }}">Approve</a>
 													&nbsp;&nbsp;
-													<a href="{{ URL::to('reject-customers') . '/'.$value['id'] }}">Reject</a>
+													<a href="{{ URL::to('reject-customers') . '/'.$customer->id }}">Reject</a>
 												</td>
 											@endif
 										</tr>
@@ -64,6 +64,7 @@
 								</tbody>
 							</table>
 						</div>
+						{{ $customers->links() }}
 					</div>
 				</div>
 			</div>
