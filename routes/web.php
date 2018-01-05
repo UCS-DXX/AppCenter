@@ -20,6 +20,9 @@
 | Home Controller Routes
 |--------------------------------------------------------------------------
 */
+Route::get('/sample', function () {
+    return view('sample');
+});
 Route::get('/', 'HomeController@getLogin');
 //Route::get('/register', 'HomeController@getRegister');
 //Route::post('/register', 'HomeController@postRegister');

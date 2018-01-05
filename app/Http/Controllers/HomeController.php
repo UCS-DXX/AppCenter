@@ -17,10 +17,10 @@ class HomeController extends Controller
 //        $this->middleware('app')->except('getApps')->except('getDashboard')->except('getLogout');
     }
 
-	public function index()
-	{
-		return view('pages.home');
-	}
+    public function index()
+    {
+        return view('pages.home');
+    }
 
 	public function getLogin()
 	{
