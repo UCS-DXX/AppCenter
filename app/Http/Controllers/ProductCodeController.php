@@ -19,7 +19,7 @@ class ProductCodeController extends Controller
 	{
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
-		$productCodes = $productCodeModel->orderBy('id', 'asc')->get()->toArray();
+		$productCodes = $productCodeModel->orderBy('id', 'asc')->orderBy('id', 'asc')->paginate(10);
 		$data = array();
 		$data['productcodes'] = $productCodes;
 		return view('apps.' . $app . '.product-codes', array('data' => $data));

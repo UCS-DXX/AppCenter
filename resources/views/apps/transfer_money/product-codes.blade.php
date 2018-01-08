@@ -49,14 +49,14 @@
 								<tbody>
 									@foreach($data['productcodes'] as $key => $value)
 										<tr>
-											<td>{{ $value['id'] }}</td>
-											<td>{{ $value['schemecode'] }}</td>
-											<td>{{ $value['transfer_type'] }}</td>
-											<td>{{ $value['validation_at'] }}</td>
-											<td>{{ $value['active'] }}</td>
+											<td>{{ $value->id }}</td>
+											<td>{{ $value->schemecode }}</td>
+											<td>{{ $value->transfer_type }}</td>
+											<td>{{ $value->validation_at }}</td>
+											<td>{{ $value->active }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
-													<a href="{{ URL::to('product-code/edit') . '/' . $value['id'] }}">Edit</a>
+													<a href="{{ URL::to('product-code/edit') . '/' . $value->id }}">Edit</a>
 												</td>
 											@endif
 										</tr>
@@ -64,6 +64,7 @@
 								</tbody>
 							</table>
 						</div>
+						{{ $data['productcodes']->links() }}
 					</div>
 				</div>
 			</div>
