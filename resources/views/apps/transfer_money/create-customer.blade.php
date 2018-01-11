@@ -3,12 +3,42 @@
 <script>
 	function  validate_form() {
         var TCode = document.getElementById('customer_id').value;
-		var validate = true;
-        if( /[ !$%!^*@*(#()#(&#^]/.test( TCode ) ) {
-            alert('Input is not alphanumeric');
-            return false;
+        var mmid  = document.getElementById('mmid').value;
+		var app_id = document.getElementById('app_id').value;
+        var validate = true;
+        var regX =  /^[a-z0-9]+$/;
+        var regx2 = /^[A-Za-z]+$/;
+        if(!TCode.match(regX) ) {
+            $("#error").css('display','block');
+            $("#error").html("Customer is not alphanumeric");
+            validate = false;
         }
-        return true;
+        else if(TCode.length < 1 || TCode.length > 10) {
+            $("#error").css('display','block');
+            $("#error").html("Customer Id lenght should be > 1 and < 10");
+            validate = false
+		}
+		else if(TCode.indexOf(' ') > -1) {
+            $("#error").css('display','block');
+            $("#error").html("Remove space from Customer Id");
+            validate = false
+		}
+		else if(!app_id.match(regx2)) {
+            $("#error").css('display','block');
+            $("#error").html("Application Id should be only letters");
+            validate = false;
+		}
+		else if(app_id.length < 5 || app_id.length > 20) {
+            $("#error").css('display','block');
+            $("#error").html("Application Id lenght should be > 5 and < 20");
+			validate = false;
+		}
+		else if(mmid.length != 7) {
+            $("#error").css('display','block');
+            $("#error").html("MMID lenght should be 7");
+            validate = false
+		}
+		return validate;
     }
     $( document ).ready(function() {
         $("#is_dailylimit").click(function () {
@@ -32,9 +62,13 @@
         })
     });
 </script>
+
 @endsection
 @section('content')
 	<div class="layout-content-body">
+		<div class="alert alert-danger" id="error" style="display: none">
+
+		</div>
 		<div class="title-bar">
 			<h1 class="title-bar-title" style="">
 				<span class="d-ib">Create New Customer</span>
@@ -49,7 +83,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >Application ID</label>
 							<div class="col-sm-9">
-								<input  class="form-control" type="text" name="app_id" placeholder="Application ID" spellcheck="false" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
+								<input  class="form-control" type="text" id="app_id" name="app_id" placeholder="Application ID" spellcheck="false" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
 							</div>
 						</div>
 						<div class="form-group">
@@ -69,14 +103,14 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >Mobile Number</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" id="mobile_no" name="mobile_no" spellcheck="false"
+								<input class="form-control" type="number" id="mobile_no" name="mobile_no" spellcheck="false"
 									   placeholder="Mobile Number" required @if(isset($customer['mobile_no'])) value="{{ $customer['mobile_no'] }}" @endif>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >MMID</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" id="mmid" name="mmid" spellcheck="false"
+								<input class="form-control" type="number" id="mmid" name="mmid" spellcheck="false"
 									   placeholder="MMID" required @if(isset($customer['mmid'])) value="{{ $customer['mmid'] }}" @endif>
 							</div>
 						</div>
