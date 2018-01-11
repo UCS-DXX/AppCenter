@@ -5,9 +5,13 @@
         var TCode = document.getElementById('customer_id').value;
         var mmid  = document.getElementById('mmid').value;
         var app_id = document.getElementById('app_id').value;
+        var mobile_no = document.getElementById('mobile_no').value;
+        var daily_limit_amt = document.getElementById('daily_limit_amt').value;
+        var transaction_limit_amt = document.getElementById('transaction_limit_amt').value;
         var validate = true;
         var regX =  /^[a-z0-9]+$/;
         var regx2 = /^[A-Za-z]+$/;
+        var regX3 = /^[0-9]*$/;
         if(!TCode.match(regX) ) {
             $("#error").css('display','block');
             $("#error").html("Customer is not alphanumeric");
@@ -33,9 +37,29 @@
             $("#error").html("Application Id lenght should be > 5 and < 20");
             validate = false;
         }
+        else if(!mmid.match(regX3)) {
+            $("#error").css('display','block');
+            $("#error").html("MMID accept only numbers");
+            validate = false
+        }
         else if(mmid.length != 7) {
             $("#error").css('display','block');
             $("#error").html("MMID lenght should be 7");
+            validate = false
+        }
+        else if(!mobile_no.match(regX3)) {
+            $("#error").css('display','block');
+            $("#error").html("Mobile No accept only numbers");
+            validate = false
+        }
+        else if(!daily_limit_amt.match(regX3)) {
+            $("#error").css('display','block');
+            $("#error").html("Daily Limit Amount accept only numbers");
+            validate = false
+        }
+        else if(!transaction_limit_amt.match(regX3)) {
+            $("#error").css('display','block');
+            $("#error").html("Transaction Limit Amount accept only numbers");
             validate = false
         }
         return validate;
