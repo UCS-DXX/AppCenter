@@ -1,6 +1,30 @@
 @extends('master')
 @section('custom-includes')
+<script>
 
+    $( document ).ready(function() {
+        $("#is_dailylimit").click(function () {
+            if(this.checked == true) {
+                $("#daily_limit_amt").removeAttr("readonly")
+            }
+            else {
+                $("#daily_limit_amt").attr("readonly","readonly")
+                $("#daily_limit_amt").val(0);
+            }
+        })
+
+        $("#is_transactionlimit").click(function () {
+            if(this.checked == true) {
+                $("#transaction_limit_amt").removeAttr("readonly")
+            }
+            else {
+                $("#transaction_limit_amt").attr("readonly","readonly")
+                $("#transaction_limit_amt").val(0);
+            }
+        })
+    });
+
+</script>
 @endsection
 @section('content')
 	<div class="layout-content-body">
@@ -22,13 +46,7 @@
 								<input class="form-control" type="text" value="{{ $data['customer']['app_id'] }}" name="app_id" placeholder="Application ID" spellcheck="false" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" >Customer Name</label>
-							<div class="col-sm-9">
-								<input class="form-control" type="text" value="{{ $data['customer']['name'] }}" id="customer_name" name="name" spellcheck="false"
-									   placeholder="Customer Name" required @if(isset($customer['name'])) value="{{ $customer['name'] }}" @endif>
-							</div>
-						</div>
+
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >Customer ID</label>
 							<div class="col-sm-9">
@@ -36,6 +54,78 @@
 									   placeholder="Customer ID" required>
 							</div>
 						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Customer Name</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" value="{{ $data['customer']['name'] }}" id="customer_name" name="name" spellcheck="false"
+									   placeholder="Customer Name" required @if(isset($customer['name'])) value="{{ $customer['name'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Mobile Number</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="mobile_no" name="mobile_no" spellcheck="false"
+									   placeholder="Mobile Number" required @if(isset($data['customer']['mobile_no'])) value="{{ $data['customer']['mobile_no'] }}" @endif>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >MMID</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="mmid" name="mmid" spellcheck="false"
+									   placeholder="MMID" required @if(isset($data['customer']['mmid'])) value="{{ $data['customer']['mmid'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Identity ID</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="identity_user_id" name="identity_user_id" spellcheck="false"
+									   placeholder="Identity ID" required @if(isset($data['customer']['identity_user_id'])) value="{{ $data['customer']['identity_user_id'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Daily Limit</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" id="is_dailylimit" name="is_dailylimit" @if(isset($data['customer']['is_dailylimit']) && $data['customer']['is_dailylimit']== 'Y') checked @endif>Daily Limit
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Daily Limit Amount</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="daily_limit_amt" name="daily_limit_amt" spellcheck="false"
+									   placeholder="Daily Limit Amount" required @if(isset($data['customer']['daily_limit_amt'])) value="{{ $data['customer']['daily_limit_amt'] }}" @endif
+                                       @if(isset($data['customer']['is_dailylimit']) && $data['customer']['is_dailylimit'] == 'N') readonly="readonly" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Transaction Limit</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" id="is_transactionlimit" name="is_transactionlimit" @if(isset($data['customer']['is_transactionlimit']) && $data['customer']['is_transactionlimit'] == 'Y') checked @endif>Transaction Limit
+									</label>
+								</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" >Transaction Limit Amount</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" id="transaction_limit_amt" name="transaction_limit_amt" spellcheck="false"
+                                       placeholder="Transaction Limit Amount" required @if(isset($data['customer']['transaction_limit_amt'])) value="{{ $data['customer']['transaction_limit_amt'] }}" @else value="0" @endif readonly="readonly"
+                                       @if(isset($data['customer']['is_transactionlimit']) && $data['customer']['is_transactionlimit'] == 'N') readonly="readonly" @endif>
+                            </div>
+                        </div>
+
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Options</label>
 							<div class="col-sm-9">

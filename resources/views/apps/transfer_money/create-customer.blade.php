@@ -10,6 +10,27 @@
         }
         return true;
     }
+    $( document ).ready(function() {
+        $("#is_dailylimit").click(function () {
+			if(this.checked == true) {
+                $("#daily_limit_amt").removeAttr("readonly")
+			}
+			else {
+                $("#daily_limit_amt").attr("readonly","readonly")
+				$("#daily_limit_amt").val(0);
+			}
+        })
+
+        $("#is_transactionlimit").click(function () {
+            if(this.checked == true) {
+                $("#transaction_limit_amt").removeAttr("readonly")
+            }
+            else {
+                $("#transaction_limit_amt").attr("readonly","readonly")
+                $("#transaction_limit_amt").val(0);
+            }
+        })
+    });
 </script>
 @endsection
 @section('content')
@@ -28,7 +49,14 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >Application ID</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" name="app_id" placeholder="Application ID" spellcheck="false" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
+								<input  class="form-control" type="text" name="app_id" placeholder="Application ID" spellcheck="false" required @if(isset($customer['app_id'])) value="{{ $customer['app_id'] }}" @endif>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Customer ID</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="customer_id" name="customer_id" spellcheck="false"
+									   placeholder="Customer ID" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -39,26 +67,67 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label" >Customer ID</label>
+							<label class="col-sm-3 control-label" >Mobile Number</label>
 							<div class="col-sm-9">
-								<input class="form-control" type="text" id="customer_id" name="customer_id" spellcheck="false"
-									   placeholder="Customer ID" required>
+								<input class="form-control" type="text" id="mobile_no" name="mobile_no" spellcheck="false"
+									   placeholder="Mobile Number" required @if(isset($customer['mobile_no'])) value="{{ $customer['mobile_no'] }}" @endif>
 							</div>
 						</div>
-						{{--<div class="form-group">--}}
-							{{--<label class="col-sm-3 control-label" for="form-control-6">Select</label>--}}
-							{{--<div class="col-sm-9">--}}
-								{{--<select id="form-control-6" class="form-control">--}}
-									{{--<option value="c-plus-plus">C++</option>--}}
-									{{--<option value="css">CSS</option>--}}
-									{{--<option value="java">Java</option>--}}
-									{{--<option value="javascript">JavaScript</option>--}}
-									{{--<option value="php">PHP</option>--}}
-									{{--<option value="python">Python</option>--}}
-									{{--<option value="ruby">Ruby</option>--}}
-								{{--</select>--}}
-							{{--</div>--}}
-						{{--</div>--}}
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >MMID</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="mmid" name="mmid" spellcheck="false"
+									   placeholder="MMID" required @if(isset($customer['mmid'])) value="{{ $customer['mmid'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Identity ID</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="identity_user_id" name="identity_user_id" spellcheck="false"
+									   placeholder="Identity ID" required @if(isset($customer['identity_user_id'])) value="{{ $customer['identity_user_id'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Daily Limit</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" id="is_dailylimit" name="is_dailylimit" @if(isset($customer['is_dailylimit'])) checked @endif>Daily Limit
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Daily Limit Amount</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="daily_limit_amt" name="daily_limit_amt" spellcheck="false"
+									   placeholder="Daily Limit Amount" required @if(isset($customer['daily_limit_amt'])) value="{{ $customer['daily_limit_amt'] }}" @else value="0" @endif  readonly="readonly">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Transaction Limit</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" id="is_transactionlimit" name="is_transactionlimit" @if(isset($customer['is_transactionlimit'])) checked @endif>Transaction Limit
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Transaction Limit Amount</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="transaction_limit_amt" name="transaction_limit_amt" spellcheck="false"
+									   placeholder="Transaction Limit Amount" required @if(isset($customer['transaction_limit_amt'])) value="{{ $customer['transaction_limit_amt'] }}" @else value="0" @endif readonly="readonly">
+							</div>
+						</div>
+
+
 						<div class="form-group">
 							<label class="col-sm-3 control-label">Options</label>
 							<div class="col-sm-9">
