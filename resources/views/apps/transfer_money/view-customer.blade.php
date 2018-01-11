@@ -70,6 +70,123 @@
 						</div>
 					</div>
 				</div>
+
+
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Mobile No : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['mobile_no'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">MMID : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['mmid'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Identity ID : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['identity_user_id'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Daily Limit : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['is_dailylimit'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Daily Limit Amount : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['daily_limit_amt'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Transaction Limit : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['is_transactionlimit'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Transaction Limit Amount : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['transaction_limit_amt'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+
+
+
 				<div class="row" style="height: 50px;">
 					<div class="col-sm-6">
 						<div class="custom-controls-stacked m-t">
