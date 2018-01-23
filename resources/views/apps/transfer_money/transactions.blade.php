@@ -91,7 +91,7 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th>SHOW LINK</th>
+										{{--<th>SHOW LINK</th>--}}
 										<th>BENE NAME</th>
 										<th>BENE ACCOUNT</th>
 										<th>REMITTER NAME</th>
@@ -105,9 +105,9 @@
 								<tbody>
 									@foreach($transactions as $transaction)
 										<tr>
-											<td>
-												<a href="#">Show</a>
-											</td>
+											{{--<td>--}}
+												{{--<a href="#">Show</a>--}}
+											{{--</td>--}}
 											<td>{{ $transaction->bene_full_name }}</td>
 											<td>{{ $transaction->bene_account_no }}</td>
 											<td></td>
