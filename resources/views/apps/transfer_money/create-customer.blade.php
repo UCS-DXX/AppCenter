@@ -62,25 +62,39 @@
             $("#error").html("Transaction Limit Amount accept only numbers");
             validate = false
         }
+        else if($("#is_dailylimit:checked").length > 0){
+            if(parseInt(daily_limit_amt)<1 || parseInt(daily_limit_amt)>1000000000) {
+                $("#error").css('display','block');
+                $("#error").html("Daily Limit Should be from 1 - 1000000000");
+                validate = false
+            }
+        }
+        else if($("#is_transactionlimit:checked").length > 0){
+            if(parseInt(transaction_limit_amt)<1 || parseInt(transaction_limit_amt)>1000000000) {
+                $("#error").css('display', 'block');
+                $("#error").html("Transaction Limit Should be from 1 - 1000000000");
+                validate = false
+            }
+        }
 		return validate;
     }
     $( document ).ready(function() {
         $("#is_dailylimit").click(function () {
 			if(this.checked == true) {
-                $("#daily_limit_amt").removeAttr("readonly")
+                $("#daily_limit_amt").removeAttr("readonly");
 			}
 			else {
-                $("#daily_limit_amt").attr("readonly","readonly")
+                $("#daily_limit_amt").attr("readonly","readonly");
 				$("#daily_limit_amt").val(0);
 			}
-        })
+        });
 
         $("#is_transactionlimit").click(function () {
             if(this.checked == true) {
                 $("#transaction_limit_amt").removeAttr("readonly")
             }
             else {
-                $("#transaction_limit_amt").attr("readonly","readonly")
+                $("#transaction_limit_amt").attr("readonly","readonly");
                 $("#transaction_limit_amt").val(0);
             }
         })
