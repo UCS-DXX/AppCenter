@@ -47,7 +47,7 @@ class CustomerController extends Controller
             })
             ->orderBy('name', 'asc')->paginate(10, ['*'], 'customers');
 
-        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Created', 'Pending'])->orderBy('id', 'asc')->paginate(10, ['*'], 'pendingCustomers');
+        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Created', 'Pending'])->orderBy('id', 'desc')->paginate(10, ['*'], 'pendingCustomers');
 
         $checkUser = DB::table('FT_CUSTOMERS')
             ->join('FT_CUSTOMERS_REVISIONS', 'FT_CUSTOMERS.customer_id', '=', 'FT_CUSTOMERS_REVISIONS.customer_id')
@@ -284,7 +284,7 @@ class CustomerController extends Controller
             return redirect('dashboard');
         }
 
-        $customers = CustomerRevisionsModel::where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'asc')->paginate(10);
+        $customers = CustomerRevisionsModel::where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'desc')->paginate(10);
 
         return view('apps.' . $app . '.active-customers')->with('customers', $customers);
     }
