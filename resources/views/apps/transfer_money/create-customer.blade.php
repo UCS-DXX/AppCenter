@@ -162,6 +162,22 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-sm-3 control-label" >Email</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="email" id="email" name="email" spellcheck="false"
+									   placeholder="Email" required @if(isset($customer['email'])) value="{{ $customer['email'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" >Address</label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" id="address" name="address" spellcheck="false"
+									   placeholder="Address" required @if(isset($customer['address'])) value="{{ $customer['address'] }}" @endif>
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-sm-3 control-label">Daily Limit</label>
 							<div class="col-sm-9">
 								<div class="checkbox">

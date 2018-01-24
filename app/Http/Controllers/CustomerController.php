@@ -111,6 +111,8 @@ class CustomerController extends Controller
             $customerRevisionsModel->daily_limit_amt = $request->daily_limit_amt;
             $customerRevisionsModel->is_transactionlimit = $is_transactionlimit;
             $customerRevisionsModel->transaction_limit_amt = $request->transaction_limit_amt;
+            $customerRevisionsModel->email = $request->email;
+            $customerRevisionsModel->address = $request->address;
             $customerRevisionsModel->allow_neft = $neft;
             $customerRevisionsModel->allow_rtgs = $rtgs;
             $customerRevisionsModel->allow_imps = $imps;
@@ -173,6 +175,8 @@ class CustomerController extends Controller
         $data['customer']['daily_limit_amt'] = $customer['daily_limit_amt'];
         $data['customer']['is_transactionlimit'] = $customer['is_transactionlimit'];
         $data['customer']['transaction_limit_amt'] = $customer['transaction_limit_amt'];
+        $data['customer']['email'] = $customer['email'];
+        $data['customer']['address'] = $customer['address'];
 
         return view('apps.' . $app . '.edit-customer', array('data' => $data));
     }
@@ -243,6 +247,8 @@ class CustomerController extends Controller
         $customerRevisionModel->daily_limit_amt = $request->daily_limit_amt;
         $customerRevisionModel->is_transactionlimit = $is_transactionlimit;
         $customerRevisionModel->transaction_limit_amt = $request->transaction_limit_amt;
+        $customerRevisionModel->email = $request->email;
+        $customerRevisionModel->address = $request->address;
 
         $customerRevisionModel->allow_neft = $neft;
         $customerRevisionModel->allow_rtgs = $rtgs;
@@ -306,6 +312,8 @@ class CustomerController extends Controller
             $customerModel->daily_limit_amt = $customerRevisionModel->daily_limit_amt;
             $customerModel->is_transactionlimit = $customerRevisionModel->is_transactionlimit;
             $customerModel->transaction_limit_amt = $customerRevisionModel->transaction_limit_amt;
+            $customerModel->email = $customerRevisionModel->email;
+            $customerModel->address = $customerRevisionModel->address;
 
             $customerModel->allow_neft = $customerRevisionModel->allow_neft;
             $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
@@ -336,13 +344,15 @@ class CustomerController extends Controller
             $customerModel->daily_limit_amt = $customerRevisionModel->daily_limit_amt;
             $customerModel->is_transactionlimit = $customerRevisionModel->is_transactionlimit;
             $customerModel->transaction_limit_amt = $customerRevisionModel->transaction_limit_amt;
+            $customerModel->email = $customerRevisionModel->email;
+            $customerModel->address = $customerRevisionModel->address;
 
             $customerModel->allow_neft = $customerRevisionModel->allow_neft;
             $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
             $customerModel->allow_imps = $customerRevisionModel->allow_imps;
             $customerModel->enabled = $customerRevisionModel->enabled;
             $customerModel->approval_status = 'a';
-            //$customerModel->approved_id = $customerRevisionModel->id;
+            $customerModel->approved_id = $customerRevisionModel->id;
             $customerModel->updated_at = date('dMy');
             $customerModel->save();
 
