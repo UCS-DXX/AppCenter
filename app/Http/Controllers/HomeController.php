@@ -39,7 +39,8 @@ class HomeController extends Controller
 		$password = $request->password;
 /*		$test_model = new Test();
 		$test = $test_model->get()->toArray();*/
-		$userdn = "uid=".$username.",dc=example,dc=com";
+		$base_dn = env('ADLDAP_BASEDN');
+		$userdn = "cn=".$username.",".$base_dn;
 		$user_permission_model = new UserPermission();
 		if(Adldap::auth()->attempt($userdn, $password, $bindAsUser = true)) {
 			$user_permission = $user_permission_model->where('USER_ID','=',$username)->get()->toArray();
