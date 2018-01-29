@@ -44,7 +44,7 @@ class ProductCodeController extends Controller
             ->where('validation_at',$request->validation_at)
             ->get()->toArray();
 
-        if(sizeof($productCodeModel)>0){
+        if(!empty($productCodeModel)){
             Session::flash('err_msg','Product Code Already Exist');
             return back()->withInput(Input::all());
         }
@@ -81,7 +81,7 @@ class ProductCodeController extends Controller
             ->where('validation_at',$request->validation_at)
             ->get()->toArray();
 
-        if(sizeof($productCodeModel)>0){
+        if(!empty($productCodeModel)){
             Session::flash('err_msg','Product Code Already Exist');
             return back()->withInput(Input::all());
         }

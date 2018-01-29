@@ -31,17 +31,17 @@ class CustomerController extends Controller
 
         $customers = $customerModel->whereIn('approval_status', ['a', 'u'])
             ->where(function ($query) use ($app_id) {
-                if (sizeof($app_id) > 0) {
+                if (!empty($app_id)) {
                     $query->where('app_id', 'like', '%' . $app_id . '%');
                 }
             })
             ->where(function ($query) use ($name) {
-                if (sizeof($name) > 0) {
+                if (!empty($name)) {
                     $query->whereRaw('LOWER(NAME) LIKE \'%' . strtolower($name) . '%\'');
                 }
             })
             ->where(function ($query) use ($customer_id) {
-                if (sizeof($customer_id) > 0) {
+                if (!empty($customer_id)) {
                     $query->where('customer_id', 'like', '%' . $customer_id . '%');
                 }
             })
