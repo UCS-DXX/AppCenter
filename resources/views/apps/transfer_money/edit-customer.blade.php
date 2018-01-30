@@ -95,7 +95,7 @@
         </div>
 		<div class="title-bar">
 			<h1 class="title-bar-title" style="">
-				<span class="d-ib">Create New Customer</span>
+				<span class="d-ib">Update Customer</span>
 				</span>
 			</h1>
 		</div>

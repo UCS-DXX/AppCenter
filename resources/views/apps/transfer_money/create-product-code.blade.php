@@ -56,31 +56,31 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label" for="form-control-22">Validation At</label>
+                            <label class="col-sm-3 control-label" for="form-control-22">Validation</label>
                             <div class="col-sm-9">
-                                <select class="form-control" id="form-control-22" name="validation_at"
+                                <select class="form-control" id="form-control-22" name="validation"
                                         data-msg-required="Please indicate product code status." required>
-                                    <option value="C" @if($product_code['validation_at']=='C'){{ 'selected' }}@endif>
+                                    <option value="C" @if($product_code['validation']=='C'){{ 'selected' }}@endif>
                                         Credit
                                     </option>
-                                    <option value="D" @if($product_code['validation_at']=='D'){{ 'selected' }}@endif>
+                                    <option value="D" @if($product_code['validation']=='D'){{ 'selected' }}@endif>
                                         Debit
                                     </option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" for="form-control-22">Status</label>
-                            <div class="col-sm-9">
-                                <select class="form-control" id="form-control-22" name="status"
-                                        data-msg-required="Please indicate product code status." required>
-                                    <option value="1" @if($product_code['status']=='1'){{ 'selected' }}@endif >Active
-                                    </option>
-                                    <option value="0" @if($product_code['status']=='0'){{ 'selected' }}@endif>Inactive
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label class="col-sm-3 control-label" for="form-control-22">Status</label>--}}
+                            {{--<div class="col-sm-9">--}}
+                                {{--<select class="form-control" id="form-control-22" name="status"--}}
+                                        {{--data-msg-required="Please indicate product code status." required>--}}
+                                    {{--<option value="1" @if($product_code['status']=='1'){{ 'selected' }}@endif >Active--}}
+                                    {{--</option>--}}
+                                    {{--<option value="0" @if($product_code['status']=='0'){{ 'selected' }}@endif>Inactive--}}
+                                    {{--</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div style="margin-top: 50px;display: flex;justify-content: flex-end;">
                             <button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create</button>
                         </div>

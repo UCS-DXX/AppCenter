@@ -32,13 +32,13 @@
 								<input class="form-control" type="text" name="acc_no" spellcheck="false" placeholder="Beneficiary account no." value="{{ app('request')->input('acc_no') }}">
 							</div>
 						</div>
-						<div class="col-sm-2">
-							<div class="form-group">
-								<label>TRANSFER DATE</label>
-								<input class="form-control" type="text" name="transfer_date" spellcheck="false"
-									   placeholder="Transfer Date" value="{{ app('request')->input('transfer_date') }}">
-							</div>
-						</div>
+						{{--<div class="col-sm-2">--}}
+							{{--<div class="form-group">--}}
+								{{--<label>TRANSFER DATE</label>--}}
+								{{--<input class="form-control" type="text" name="transfer_date" spellcheck="false"--}}
+									   {{--placeholder="Transfer Date" value="{{ app('request')->input('transfer_date') }}">--}}
+							{{--</div>--}}
+						{{--</div>--}}
 						<div class="col-sm-2">
 							<div class="form-group">
 								<label>REQUEST NO</label>
@@ -95,7 +95,7 @@
 										<th>BENE NAME</th>
 										<th>BENE ACCOUNT</th>
 										<th>REMITTER NAME</th>
-										<th>DATE</th>
+										{{--<th>DATE</th>--}}
 										<th>TRANSFER AMOUNT</th>
 										<th>STATUS</th>
 										<th>REQ NO</th>
@@ -111,7 +111,7 @@
 											<td>{{ $transaction->bene_full_name }}</td>
 											<td>{{ $transaction->bene_account_no }}</td>
 											<td></td>
-											<td>{{ $transaction->transfer_date }}</td>
+											{{--<td>{{ $transaction->transfer_date }}</td>--}}
 											<td>{{ $transaction->transfer_amount }}</td>
 											<td>{{ $transaction->status_code }}</td>
 											<td>{{ $transaction->req_no }}</td>

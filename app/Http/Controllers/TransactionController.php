@@ -20,7 +20,7 @@ class TransactionController extends Controller
 
         $acc_no = $request->input('acc_no');
         $status = $request->input('status');
-        $transfer_date = $request->input('transfer_date');
+//        $transfer_date = $request->input('transfer_date');
         $req_no = $request->input('req_no');
         $bank_ref = $request->input('bank_ref');
 
@@ -30,11 +30,11 @@ class TransactionController extends Controller
                     $query->where('bene_account_no', 'like', '%' . $acc_no . '%');
                 }
             })
-            ->where(function ($query)  use ($transfer_date) {
-                if (!empty($transfer_date)) {
-                    $query->where('transfer_date', 'like', '%' . $transfer_date . '%');
-                }
-            })
+//            ->where(function ($query)  use ($transfer_date) {
+//                if (!empty($transfer_date)) {
+//                    $query->where('transfer_date', 'like', '%' . $transfer_date . '%');
+//                }
+//            })
             ->where(function ($query)  use ($status) {
                 if (!empty($status)) {
                     $query->where('status_code', 'like', '%' . $status . '%');

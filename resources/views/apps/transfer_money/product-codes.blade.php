@@ -39,8 +39,8 @@
 										<th>ID</th>
 										<th>SCHEME CODE</th>
 										<th>TRANSFER TYPE</th>
-										<th>VALIDATION AT</th>
-										<th>ACTIVE</th>
+										<th>VALIDATION</th>
+										{{--<th>ACTIVE</th>--}}
 										@if(Session::get('maker') == 1)
 											<th>EDIT LINK</th>
 										@endif
@@ -52,8 +52,8 @@
 											<td>{{ $value->id }}</td>
 											<td>{{ $value->schemecode }}</td>
 											<td>{{ $value->transfer_type }}</td>
-											<td>{{ $value->validation_at }}</td>
-											<td>{{ $value->active }}</td>
+											<td>{{ $value->validation }}</td>
+{{--											<td>{{ $value->active }}</td>--}}
 											@if(Session::get('maker') == 1)
 												<td>
 													<a href="{{ URL::to('product-code/edit') . '/' . $value->id }}">Edit</a>

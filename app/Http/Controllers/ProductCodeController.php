@@ -40,8 +40,8 @@ class ProductCodeController extends Controller
 
         $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
-            ->where('active',$request->status)
-            ->where('validation_at',$request->validation_at)
+//            ->where('active',$request->status)
+            ->where('validation',$request->validation)
             ->get()->toArray();
 
         if(!empty($productCodeModel)){
@@ -53,8 +53,8 @@ class ProductCodeController extends Controller
 		$productCodeModel->id = 2;
 		$productCodeModel->schemecode = $request->schemecode;
 		$productCodeModel->transfer_type = $request->transfertype;
-		$productCodeModel->active = $request->status;
-		$productCodeModel->validation_at = $request->validation_at;
+//		$productCodeModel->active = $request->status;
+		$productCodeModel->validation = $request->validation;
 		$productCodeModel->save();
 		return redirect('product-codes');
 	}
@@ -68,8 +68,8 @@ class ProductCodeController extends Controller
 		$data['productcodes']['id'] = $productCodes['id'];
 		$data['productcodes']['schemecode'] = $productCodes['schemecode'];
 		$data['productcodes']['transfertype'] = $productCodes['transfer_type'];
-		$data['productcodes']['status'] = $productCodes['active'];
-		$data['productcodes']['validation_at'] = $productCodes['validation_at'];
+//		$data['productcodes']['status'] = $productCodes['active'];
+		$data['productcodes']['validation'] = $productCodes['validation'];
 		return view('apps.' . $app . '.edit-product-code', array('data' => $data));
 	}
 
@@ -77,8 +77,8 @@ class ProductCodeController extends Controller
 
         $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
-            ->where('active',$request->status)
-            ->where('validation_at',$request->validation_at)
+//            ->where('active',$request->status)
+            ->where('validation',$request->validation)
             ->get()->toArray();
 
         if(!empty($productCodeModel)){
@@ -88,7 +88,7 @@ class ProductCodeController extends Controller
 
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
-		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'active' => $request->status,'validation_at' => $request->validation_at]);
+		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'validation' => $request->validation]);
 		return redirect('product-codes');
 	}
 }
