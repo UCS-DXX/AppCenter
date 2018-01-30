@@ -76,10 +76,10 @@ Route::get('/transactions', ['middleware' => 'authenticate', 'uses' => 'Transact
 |--------------------------------------------------------------------------
 */
 Route::get('/product-codes', ['middleware' => 'authenticate', 'uses' => 'ProductCodeController@productcodes']);
-Route::get('/create-product-code', ['middleware' => 'authenticate', 'uses' => 'ProductCodeController@getProductCode']);
-Route::post('/create-product-code', ['middleware' => 'authenticate', 'uses' => 'ProductCodeController@postProductCode']);
-Route::get('/product-code/edit/{id}', ['middleware' => 'authenticate', 'uses' => 'ProductCodeController@getEditProductCode']);
-Route::post('/update-product-code', ['middleware' => 'authenticate', 'uses' => 'ProductCodeController@updateProductCode']);
+Route::get('/create-product-code', ['middleware' => ['authenticate','maker'], 'uses' => 'ProductCodeController@getProductCode']);
+Route::post('/create-product-code', ['middleware' => ['authenticate','maker'], 'uses' => 'ProductCodeController@postProductCode']);
+Route::get('/product-code/edit/{id}', ['middleware' => ['authenticate','maker'], 'uses' => 'ProductCodeController@getEditProductCode']);
+Route::post('/update-product-code', ['middleware' => ['authenticate','maker'], 'uses' => 'ProductCodeController@updateProductCode']);
 
 /*
 |--------------------------------------------------------------------------
