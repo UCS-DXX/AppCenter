@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
         'authenticate' => \App\Http\Middleware\AuthMiddleware::class,
 		'admin' => \App\Http\Middleware\AdminMiddleWare::class,
 		'app' => \App\Http\Middleware\AppSession::class,
-		'maker' => \App\Http\Middleware\MakerMiddleware::class
+		'maker' => \App\Http\Middleware\MakerMiddleware::class,
+		'checker' => \App\Http\Middleware\CheckerMiddleware::class
     ];
 }
