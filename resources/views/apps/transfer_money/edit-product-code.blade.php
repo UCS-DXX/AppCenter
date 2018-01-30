@@ -68,7 +68,7 @@
 							{{--</div>--}}
 						{{--</div>--}}
 						<div style="margin-top: 50px;display: flex;justify-content: flex-end;">
-							<button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create</button>
+							<button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Update</button>
 						</div>
 					</form>
 				</div>

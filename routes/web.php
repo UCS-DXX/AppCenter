@@ -42,10 +42,10 @@ Route::get('/testing', 'HomeController@testing');
 |--------------------------------------------------------------------------
 */
 Route::get('/customers', ['middleware' => 'authenticate', 'uses' => 'CustomerController@customers']);
-Route::get('/create-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getCustomer']);
-Route::post('/create-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@postCustomer']);
-Route::get('/customer/edit/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getEditCustomer']);
-Route::post('/update-customer', ['middleware' => 'authenticate', 'uses' => 'CustomerController@updateCustomer']);
+Route::get('/create-customer', ['middleware' => ['authenticate','maker'], 'uses' => 'CustomerController@getCustomer']);
+Route::post('/create-customer', ['middleware' => ['authenticate','maker'], 'uses' => 'CustomerController@postCustomer']);
+Route::get('/customer/edit/{id}', ['middleware' => ['authenticate','maker'], 'uses' => 'CustomerController@getEditCustomer']);
+Route::post('/update-customer', ['middleware' => ['authenticate','maker'], 'uses' => 'CustomerController@updateCustomer']);
 Route::get('/customer/{id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@viewCustomer']);
 Route::get('/activate-customers', ['middleware' => 'authenticate', 'uses' => 'CustomerController@getInactivateCustomers']);
 Route::get('/activate-customers/{customerId}/{row_id}', ['middleware' => 'authenticate', 'uses' => 'CustomerController@activateCustomers']);
