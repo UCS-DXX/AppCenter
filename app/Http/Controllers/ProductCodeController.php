@@ -38,7 +38,7 @@ class ProductCodeController extends Controller
 	public function postProductCode(Request $request)
 	{
 
-        $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
+        $productCodeModel = ProductCodeModel::where('scheme_code',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
 //            ->where('active',$request->status)
             ->where('validation',$request->validation)
@@ -51,7 +51,7 @@ class ProductCodeController extends Controller
 
 		$productCodeModel = new ProductCodeModel();
 		$productCodeModel->id = 2;
-		$productCodeModel->schemecode = $request->schemecode;
+		$productCodeModel->scheme_code = $request->schemecode;
 		$productCodeModel->transfer_type = $request->transfertype;
 //		$productCodeModel->active = $request->status;
 		$productCodeModel->validation = $request->validation;
@@ -66,7 +66,7 @@ class ProductCodeController extends Controller
 		$productCodes = array_shift($productCodes);
 		$data = array();
 		$data['productcodes']['id'] = $productCodes['id'];
-		$data['productcodes']['schemecode'] = $productCodes['schemecode'];
+		$data['productcodes']['schemecode'] = $productCodes['scheme_code'];
 		$data['productcodes']['transfertype'] = $productCodes['transfer_type'];
 //		$data['productcodes']['status'] = $productCodes['active'];
 		$data['productcodes']['validation'] = $productCodes['validation'];
@@ -75,7 +75,7 @@ class ProductCodeController extends Controller
 
 	public function updateProductCode(Request $request) {
 
-        $productCodeModel = ProductCodeModel::where('schemecode',$request->schemecode)
+        $productCodeModel = ProductCodeModel::where('scheme_code',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
 //            ->where('active',$request->status)
             ->where('validation',$request->validation)
@@ -88,7 +88,7 @@ class ProductCodeController extends Controller
 
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
-		$productCodes = $productCodeModel->where('id', $request->id)->update(['schemecode' => $request->schemecode, 'transfer_type' => $request->transfertype, 'validation' => $request->validation]);
+		$productCodes = $productCodeModel->where('id', $request->id)->update(['scheme_code' => $request->schemecode, 'transfer_type' => $request->transfertype, 'validation' => $request->validation]);
 		return redirect('product-codes');
 	}
 }

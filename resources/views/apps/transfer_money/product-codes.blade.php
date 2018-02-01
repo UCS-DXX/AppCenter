@@ -50,7 +50,7 @@
 									@foreach($data['productcodes'] as $key => $value)
 										<tr>
 											<td>{{ $value->id }}</td>
-											<td>{{ $value->schemecode }}</td>
+											<td>{{ $value->scheme_code }}</td>
 											<td>{{ $value->transfer_type }}</td>
 											<td>{{ $value->validation }}</td>
 {{--											<td>{{ $value->active }}</td>--}}
