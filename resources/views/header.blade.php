@@ -41,7 +41,7 @@
                             <span class="bar-line bar-line-6 in"></span>
                         </span>
 				</button>
-				<div class="navbar-brand">APP CENTER</div>
+				<div class="navbar-brand">ESBCENTER</div>
 				<ul class="nav navbar-nav navbar-right">
 					@if(Session::get('user_id') != 'admin')
 						<li class="dropdown">

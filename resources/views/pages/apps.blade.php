@@ -29,7 +29,7 @@
 				<img class="site_logo" src="{{ asset('assets/images/dcb_logo.png') }}" alt="Elephant"/>
 			</a>
 		</div>
-		<a class="navbar-brand">APP CENTER</a>
+		<a class="navbar-brand">ESBCENTER</a>
 		<div class="navbar-toggleable" style="margin-left: 0; background-color: #fff;">
 			<nav id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
