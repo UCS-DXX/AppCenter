@@ -60,7 +60,7 @@
 									<option value="" @if(app('request')->input('status') == "") {{ 'selected' }}@endif>
 										All
 									</option>
-									<option value="SEND_TO_BENEFICIARY" @if(app('request')->input('status') == "SEND_TO_BENEFICIARY") {{ 'selected' }}@endif>
+									<option value="SEND_TO_BENEFICIARY" @if(app('request')->input('status') == "SENDTOBENEFICIARY") {{ 'selected' }}@endif>
 										SEND TO BENEFICIARY
 									</option>
 									<option value="INPROCESS" @if(app('request')->input('status') == "INPROCESS") {{ 'selected' }}@endif>

@@ -7,7 +7,7 @@
 		<div class="title-bar">
 			<h1 class="title-bar-title">
 				<span class="d-ib">
-					<a href="{{ URL::to('admin/create-user-permission') }}">Add New Customer</a>
+					<a href="{{ URL::to('admin/create-user-permission') }}">Add New User</a>
 				</span>
 			</h1>
 		</div>
