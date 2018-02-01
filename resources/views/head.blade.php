@@ -14,10 +14,11 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/customer.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/signup-3.min.css') }}">
-	<script
-			src="https://code.jquery.com/jquery-2.2.4.min.js"
-			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-			crossorigin="anonymous"></script>
+	<script src="{{ asset('assets/js/jquery-2.2.4.min.js') }}"></script>
+	{{--<script--}}
+			{{--src="https://code.jquery.com/jquery-2.2.4.min.js"--}}
+			{{--integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="--}}
+			{{--crossorigin="anonymous"></script>--}}
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	      rel="stylesheet">
 	@yield('custom-includes')
