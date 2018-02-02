@@ -52,6 +52,11 @@
             $("#error").html("Mobile No accept only numbers");
             validate = false
         }
+        else if(mobile_no.length > 10 || mobile_no.length < 10) {
+            $("#error").css('display','block');
+            $("#error").html("Mobile No Should be 10 digits only");
+            validate = false
+        }
         else if(!daily_limit_amt.match(regX3)) {
             $("#error").css('display','block');
             $("#error").html("Daily Limit Amount accept only numbers");
@@ -132,14 +137,14 @@
 							<label class="col-sm-3 control-label" >Mobile Number</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="mobile_no" name="mobile_no" spellcheck="false"
-									   placeholder="Mobile Number" required @if(isset($data['customer']['mobile_no'])) value="{{ $data['customer']['mobile_no'] }}" @endif>
+									   placeholder="Mobile Number" minlength="10" maxlength="10" required @if(isset($data['customer']['mobile_no'])) value="{{ $data['customer']['mobile_no'] }}" @endif>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label" >MMID</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="mmid" name="mmid" spellcheck="false"
-									   placeholder="MMID" required @if(isset($data['customer']['mmid'])) value="{{ $data['customer']['mmid'] }}" @endif>
+									   placeholder="MMID" minlength="7" maxlength="7" required @if(isset($data['customer']['mmid'])) value="{{ $data['customer']['mmid'] }}" @endif>
 							</div>
 						</div>
 

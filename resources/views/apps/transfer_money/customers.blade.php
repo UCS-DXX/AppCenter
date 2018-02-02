@@ -95,7 +95,7 @@
 											<td>{{ $customer->allow_imps }}</td>
 											<td>{{ $customer->enabled }}</td>
 											@if(Session::get('maker') == 1)
-												@if($customer->approval_status == 'a')
+												@if($customer->approval_status == 'A')
 													<td>
 														<a href="{{ URL::to('customer/edit') . '/' . $customer->id }}">Edit</a>
 													</td>

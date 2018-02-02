@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\CustomerModel;
 use App\CustomerRevisionsModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -20,7 +19,6 @@ class CustomerController extends Controller
     public function customers(Request $request)
     {
         $app = Session::get('appName');
-        $data = array();
 
         $customerModel = new CustomerModel();
 
@@ -29,7 +27,7 @@ class CustomerController extends Controller
         $customer_id = $request->input('customer_id');
 
 
-        $customers = $customerModel->whereIn('approval_status', ['a', 'u'])
+        $customers = $customerModel->whereIn('approval_status', ['A', 'U'])
             ->where(function ($query) use ($app_id) {
                 if (!empty($app_id)) {
                     $query->where('app_id', 'like', '%' . $app_id . '%');
@@ -260,7 +258,7 @@ class CustomerController extends Controller
         $customerRevisionModel->updated_at = date('dMy');
         $customerRevisionModel->save();
 
-        $customerModel = $customerModel->where('id', $request->id)->update(['approval_status' => 'u']);
+        $customerModel = $customerModel->where('id', $request->id)->update(['approval_status' => 'U']);
 
         return redirect('customers');
     }
@@ -319,7 +317,7 @@ class CustomerController extends Controller
             $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
             $customerModel->allow_imps = $customerRevisionModel->allow_imps;
             $customerModel->enabled = $customerRevisionModel->enabled;
-            $customerModel->approval_status = 'a';
+            $customerModel->approval_status = 'A';
             $customerModel->created_at = date('dMy');
             $customerModel->updated_at = date('dMy');
             $customerModel->save();
@@ -351,7 +349,7 @@ class CustomerController extends Controller
             $customerModel->allow_rtgs = $customerRevisionModel->allow_rtgs;
             $customerModel->allow_imps = $customerRevisionModel->allow_imps;
             $customerModel->enabled = $customerRevisionModel->enabled;
-            $customerModel->approval_status = 'a';
+            $customerModel->approval_status = 'A';
             $customerModel->approved_id = $customerRevisionModel->id;
             $customerModel->updated_at = date('dMy');
             $customerModel->save();
@@ -376,7 +374,7 @@ class CustomerController extends Controller
 
         if ($customerRevisionModel->revision_status == 'Pending') {
             $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
-            $customerModel->approval_status = 'a';
+            $customerModel->approval_status = 'A';
             $customerModel->save();
         }
 

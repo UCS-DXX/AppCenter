@@ -154,7 +154,7 @@
 							<label class="col-sm-3 control-label" >MMID</label>
 							<div class="col-sm-9">
 								<input class="form-control" type="text" id="mmid" name="mmid" spellcheck="false"
-									   placeholder="MMID" required @if(isset($customer['mmid'])) value="{{ $customer['mmid'] }}" @endif>
+									   placeholder="MMID" minlength="7" maxlength="7" required @if(isset($customer['mmid'])) value="{{ $customer['mmid'] }}" @endif>
 							</div>
 						</div>
 
