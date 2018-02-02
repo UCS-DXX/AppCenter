@@ -60,7 +60,7 @@
 									<option value="" @if(app('request')->input('status') == "") {{ 'selected' }}@endif>
 										All
 									</option>
-									<option value="SEND_TO_BENEFICIARY" @if(app('request')->input('status') == "SENDTOBENEFICIARY") {{ 'selected' }}@endif>
+									<option value="SENDTOBENEFICIARY" @if(app('request')->input('status') == "SENDTOBENEFICIARY") {{ 'selected' }}@endif>
 										SEND TO BENEFICIARY
 									</option>
 									<option value="INPROCESS" @if(app('request')->input('status') == "INPROCESS") {{ 'selected' }}@endif>
@@ -94,11 +94,14 @@
 										{{--<th>SHOW LINK</th>--}}
 										<th>BENE NAME</th>
 										<th>BENE ACCOUNT</th>
-										<th>REMITTER NAME</th>
+										<th>CUSTOMER ID</th>
+										<th>TRANSFER TYPE</th>
 										{{--<th>DATE</th>--}}
 										<th>TRANSFER AMOUNT</th>
 										<th>STATUS</th>
 										<th>REQ NO</th>
+										<th>REQ TIMESTAMP</th>
+										<th>REP TIMESTAMP</th>
 										<th>BANK REF</th>
 									</tr>
 								</thead>
@@ -110,11 +113,14 @@
 											{{--</td>--}}
 											<td>{{ $transaction->bene_full_name }}</td>
 											<td>{{ $transaction->bene_account_no }}</td>
-											<td></td>
+											<td>{{ $transaction->customer_id }}</td>
+											<td>{{ $transaction->transfer_type }}</td>
 											{{--<td>{{ $transaction->transfer_date }}</td>--}}
 											<td>{{ $transaction->transfer_amount }}</td>
 											<td>{{ $transaction->status_code }}</td>
 											<td>{{ $transaction->req_no }}</td>
+											<td>{{ $transaction->req_timestamp }}</td>
+											<td>{{ $transaction->rep_timestamp }}</td>
 											<td>{{ $transaction->bank_ref }}</td>
 										</tr>
 									@endforeach
@@ -122,7 +128,7 @@
 							</table>
 						</div>
 					</div>
-					{{ $transactions->links() }}
+					{{ $transactions->appends(\Illuminate\Support\Facades\Input::except('page'))->links() }}
 				</div>
 			</div>
 		</div>
