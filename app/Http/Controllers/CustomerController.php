@@ -45,11 +45,11 @@ class CustomerController extends Controller
             })
             ->orderBy('name', 'asc')->paginate(10, ['*'], 'customers');
 
-        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['Created', 'Pending'])->orderBy('id', 'desc')->paginate(10, ['*'], 'pendingCustomers');
+        $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['CREATED', 'PENDING'])->orderBy('id', 'desc')->paginate(10, ['*'], 'pendingCustomers');
 
         $checkUser = DB::table('FT_CUSTOMERS')
             ->join('FT_CUSTOMERS_REVISIONS', 'FT_CUSTOMERS.customer_id', '=', 'FT_CUSTOMERS_REVISIONS.customer_id')
-            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'Pending')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'PENDING')
             ->select('FT_CUSTOMERS_REVISIONS.customer_id')
             ->get();
 
@@ -116,7 +116,7 @@ class CustomerController extends Controller
             $customerRevisionsModel->allow_imps = $imps;
             $customerRevisionsModel->enabled = $enable;
             $customerRevisionsModel->customers_row_id = 0;
-            $customerRevisionsModel->revision_status = 'Created';
+            $customerRevisionsModel->revision_status = 'CREATED';
             $customerRevisionsModel->created_at = date('dMy');
             $customerRevisionsModel->updated_at = date('dMy');
             $customerRevisionsModel->save();
@@ -141,7 +141,7 @@ class CustomerController extends Controller
 
         $checkUser = DB::table('FT_CUSTOMERS')
             ->join('FT_CUSTOMERS_REVISIONS', 'FT_CUSTOMERS.customer_id', '=', 'FT_CUSTOMERS_REVISIONS.customer_id')
-            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'Pending')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'PENDING')
             ->select('FT_CUSTOMERS_REVISIONS.customer_id')
             ->get();
 
@@ -194,7 +194,7 @@ class CustomerController extends Controller
 
         $checkUser = DB::table('FT_CUSTOMERS')
             ->join('FT_CUSTOMERS_REVISIONS', 'FT_CUSTOMERS.customer_id', '=', 'FT_CUSTOMERS_REVISIONS.customer_id')
-            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'Pending')
+            ->where('FT_CUSTOMERS_REVISIONS.revision_status', '=', 'PENDING')
             ->select('FT_CUSTOMERS_REVISIONS.customer_id')
             ->get();
 
@@ -253,7 +253,7 @@ class CustomerController extends Controller
         $customerRevisionModel->allow_imps = $imps;
         $customerRevisionModel->enabled = $enable;
         $customerRevisionModel->customers_row_id = $request->id;
-        $customerRevisionModel->revision_status = 'Pending';
+        $customerRevisionModel->revision_status = 'PENDING';
         $customerRevisionModel->created_at = date('dMy');
         $customerRevisionModel->updated_at = date('dMy');
         $customerRevisionModel->save();
@@ -282,7 +282,7 @@ class CustomerController extends Controller
             return redirect('dashboard');
         }
 
-        $customers = CustomerRevisionsModel::where('revision_status', 'Created')->orWhere('revision_status', 'Pending')->orderBy('id', 'desc')->paginate(10);
+        $customers = CustomerRevisionsModel::where('revision_status', 'CREATED')->orWhere('revision_status', 'PENDING')->orderBy('id', 'desc')->paginate(10);
 
         return view('apps.' . $app . '.active-customers')->with('customers', $customers);
     }
@@ -297,7 +297,7 @@ class CustomerController extends Controller
 
         $customerRevisionModel = CustomerRevisionsModel::find($row_id);
 
-        if ($customerRevisionModel->revision_status == 'Created') {
+        if ($customerRevisionModel->revision_status == 'CREATED') {
             $customerModel = new CustomerModel();
             $customerModel->app_id = $customerRevisionModel->app_id;
             $customerModel->name = $customerRevisionModel->name;
@@ -322,14 +322,14 @@ class CustomerController extends Controller
             $customerModel->updated_at = date('dMy');
             $customerModel->save();
 
-            $customerRevisionModel->revision_status = 'Approved';
+            $customerRevisionModel->revision_status = 'APPROVED';
             $customerRevisionModel->updated_at = date('dMy');
             $customerRevisionModel->save();
 
             return redirect('activate-customers');
         }
 
-        if ($customerRevisionModel->revision_status == 'Pending') {
+        if ($customerRevisionModel->revision_status == 'PENDING') {
             $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
             $customerModel->app_id = $customerRevisionModel->app_id;
             $customerModel->name = $customerRevisionModel->name;
@@ -354,7 +354,7 @@ class CustomerController extends Controller
             $customerModel->updated_at = date('dMy');
             $customerModel->save();
 
-            $customerRevisionModel->revision_status = 'Approved';
+            $customerRevisionModel->revision_status = 'APPROVED';
             $customerRevisionModel->updated_at = date('dMy');
             $customerRevisionModel->save();
 
@@ -372,13 +372,13 @@ class CustomerController extends Controller
 
         $customerRevisionModel = CustomerRevisionsModel::find($id);
 
-        if ($customerRevisionModel->revision_status == 'Pending') {
+        if ($customerRevisionModel->revision_status == 'PENDING') {
             $customerModel = CustomerModel::find($customerRevisionModel->customers_row_id);
             $customerModel->approval_status = 'A';
             $customerModel->save();
         }
 
-        $customerRevisionModel->revision_status = 'Rejected';
+        $customerRevisionModel->revision_status = 'REJECTED';
         $customerRevisionModel->save();
 
         return redirect('activate-customers');
