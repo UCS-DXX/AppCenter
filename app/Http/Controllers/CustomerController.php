@@ -43,7 +43,7 @@ class CustomerController extends Controller
                     $query->where('customer_id', 'like', '%' . $customer_id . '%');
                 }
             })
-            ->orderBy('name', 'asc')->paginate(10, ['*'], 'customers');
+            ->orderBy('id', 'desc')->paginate(10, ['*'], 'customers');
 
         $pendingCustomers = CustomerRevisionsModel::whereIn('revision_status', ['CREATED', 'PENDING'])->orderBy('id', 'desc')->paginate(10, ['*'], 'pendingCustomers');
 
@@ -69,6 +69,7 @@ class CustomerController extends Controller
 
     public function postCustomer(Request $request)
     {
+        $currentUser = Session::get('user_id');
         $neft = 'N';
         $rtgs = 'N';
         $imps = 'N';
@@ -119,6 +120,8 @@ class CustomerController extends Controller
             $customerRevisionsModel->revision_status = 'CREATED';
             $customerRevisionsModel->created_at = date('dMy');
             $customerRevisionsModel->updated_at = date('dMy');
+            $customerRevisionsModel->created_by = $currentUser;
+            $customerRevisionsModel->updated_by = $currentUser;
             $customerRevisionsModel->save();
             return redirect('customers');
         } else {
@@ -181,6 +184,8 @@ class CustomerController extends Controller
 
     public function updateCustomer(Request $request)
     {
+
+        $currentUser = Session::get('user_id');
 
         if (Session::get('maker') != 1) {
             return redirect('dashboard');
@@ -256,6 +261,9 @@ class CustomerController extends Controller
         $customerRevisionModel->revision_status = 'PENDING';
         $customerRevisionModel->created_at = date('dMy');
         $customerRevisionModel->updated_at = date('dMy');
+        $customerRevisionModel->created_by = $currentUser;
+        $customerRevisionModel->updated_by = $currentUser;
+
         $customerRevisionModel->save();
 
         $customerModel = $customerModel->where('id', $request->id)->update(['approval_status' => 'U']);
@@ -320,6 +328,8 @@ class CustomerController extends Controller
             $customerModel->approval_status = 'A';
             $customerModel->created_at = date('dMy');
             $customerModel->updated_at = date('dMy');
+            $customerModel->created_by = $customerRevisionModel->created_by;
+            $customerModel->updated_by = $customerRevisionModel->updated_by;
             $customerModel->save();
 
             $customerRevisionModel->revision_status = 'APPROVED';
@@ -352,6 +362,7 @@ class CustomerController extends Controller
             $customerModel->approval_status = 'A';
             $customerModel->approved_id = $customerRevisionModel->id;
             $customerModel->updated_at = date('dMy');
+            $customerModel->updated_by = $customerRevisionModel->updated_by;
             $customerModel->save();
 
             $customerRevisionModel->revision_status = 'APPROVED';

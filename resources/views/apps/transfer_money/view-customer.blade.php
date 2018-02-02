@@ -251,6 +251,38 @@
 						</div>
 					</div>
 				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Created By : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['created_by'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 50px;">
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">Updated By : </span>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="custom-controls-stacked m-t">
+							<label class="custom-control custom-control-primary custom-checkbox">
+								<span class="custom-control-label" style="font-size: 16px;">{{ $data['customers']['updated_by'] }}</span>
+							</label>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
