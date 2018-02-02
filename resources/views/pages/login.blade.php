@@ -34,6 +34,9 @@
 				</form>
 			</div>
 		</div>
+		<div style="text-align: center">
+			<small class="copyright">Developed by Unacores Solutions Private Limited</small>
+		</div>
 	</div>
 	@endsection
 	@section('custom-script')
