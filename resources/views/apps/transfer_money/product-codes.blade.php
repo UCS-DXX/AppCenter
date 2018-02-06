@@ -20,14 +20,14 @@
 			<div class="title-bar">
 				<h6 class="title-bar-title">
 				<span class="d-ib">
-					<a href="{{ URL::to('create-product-code') }}" id="create_customer">Create New Product Code</a>
+					<a href="{{ URL::to('create-product-code') }}" id="create_customer">Create New Scheme Code</a>
 				</span>
 				</h6>
 			</div>
 		@endif
 		<div class="row">
 			<div class="text-center m-b">
-				<h3 class="m-b-0">List of Product Codes</h3>
+				<h3 class="m-b-0">List of Scheme Codes</h3>
 			</div>
 			<div class="col-xs-12">
 				<div class="card">
@@ -40,7 +40,7 @@
 										<th>SCHEME CODE</th>
 										<th>TRANSFER TYPE</th>
 										<th>VALIDATION</th>
-										{{--<th>ACTIVE</th>--}}
+										<th>ENABLE</th>
 										@if(Session::get('maker') == 1)
 											<th>EDIT LINK</th>
 										@endif
@@ -53,7 +53,7 @@
 											<td>{{ $value->scheme_code }}</td>
 											<td>{{ $value->transfer_type }}</td>
 											<td>{{ $value->validation }}</td>
-{{--											<td>{{ $value->active }}</td>--}}
+											<td>{{ $value->enable }}</td>
 											@if(Session::get('maker') == 1)
 												<td>
 													<a href="{{ URL::to('product-code/edit') . '/' . $value->id }}">Edit</a>

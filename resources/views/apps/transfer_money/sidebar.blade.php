@@ -57,7 +57,7 @@
 							<span class="sidenav-icon">
 								<i class="material-icons" style="transform: translate(0, -2px);">code</i>
 							</span>
-							<span class="sidenav-label">Product Codes</span>
+							<span class="sidenav-label">Scheme Codes</span>
 						</a>
 					</li>
 					@if(Session::get('checker') == 1)

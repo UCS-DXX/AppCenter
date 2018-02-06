@@ -52,21 +52,16 @@
 								</select>
 							</div>
 						</div>
-						{{--<div class="form-group">--}}
-							{{--<label class="col-sm-3 control-label" for="form-control-22">Status</label>--}}
-							{{--<div class="col-sm-9">--}}
-								{{--<select class="form-control" id="form-control-22" name="status"--}}
-										{{--data-msg-required="Please indicate product code status." required>--}}
-									{{--@if($data['productcodes']['status'] == 1)--}}
-										{{--<option value="{{ $data['productcodes']['status'] }}" selected="selected">Active</option>--}}
-										{{--<option value="0">Inactive</option>--}}
-									{{--@else--}}
-										{{--<option value="1">Active</option>--}}
-										{{--<option value="{{ $data['productcodes']['status'] }}" selected="selected">Inactive</option>--}}
-									{{--@endif--}}
-								{{--</select>--}}
-							{{--</div>--}}
-						{{--</div>--}}
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="form-control-22">Enable</label>
+							<div class="col-sm-9">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="enable" value="Y" @if($data['productcodes']['enable']=='Y'){{ 'checked' }}@endif >
+									</label>
+								</div>
+							</div>
+						</div>
 						<div style="margin-top: 50px;display: flex;justify-content: flex-end;">
 							<button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Update</button>
 						</div>

@@ -11,7 +11,7 @@
     <div class="layout-content-body">
         <div class="title-bar">
             <h1 class="title-bar-title" style="">
-                <span class="d-ib">Create Product Code</span>
+                <span class="d-ib">Create Scheme Code</span>
                 </span>
             </h1>
         </div>
@@ -59,7 +59,7 @@
                             <label class="col-sm-3 control-label" for="form-control-22">Validation</label>
                             <div class="col-sm-9">
                                 <select class="form-control" id="form-control-22" name="validation"
-                                        data-msg-required="Please indicate product code status." required>
+                                        data-msg-required="Please indicate scheme code status." required>
                                     <option value="C" @if($product_code['validation']=='C'){{ 'selected' }}@endif>
                                         Credit
                                     </option>
@@ -69,18 +69,16 @@
                                 </select>
                             </div>
                         </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label class="col-sm-3 control-label" for="form-control-22">Status</label>--}}
-                            {{--<div class="col-sm-9">--}}
-                                {{--<select class="form-control" id="form-control-22" name="status"--}}
-                                        {{--data-msg-required="Please indicate product code status." required>--}}
-                                    {{--<option value="1" @if($product_code['status']=='1'){{ 'selected' }}@endif >Active--}}
-                                    {{--</option>--}}
-                                    {{--<option value="0" @if($product_code['status']=='0'){{ 'selected' }}@endif>Inactive--}}
-                                    {{--</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="form-control-22">Enable</label>
+                            <div class="col-sm-9">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="enable" value="Y" @if(!empty($product_code['enable']) && $product_code['enable']=='Y'){{ 'checked' }}@endif>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <div style="margin-top: 50px;display: flex;justify-content: flex-end;">
                             <button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create</button>
                         </div>
