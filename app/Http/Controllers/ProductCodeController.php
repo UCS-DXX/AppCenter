@@ -358,7 +358,7 @@ class ProductCodeController extends Controller
 
         $productCodeModel = ProductCodeModel::where('scheme_code',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
-            ->where('enable',$enable)
+//            ->where('enable',$enable)
             ->where('validation',$request->validation)
             ->get()->toArray();
 
@@ -411,7 +411,7 @@ class ProductCodeController extends Controller
 
         $productCodeModel = ProductCodeModel::where('scheme_code',$request->schemecode)
             ->where('transfer_type',$request->transfertype)
-            ->where('enable',$enable)
+//            ->where('enable',$enable)
             ->where('validation',$request->validation)
             ->get()->toArray();
 
