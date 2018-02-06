@@ -18,28 +18,26 @@
         <div class="row" style="margin-top: 50px;">
             <div class="col-md-8">
                 <div class="demo-form-wrapper">
-                    <form class="form form-horizontal" style="margin-bottom: 50px;" action="{{ URL::to('create-product-code') }}" method="post">
+                    <form class="form form-horizontal" style="margin-bottom: 50px;"
+                          action="{{ URL::to('create-product-code') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="form-control-23">Scheme Code</label>
                             <div class="col-sm-9">
-                                <select id="form-control-23" class="form-control" name="schemecode" >
-                                    <option value="NRI" @if($product_code['schemecode']=='NRI'){{ 'selected' }}@endif>
-                                        NRI
-                                    </option>
-                                    <option value="NRO" @if($product_code['schemecode']=='NRO'){{ 'selected' }}@endif>
-                                        NRO
-                                    </option>
-                                    <option value="SBO" @if($product_code['schemecode']=='SBO'){{ 'selected' }}@endif>
-                                        SBO
-                                    </option>
+                                <select id="form-control-23" class="form-control" name="schemecode">
+                                    @foreach ($schm_codes as $code=>$des)
+                                        @php($description = $code." - ".$des)
+                                        <option value="{{ $code }}" @if($product_code['schemecode']==$code){{ 'selected' }}@endif>
+                                            {{$description}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label" for="form-control-21">Transfer Type</label>
                             <div class="col-sm-9">
-                                <select id="form-control-21" class="form-control" name="transfertype" >
+                                <select id="form-control-21" class="form-control" name="transfertype">
                                     <option value="NEFT" @if($product_code['transfertype']=='NEFT'){{ 'selected' }}@endif>
                                         NEFT
                                     </option>
@@ -74,13 +72,15 @@
                             <div class="col-sm-9">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="enable" value="Y" @if(!empty($product_code['enable']) && $product_code['enable']=='Y'){{ 'checked' }}@endif>
+                                        <input type="checkbox" name="enable"
+                                               value="Y" @if(!empty($product_code['enable']) && $product_code['enable']=='Y'){{ 'checked' }}@endif>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div style="margin-top: 50px;display: flex;justify-content: flex-end;">
-                            <button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create</button>
+                            <button class="btn btn-primary btn-block" type="submit" style="max-width: 160px;">Create
+                            </button>
                         </div>
                     </form>
                 </div>

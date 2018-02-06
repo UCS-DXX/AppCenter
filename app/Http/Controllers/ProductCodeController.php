@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Session;
 
 class ProductCodeController extends Controller
 {
+
+    protected $schm_codes = array();
+
     public function __construct()
     {
         $this->middleware('app');
+        $this->schm_codes = [
+            'nri'=>'NRI',
+            'nro'=>'NRO',
+            'sbo'=>'SBO',
+        ];
     }
 
 	public function productcodes()
@@ -32,7 +40,9 @@ class ProductCodeController extends Controller
         $product_code = array();
         $product_code = Session::get('_old_input');
 
-		return view('apps.' . $app . '.create-product-code',compact('product_code'));
+        $schm_codes = $this->schm_codes;
+
+		return view('apps.' . $app . '.create-product-code',compact('product_code','schm_codes'));
 	}
 
 	public function postProductCode(Request $request)
@@ -82,6 +92,10 @@ class ProductCodeController extends Controller
 		$data['productcodes']['transfertype'] = $productCodes['transfer_type'];
 		$data['productcodes']['enable'] = $productCodes['enable'];
 		$data['productcodes']['validation'] = $productCodes['validation'];
+
+        $data['schm_codes'] = $this->schm_codes;
+
+
 		return view('apps.' . $app . '.edit-product-code', array('data' => $data));
 	}
 
