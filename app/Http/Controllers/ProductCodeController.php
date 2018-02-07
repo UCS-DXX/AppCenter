@@ -375,8 +375,8 @@ class ProductCodeController extends Controller
 		$productCodeModel->transfer_type = $request->transfertype;
 		$productCodeModel->enable = $enable;
 		$productCodeModel->validation = $request->validation;
-        $productCodeModel->created_at = date('dMy');
-        $productCodeModel->updated_at = date('dMy');
+        $productCodeModel->created_at = date('dMy H:i:s');
+        $productCodeModel->updated_at = date('dMy H:i:s');
         $productCodeModel->created_by = $currentUser;
         $productCodeModel->updated_by = $currentUser;
 		$productCodeModel->save();
@@ -424,7 +424,7 @@ class ProductCodeController extends Controller
 
 		$app = Session::get('appName');
 		$productCodeModel = new ProductCodeModel();
-		$productCodes = $productCodeModel->where('id', $request->id)->update(['scheme_code' => $request->schemecode, 'transfer_type' => $request->transfertype, 'validation' => $request->validation, 'enable' => $enable, 'updated_at' => date('dMy'), 'updated_by' => $currentUser]);
+		$productCodes = $productCodeModel->where('id', $request->id)->update(['scheme_code' => $request->schemecode, 'transfer_type' => $request->transfertype, 'validation' => $request->validation, 'enable' => $enable, 'updated_at' => date('dMy H:i:s'), 'updated_by' => $currentUser]);
 		return redirect('product-codes');
 	}
 }
