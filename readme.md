@@ -3,11 +3,13 @@
 ## About ESB CENTER ##
 
 EBS App Center allows Admins to create users with different roles:
+
 - Maker
 - Checker
 - Viewer
 
 These users can perform the following tasks:
+
 - Login with their LDAP credentials.
 - All the pages assigned to them according to their roles will be listed, after they enter the app.
 - Maker can create new records and update existing records.
