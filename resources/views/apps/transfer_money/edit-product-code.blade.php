@@ -11,7 +11,7 @@
     <div class="layout-content-body">
         <div class="title-bar">
             <h1 class="title-bar-title" style="">
-                <span class="d-ib">Update Product Code</span>
+                <span class="d-ib">Update Scheme Code</span>
                 </span>
             </h1>
         </div>
