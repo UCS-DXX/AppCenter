@@ -14,7 +14,9 @@ These users can perform the following tasks:
 - Checker can only Approve or Reject the records created or updated by the Maker.
 - Viewer will only be able to view the pages.
 
-[More Info](more-info.md)
+##### More Info #####
+
+- [Money Transfer](more-info/money-transfer.md)
 
 ## Prerequisite ##
 
