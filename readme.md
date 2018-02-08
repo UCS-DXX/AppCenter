@@ -18,7 +18,7 @@ These users can perform the following tasks:
 
 ##### More Info #####
 
-- [Money Transfer](more-info/money-transfer.md)
+- [Money Transfer](more-info/transfer-money.md)
 
 ## Prerequisite ##
 
