@@ -1,6 +1,6 @@
 # ESB CENTER #
 
-## About ESB CENTER
+## About ESB CENTER ##
 
 EBS App Center allows Admins to create users with different roles:
 - Maker
@@ -10,17 +10,19 @@ EBS App Center allows Admins to create users with different roles:
 These users can perform the following tasks:
 - Login with their LDAP credentials.
 - All the pages assigned to them according to their roles will be listed, after they enter the app.
-- Maker can create new customers and update existing customers.
-- Checker can only Approve or Reject the customers created and updated by the Maker.
+- Maker can create new records and update existing records.
+- Checker can only Approve or Reject the records created or updated by the Maker.
 - Viewer will only be able to view the pages.
 
-## Prerequisite
+  ###### [More Info](more-info.md) ######
+
+## Prerequisite ##
 
 - LAMP Stack
 - OCI8
 - LDAP
 
-## How to install this project
+## How to install this project ##
 
 1. Clone or download this project.
 2. Go inside the project folder.
