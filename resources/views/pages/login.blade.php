@@ -34,8 +34,8 @@
 				</form>
 			</div>
 		</div>
-		<div style="text-align: center">
-			<small class="copyright">Developed by : Unacores Solutions Private Limited</small>
+		<div style="text-align: center; margin-bottom: 20px">
+			<small class="copyright"><strong>Developed by </strong><img src="{{ asset('assets/images/unacodesfinal.png') }}" alt="Unacores Logo" style="height: 18px;"></small>
 		</div>
 	</div>
 	@endsection
