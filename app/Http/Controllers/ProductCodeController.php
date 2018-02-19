@@ -413,6 +413,7 @@ class ProductCodeController extends Controller
             ->where('transfer_type',$request->transfertype)
 //            ->where('enable',$enable)
             ->where('validation',$request->validation)
+            ->where('id', "<>", $request->id)
             ->get()->toArray();
 
         if(!empty($productCodeModel)){
