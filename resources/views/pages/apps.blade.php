@@ -5,7 +5,7 @@
 	<meta name="description" content="">
 	<meta property="" content="">
 	<title>DCB BANK </title>
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon.ico') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/unacodesO.png') }}">
 	<link rel="stylesheet" type="text/css"
 	      href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700">
 	<link rel="stylesheet" href="{{ asset('assets/css/apps.css') }}">
@@ -51,7 +51,7 @@
 						</a>
 					</li>
 					<li class="dropdown">
-						<img class="unacore-logo" src="{{  asset('assets/images/logo.png') }}" alt="">
+						<img class="unacore-logo" src="{{  asset('assets/images/unacodesO.png') }}" alt="">
 					</li>
 				</ul>
 			</nav>

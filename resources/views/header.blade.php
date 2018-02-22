@@ -66,7 +66,7 @@
 						</a>
 					</li>
 						<li class="dropdown">
-							<img class="unacore-logo" src="{{  asset('assets/images/logo.png') }}" alt="">
+							<img class="unacore-logo" src="{{  asset('assets/images/unacodesO.png') }}" alt="">
 						</li>
 				</ul>
 			</nav>
